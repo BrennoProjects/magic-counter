@@ -9,13 +9,12 @@ interface WrapperButton {
 }
 
 export const WrapperButton = styled.button<WrapperButton>`
-border-color: #62E093;
-border-weight: 4px;
-border-style: ${({border})=> border ? 'solid' : 'none'};
-border-radius: ${({fullRadius})=> fullRadius ? '100%' : '15px'};
-font-size: 40px;
-color: #62E093;
-background-color: ${({background})=> background};
-height: ${({height})=> height};
-width: ${({width})=> width};
-`
+  border-color: #62e093;
+  border-width: 4px;
+  border-style: ${({ border }) => (border ? "solid" : "none")};
+  border-radius: ${({ fullRadius }) => (fullRadius ? "100%" : "15px")};
+  color: #62e093;
+  background-color: ${({ background }) => background};
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
+`;

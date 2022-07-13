@@ -8,6 +8,7 @@ interface ButtonProps {
   border?: boolean;
   background?: string;
   fullRadius?: boolean;
+  onClick?: ()=> void;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -17,7 +18,8 @@ const Button: FC<ButtonProps> = (props) => {
     height,
     border = true,
     background = "#000000",
-    fullRadius = false
+    fullRadius = false,
+    onClick, 
   } = props;
   return (
     <S.WrapperButton
@@ -26,6 +28,7 @@ const Button: FC<ButtonProps> = (props) => {
       border={border}
       background={background}
       fullRadius={fullRadius}
+      onClick={onClick}
     >
       {children}
     </S.WrapperButton>
