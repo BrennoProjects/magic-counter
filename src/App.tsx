@@ -18,6 +18,7 @@ function App() {
         background={"#000000"}
         fullRadius={false}
         positionAbsolute
+        margin={'auto'}
         right={'0px'}
         left={'0px'}
         onClick={()=>{console.log('teste')}}
