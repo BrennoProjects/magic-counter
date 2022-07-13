@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 interface WrapperButton {
+  width: string;
   border: boolean;
   background: string;
   fullRadius: boolean;
@@ -15,5 +16,5 @@ font-size: 40px;
 color: #62E093;
 background-color: ${({background})=> background};
 height: 70px;
-width: 280px;
+width: ${({width})=> width};
 `
