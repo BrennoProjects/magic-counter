@@ -8,7 +8,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const {children, border=true, background='transparent'} = props
+  const {children, border=true, background='#000000'} = props
   return <S.WrapperButton border={border} background={background}>{children}</S.WrapperButton>;
 };
 
