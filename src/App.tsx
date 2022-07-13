@@ -7,7 +7,7 @@ function App() {
 
   return (
     <App className="App">
-      <Button background={'#000000'}>Start</Button>
+      <Button border background={'#000000'} fullRadius>Start</Button>
     </App>
   )
 }

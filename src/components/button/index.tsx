@@ -1,15 +1,29 @@
 import { FC } from "react";
-import  * as S  from "./styled";
+import * as S from "./styled";
 
 interface ButtonProps {
   children: string | JSX.Element;
   border?: boolean;
   background?: string;
+  fullRadius?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const {children, border=true, background='#000000'} = props
-  return <S.WrapperButton border={border} background={background}>{children}</S.WrapperButton>;
+  const {
+    children,
+    border = true,
+    background = "#000000",
+    fullRadius = false
+  } = props;
+  return (
+    <S.WrapperButton
+      border={border}
+      background={background}
+      fullRadius={fullRadius}
+    >
+      {children}
+    </S.WrapperButton>
+  );
 };
 
 export default Button;
