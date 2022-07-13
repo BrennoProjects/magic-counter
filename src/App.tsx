@@ -5,7 +5,7 @@ function App() {
 
   return (
     <App className="App">
-      <Button width={'100%'} border background={"#000000"} fullRadius={false}>
+      <Button width={'100%'} height={'70px'} border background={"#000000"} fullRadius={false}>
         Start
       </Button>
     </App>
