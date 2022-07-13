@@ -1,11 +1,13 @@
-
+import styled from "styled-components"
 
 function App() {
-
+ const App = styled.div`
+ 
+ `
   return (
-    <div className="App">
+    <App className="App">
       teste
-    </div>
+    </App>
   )
 }
 
