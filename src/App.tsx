@@ -8,12 +8,14 @@ function App() {
   `;
   return (
     <App className="App">
+      
       <Button
         width={"100%"}
         height={"70px"}
         border
         background={"#000000"}
         fullRadius={false}
+        positionAbsolute
         onClick={()=>{console.log('teste')}}
       >
         <Test>Start</Test>
