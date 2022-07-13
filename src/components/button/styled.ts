@@ -6,6 +6,7 @@ interface WrapperButton {
   border: boolean;
   background: string;
   fullRadius: boolean;
+  right: string;
   positionAbsolute: boolean;
 }
 
@@ -18,5 +19,6 @@ export const WrapperButton = styled.button<WrapperButton>`
   background-color: ${({ background }) => background};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
+  right: ${({right})=> right};
   position: ${({positionAbsolute})=> positionAbsolute ? "absolute" : "unset"};
 `;
