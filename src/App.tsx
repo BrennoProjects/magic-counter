@@ -7,7 +7,7 @@ function App() {
 
   return (
     <App className="App">
-      <Button >Start</Button>
+      <Button background={'#000000'}>Start</Button>
     </App>
   )
 }

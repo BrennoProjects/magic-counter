@@ -4,11 +4,12 @@ import  * as S  from "./styled";
 interface ButtonProps {
   children: string | JSX.Element;
   border?: boolean;
+  background?: string;
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const {children, border=true} = props
-  return <S.WrapperButton border={border}>{children}</S.WrapperButton>;
+  const {children, border=true, background='transparent'} = props
+  return <S.WrapperButton border={border} background={background}>{children}</S.WrapperButton>;
 };
 
 export default Button;
