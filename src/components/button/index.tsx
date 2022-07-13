@@ -10,6 +10,7 @@ interface ButtonProps {
   fullRadius?: boolean;
   positionAbsolute?: boolean;
   right?: string;
+  left?: string;
   onClick?: ()=> void;
 }
 
@@ -23,6 +24,7 @@ const Button: FC<ButtonProps> = (props) => {
     fullRadius = false,
     positionAbsolute = false,
     right = "unset",
+    left = "unset",
     onClick
   } = props;
   return (
@@ -34,6 +36,7 @@ const Button: FC<ButtonProps> = (props) => {
       fullRadius={fullRadius}
       positionAbsolute={positionAbsolute}
       right={right}
+      left={left}
       onClick={onClick}
     >
       {children}
