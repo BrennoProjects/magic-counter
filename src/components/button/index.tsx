@@ -12,7 +12,7 @@ interface ButtonProps {
   margin?: string;
   right?: string;
   left?: string;
-  onClick?: ()=> void;
+  onClick: ()=> void;
 }
 
 const Button: FC<ButtonProps> = (props) => {
