@@ -18,8 +18,8 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = (props) => {
   const {
     children,
-    width,
-    height,
+    width = '100%',
+    height = '4.375rem',
     border = true,
     background = "#000000",
     fullRadius = false,
