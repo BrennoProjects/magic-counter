@@ -3,8 +3,8 @@ import * as S from "./styled";
 
 interface ButtonProps {
   children: string | JSX.Element;
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
   border?: boolean;
   background?: string;
   fullRadius?: boolean;
