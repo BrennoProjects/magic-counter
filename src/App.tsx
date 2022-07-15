@@ -2,31 +2,14 @@ import styled from "styled-components";
 import Button from "./components/button";
 
 function App() {
-  const App = styled.div``;
-  const Test = styled.span`
-    font-size: 40px;
-    font-weight: bold;
-  `;
-
+  const App = styled.div`
+ 
+  `
   return (
     <App className="App">
-      
-      <Button
-        width={"300px"}
-        height={"70px"}
-        border
-        background={"#000000"}
-        fullRadius={false}
-        positionAbsolute
-        margin={'auto'}
-        right={'0px'}
-        left={'0px'}
-        onClick={()=>{console.log('teste')}}
-      >
-        <Test>Start</Test>
-      </Button>
+        teste
     </App>
   );
 }
 
-export default App;
+export default App
