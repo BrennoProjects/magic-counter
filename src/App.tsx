@@ -1,16 +1,15 @@
 import styled from "styled-components";
+import { useRoutes, BrowserRouter, Router, Routes } from "react-router-dom";
 import routes from "./router";
-import { Routes, Route, useRoutes } from "react-router-dom";
 import Home from "./screens/Home";
 
 function App() {
   const Screens = useRoutes(routes);
+  console.log(Screens, "teste");
   const App = styled.div``;
   return (
     <App className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      {Screens}
     </App>
   );
 }
