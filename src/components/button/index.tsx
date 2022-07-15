@@ -7,7 +7,7 @@ interface ButtonProps {
   height?: string;
   border?: boolean;
   background?: string;
-  fullRadius?: boolean;
+  rounded?: boolean;
   onClick: ()=> void;
 }
 
@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = (props) => {
     height = '4.375rem',
     border = true,
     background = "#000000",
-    fullRadius = false,
+    rounded = false,
     onClick
   } = props;
   return (
@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = (props) => {
       height={height}
       border={border}
       background={background}
-      fullRadius={fullRadius}
+      rounded={rounded}
       onClick={onClick}
     >
       {children}

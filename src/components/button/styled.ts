@@ -5,14 +5,14 @@ interface WrapperButton {
   height: string;
   border: boolean;
   background: string;
-  fullRadius: boolean;
+  rounded: boolean;
 }
 
 export const WrapperButton = styled.button<WrapperButton>`
   border-color: #62e093;
   border-width: 4px;
   border-style: ${({ border }) => (border ? "solid" : "none")};
-  border-radius: ${({ fullRadius }) => (fullRadius ? "100%" : "15px")};
+  border-radius: ${({ rounded }) => (rounded ? "100%" : "15px")};
   background-color: ${({ background }) => background};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
