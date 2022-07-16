@@ -1,14 +1,15 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { useRoutes } from "react-router-dom";
+import routes from "./router";
 
 function App() {
- const App = styled.div`
- 
- `
+  const Screens = useRoutes(routes);
+  const App = styled.div``;
   return (
     <App className="App">
-      teste
+      {Screens}
     </App>
-  )
+  );
 }
 
-export default App
+export default App;
