@@ -29,7 +29,7 @@ export const TextButton = styled.p`
 `;
 
 export const AboutUs = styled.p`
-  margin: 70px 0 0 0;
+  margin: 0;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: bolder;
@@ -42,7 +42,7 @@ export const BoxTextButton = styled.div`
 `;
 
 export const BoxAboutUs = styled.div`
-  width: 250px;
+  width: auto;
   position: absolute;
   bottom: 30px;
 `;
