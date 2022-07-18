@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import palette from "../palette";
+import palette from "./theme.ts";
 
 export default createGlobalStyle`
 .App {

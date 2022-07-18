@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRoutes } from "react-router-dom";
 import routes from "./router";
-import palette from "./palette";
+import palette from "./style/theme.ts";
 
 function App() {
   const Screens = useRoutes(routes);

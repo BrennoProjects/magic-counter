@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import palette from "../../palette";
+import palette from "../../style/theme.ts";
 
 export const HomeDiv = styled.div`
   width: 100vw;
