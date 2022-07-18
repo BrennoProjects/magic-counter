@@ -1,10 +1,12 @@
 import type { FC } from "react";
+import { useNavigate } from "react-router-dom"
 import MagicCounterLogo from "../../assets/HomePageLogo";
 import Button from "../../components/button";
-import Navigate from "../../utils/navigate";
 import * as S from "./style";
 
+
 const Home: FC = () => {
+  const Navigate = useNavigate()
   return (
     <S.HomeDiv>
       <MagicCounterLogo />
