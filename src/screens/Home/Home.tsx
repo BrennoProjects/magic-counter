@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import MagicCounterLogo from "../../assets/HomePageLogo";
 import Button from "../../components/button";
 import Navigate from "../../utils/navigate";
