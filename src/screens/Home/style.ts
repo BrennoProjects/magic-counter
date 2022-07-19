@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import palette from "../../style/theme.ts";
+import { ThemeDark } from "../../style/theme";
+
 
 export const HomeDiv = styled.div`
   width: 100vw;
@@ -16,15 +17,16 @@ export const H1 = styled.h1`
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: bolder;
-  color: ${palette.white};
+  color: ${({theme})=> theme.text};
   background-color: transparent;
 `;
+
 export const TextButton = styled.p`
   margin: 0;
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: bolder;
-  color: ${palette.green};
+  color: ${({theme})=> theme.borderButton};
   background-color: transparent;
 `;
 
@@ -33,7 +35,7 @@ export const AboutUs = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: bolder;
-  color: ${palette.white};
+  color: ${({theme})=> theme.title};
   background-color: transparent;
 `;
 
