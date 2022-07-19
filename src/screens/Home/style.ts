@@ -17,7 +17,7 @@ export const Title = styled.h1`
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: bolder;
-  color: ${({theme})=> theme.text};
+  color: ${({theme})=> theme.title};
   background-color: transparent;
 `;
 
