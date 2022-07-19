@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom"
-import MagicCounterLogo from "../../assets/HomePageLogo";
+import MagicCounterLogo from "../../assets/Logo";
 import Button from "../../components/button";
 import * as S from "./style";
 
