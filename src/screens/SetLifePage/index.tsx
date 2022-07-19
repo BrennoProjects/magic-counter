@@ -5,3 +5,5 @@ const SetLifePage = ()=>{
     <S.WrapperSetLifePage>Life Page</S.WrapperSetLifePage>
   )
 }
+
+export default SetLifePage

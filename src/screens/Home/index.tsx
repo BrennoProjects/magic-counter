@@ -12,7 +12,7 @@ const Home: FC = () => {
       <MagicCounterLogo />
       <S.BoxTextButton>
         <S.Title>Magic Counter</S.Title>
-        <Button onClick={() => Navigate("/life-page")}>
+        <Button onClick={() => Navigate("/set-life")}>
           <S.TextButton>Start</S.TextButton>
         </Button>
       </S.BoxTextButton>
