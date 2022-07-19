@@ -8,7 +8,7 @@ import * as S from "./style";
 const Home: FC = () => {
   const Navigate = useNavigate()
   return (
-    <S.HomeDiv>
+    <S.WrapperHome>
       <MagicCounterLogo />
       <S.BoxTextButton>
         <S.H1>Magic Counter</S.H1>
@@ -26,7 +26,7 @@ const Home: FC = () => {
           <S.AboutUs>About us</S.AboutUs>
         </Button>
       </S.BoxAboutUs>
-    </S.HomeDiv>
+    </S.WrapperHome>
   );
 };
 export default Home;

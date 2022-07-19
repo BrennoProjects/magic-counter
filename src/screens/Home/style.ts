@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ThemeDark } from "../../style/theme";
 
 
-export const HomeDiv = styled.div`
+export const WrapperHome = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: transparent;
