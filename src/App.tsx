@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import routes from "./router";
+import routes from "./routes";
 
 function App() {
   const Screens = useRoutes(routes);
