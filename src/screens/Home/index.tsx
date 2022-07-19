@@ -11,7 +11,7 @@ const Home: FC = () => {
     <S.WrapperHome>
       <MagicCounterLogo />
       <S.BoxTextButton>
-        <S.H1>Magic Counter</S.H1>
+        <S.Title>Magic Counter</S.Title>
         <Button onClick={() => Navigate("/life-page")}>
           <S.TextButton>Start</S.TextButton>
         </Button>

@@ -12,7 +12,7 @@ export const WrapperHome = styled.div`
   align-items: center;
 `;
 
-export const H1 = styled.h1`
+export const Title = styled.h1`
   margin: 40px 0 20px 0;
   font-family: "Roboto", sans-serif;
   font-size: 36px;
