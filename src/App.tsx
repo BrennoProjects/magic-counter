@@ -1,14 +1,13 @@
-import styled from "styled-components";
 import { useRoutes } from "react-router-dom";
-import routes from "./router";
+import routes from "./routes";
 
 function App() {
   const Screens = useRoutes(routes);
-  const App = styled.div``;
+ 
   return (
-    <App className="App">
+    <div className="App">
       {Screens}
-    </App>
+    </div>
   );
 }
 
