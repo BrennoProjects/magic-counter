@@ -1,8 +1,11 @@
 import * as S from "./style"
-
+import BackArrow from "../../assets/BackArrow"
 const SetLifePage = ()=>{
   return(
-    <S.WrapperSetLifePage>Life Page</S.WrapperSetLifePage>
+    <S.WrapperSetLifePage>
+    <BackArrow />
+      Life Page
+    </S.WrapperSetLifePage>
   )
 }
 
