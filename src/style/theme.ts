@@ -4,7 +4,8 @@ export const dark = {
   text:'#62E093',
   borderButton:'#62E093',
   background:'#000000',
-  title:'#ffffff'
+  title:'#ffffff',
+  font: `"Roboto", sans-serif;`
 }
 
 export const light = {}

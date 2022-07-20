@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const WrapperHome = styled.div`
   width: 100vw;
   height: 100vh;
@@ -13,10 +12,10 @@ export const WrapperHome = styled.div`
 
 export const AboutUs = styled.p`
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family:${({theme})=> theme.font};
   font-size: 24px;
   font-weight: bolder;
-  color: ${({theme})=> theme.title};
+  color: ${({ theme }) => theme.title};
   background-color: transparent;
 `;
 

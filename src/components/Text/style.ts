@@ -8,7 +8,7 @@ interface WrapperText {
 
 const FontText = styled.p<WrapperText>`
   margin: ${({ margin }) => margin};
-  font-family: "Roboto", sans-serif;
+  font-family: ${({theme})=> theme.font};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ bold }) => bold};
   color: ${({ theme }) => theme.text};

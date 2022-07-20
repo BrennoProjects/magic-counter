@@ -8,7 +8,7 @@ interface WrapperTitle {
 
 const FontTitle = styled.h1<WrapperTitle>`
   margin: ${({ margin }) => margin};
-  font-family: "Roboto", sans-serif;
+  font-family:${({theme})=> theme.font};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ bold }) => bold};
   color: ${({ theme }) => theme.title};
