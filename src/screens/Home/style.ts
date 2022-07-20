@@ -19,11 +19,12 @@ export const AboutUs = styled.p`
   background-color: transparent;
 `;
 
-export const BoxTextButton = styled.div`
+export const WrapperTextButton = styled.div`
   width: 250px;
+  margin: 10vh 0 20vh;
 `;
 
-export const BoxAboutUs = styled.div`
+export const WrapperAboutUs = styled.div`
   width: auto;
   position: absolute;
   bottom: 30px;

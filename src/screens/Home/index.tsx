@@ -12,13 +12,13 @@ const Home: FC = () => {
   return (
     <S.WrapperHome>
       <MagicCounterLogo />
-      <S.BoxTextButton>
+      <S.WrapperTextButton>
         <Title margin={"0 0 20px 0"}>Magic Counter</Title>
         <Button onClick={() => navigate("/set-life")}>
           <Text>Start</Text>
         </Button>
-      </S.BoxTextButton>
-      <S.BoxAboutUs>
+      </S.WrapperTextButton>
+      <S.WrapperAboutUs>
         <Button
           onClick={() => navigate("/about-us")}
           border={false}
@@ -27,7 +27,7 @@ const Home: FC = () => {
         >
           <S.AboutUs>About us</S.AboutUs>
         </Button>
-      </S.BoxAboutUs>
+      </S.WrapperAboutUs>
     </S.WrapperHome>
   );
 };
