@@ -1,11 +1,17 @@
 import styled from "styled-components"
 
-const FontTitle = styled.h1`
-  margin: 40px 0 20px 0;
+interface WrapperTitle {
+  margin: string;
+  fontSize: string;
+  bold: string;
+}
+
+const FontTitle = styled.h1<WrapperTitle>`
+  margin: ${({ margin }) => margin};
   font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: bolder;
-  color: ${({theme})=> theme.title};
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ bold }) => bold};
+  color: ${({ theme }) => theme.title};
   background-color: transparent;
 `
 export default FontTitle
