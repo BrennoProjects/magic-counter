@@ -4,10 +4,18 @@ import Button from "../../components/button";
 
 import Text from "../../components/Text";
 import Title from "../../components/Title";
+import NavBar from "../../components/NavBar";
+import { useNavigate } from "react-router-dom";
 
 const SetLifePage = () => {
+  const Navigate = useNavigate()
   return (
     <S.WrapperSetLifePage>
+      <NavBar>
+        <Button width={"30px"} height={"30px"} border={false} onClick={()=>Navigate(-1)}>
+        <BackArrow />
+        </Button>
+      </NavBar>
       <Title>Initial Life</Title>
       <S.WrapperButtons>
         <Button
