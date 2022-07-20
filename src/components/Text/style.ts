@@ -6,7 +6,7 @@ interface WrapperText {
   bold: string;
 }
 
-const FontText = styled.h1<WrapperText>`
+const FontText = styled.p<WrapperText>`
   margin: ${({ margin }) => margin};
   font-family: "Roboto", sans-serif;
   font-size: ${({ fontSize }) => fontSize};

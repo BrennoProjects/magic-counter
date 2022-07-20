@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ThemeDark } from "../../style/theme";
 
 
 export const WrapperHome = styled.div`
@@ -10,24 +9,6 @@ export const WrapperHome = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-export const Title = styled.h1`
-  margin: 40px 0 20px 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: bolder;
-  color: ${({theme})=> theme.title};
-  background-color: transparent;
-`;
-
-export const TextButton = styled.p`
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: bolder;
-  color: ${({theme})=> theme.borderButton};
-  background-color: transparent;
 `;
 
 export const AboutUs = styled.p`
