@@ -3,8 +3,9 @@ import BackArrow from "../../assets/BackArrow"
 const SetLifePage = ()=>{
   return(
     <S.WrapperSetLifePage>
-    <BackArrow />
+    <S.WrapperButtons>
       Life Page
+    </S.WrapperButtons>
     </S.WrapperSetLifePage>
   )
 }
