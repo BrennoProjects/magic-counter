@@ -1,10 +1,12 @@
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
 import Button from "../../components/button";
+import Title from "../../components/Title";
 
 const SetLifePage = () => {
   return (
     <S.WrapperSetLifePage>
+      <Title>Initial Life</Title>
       <S.WrapperButtons>
         <Button
           onClick={() => localStorage.setItem("InitialLife", "60")}
