@@ -2,6 +2,8 @@ import type { FC } from "react";
 import { useNavigate } from "react-router-dom"
 import MagicCounterLogo from "../../assets/Logo";
 import Button from "../../components/button";
+import Text from "../../components/Text";
+import Title from "../../components/Title";
 import * as S from "./style";
 
 
@@ -11,9 +13,9 @@ const Home: FC = () => {
     <S.WrapperHome>
       <MagicCounterLogo />
       <S.BoxTextButton>
-        <S.Title>Magic Counter</S.Title>
+        <Title>Magic Counter</Title>
         <Button onClick={() => Navigate("/set-life")}>
-          <S.TextButton>Start</S.TextButton>
+          <Text margin={"20px 0px"}>Start</Text>
         </Button>
       </S.BoxTextButton>
       <S.BoxAboutUs>
