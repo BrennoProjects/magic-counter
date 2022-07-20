@@ -5,13 +5,14 @@ export const WrapperSetLifePage = styled.div`
   height: 90vh;
   background-color: transparent;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 export const WrapperButtons = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top:20px;
 `
