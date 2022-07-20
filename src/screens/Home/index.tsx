@@ -13,9 +13,9 @@ const Home: FC = () => {
     <S.WrapperHome>
       <MagicCounterLogo />
       <S.BoxTextButton>
-        <Title>Magic Counter</Title>
+        <Title margin={"0 0 20px 0"}>Magic Counter</Title>
         <Button onClick={() => Navigate("/set-life")}>
-          <Text margin={"20px 0px"}>Start</Text>
+          <Text>Start</Text>
         </Button>
       </S.BoxTextButton>
       <S.BoxAboutUs>
