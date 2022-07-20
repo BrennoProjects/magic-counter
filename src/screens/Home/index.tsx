@@ -8,19 +8,19 @@ import * as S from "./style";
 
 
 const Home: FC = () => {
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
   return (
     <S.WrapperHome>
       <MagicCounterLogo />
       <S.BoxTextButton>
         <Title margin={"0 0 20px 0"}>Magic Counter</Title>
-        <Button onClick={() => Navigate("/set-life")}>
+        <Button onClick={() => navigate("/set-life")}>
           <Text>Start</Text>
         </Button>
       </S.BoxTextButton>
       <S.BoxAboutUs>
         <Button
-          onClick={() => Navigate("/about-us")}
+          onClick={() => navigate("/about-us")}
           border={false}
           width={"auto"}
           height={"auto"}
