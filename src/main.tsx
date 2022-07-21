@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { dark } from "./style/theme";
 import GlobalStyles from "./style/GlobalStyles";
-import LifeProvider from "./context/lifeProvider"
+import LifeProvider from "./context/LifeProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -1,26 +1,26 @@
-import React, { FC, ReactNode, useState } from "react";
+import {  FC, ReactNode } from "react";
+import  { useState, createContext } from "react";
 
-const defaultInitialLife = {
-  initialLife: 40,
-  setInitialLife: () => {},
-};
-
-interface lifeContextType {
+interface LifeDataStructure {
   initialLife: number;
   setInitialLife: (newState: number) => void;
 }
-
-export const lifeContext =
-  React.createContext<lifeContextType>(defaultInitialLife);
 
 interface LifeProviderProps {
   children: ReactNode;
 }
 
-const lifeProvider: FC<LifeProviderProps> = (props) => {
-  const [initialLife, setInitialLife] = useState(defaultInitialLife.initialLife);
-  let { children } = props;
-  return <lifeContext.Provider value={{initialLife, setInitialLife}}>{children}</lifeContext.Provider>;
+const defaultInitialLife = {
+  initialLife: 40,
+  setInitialLife: () => undefined,
+};
+export const LifeContext = createContext<LifeDataStructure>(defaultInitialLife);
+
+
+const LifeProvider: FC<LifeProviderProps> = (props) => {
+  const { children } = props;
+  const [initialLife, setInitialLife] = useState<number>(defaultInitialLife.initialLife);
+  return <LifeContext.Provider value={{initialLife, setInitialLife}}>{children}</LifeContext.Provider>;
 };
 
-export default lifeProvider
+export default LifeProvider
