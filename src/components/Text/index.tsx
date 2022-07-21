@@ -5,11 +5,11 @@ interface TextProps {
   children: string;
   margin?: string;
   fontSize?: string;
-  bold?: string;
+  bold?: boolean;
 }
 
 const Text: FC<TextProps> = (props) => {
-  const { children, margin = "0", fontSize = "36px", bold = "bolder" } = props;
+  const { children, margin = "0", fontSize = "36px", bold = true } = props;
   return (
     <S.FontText margin={margin} fontSize={fontSize} bold={bold}>
       {children}
