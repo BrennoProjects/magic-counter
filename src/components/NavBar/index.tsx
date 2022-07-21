@@ -1,5 +1,5 @@
 import { FC } from "react";
-import WrapperNav from "./style";
+import * as S from "./style";
 
 interface NavBarProps {
   children: JSX.Element;
@@ -7,7 +7,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = (props) => {
   const { children } = props;
-  return <WrapperNav>{children}</WrapperNav>;
+  return <S.WrapperNav>{children}</S.WrapperNav>;
 };
 
 export default NavBar;

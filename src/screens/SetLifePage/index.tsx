@@ -6,6 +6,7 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
+import setConfig from "../../utils/setConfig";
 
 const SetLifePage = () => {
   const navigate = useNavigate();
@@ -24,13 +25,13 @@ const SetLifePage = () => {
       <Title>Initial Life</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() => localStorage.setItem("InitialLife", "60")}
+          onClick={() => {localStorage.setItem("initialLife", "60"), navigate("/set-players-number")}}
           width="9.375rem"
         >
           <Text>60</Text>
         </Button>
         <Button
-          onClick={() => localStorage.setItem("InitialLife", "40")}
+          onClick={() => {localStorage.setItem("initialLife", "40"), navigate("/set-players-number")}}
           width="9.375rem"
         >
           <Text>40</Text>
@@ -38,13 +39,13 @@ const SetLifePage = () => {
       </S.WrapperButtons>
       <S.WrapperButtons>
         <Button
-          onClick={() => localStorage.setItem("InitialLife", "30")}
+         onClick={() => {localStorage.setItem("initialLife", "30"), navigate("/set-players-number")}}
           width="9.375rem"
         >
           <Text>30</Text>
         </Button>
         <Button
-          onClick={() => localStorage.setItem("InitialLife", "20")}
+          onClick={() => {localStorage.setItem("initialLife", "20"), navigate("/set-players-number")}}
           width="9.375rem"
         >
           <Text>20</Text>
