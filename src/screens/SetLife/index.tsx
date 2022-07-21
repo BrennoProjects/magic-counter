@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
@@ -6,9 +7,8 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { useCallback, useState } from "react";
 
-const SetLifePage = () => {
+const SetLifePage:FC = () => {
   const navigate = useNavigate();
   return (
     <S.WrapperSetLifePage>

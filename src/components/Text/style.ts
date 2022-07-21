@@ -6,7 +6,7 @@ interface WrapperText {
   bold: string;
 }
 
-const FontText = styled.p<WrapperText>`
+export const FontText = styled.p<WrapperText>`
   margin: ${({ margin }) => margin};
   font-family: ${({theme})=> theme.font};
   font-size: ${({ fontSize }) => fontSize};
@@ -15,4 +15,3 @@ const FontText = styled.p<WrapperText>`
   background-color: transparent;
 `;
 
-export default FontText;

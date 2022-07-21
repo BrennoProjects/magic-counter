@@ -1,5 +1,5 @@
-import { Children, FC } from "react";
-import FontTitle from "./style";
+import type { FC } from "react";
+import * as S from "./style";
 
 interface TitleProps {
   children: string;
@@ -11,9 +11,9 @@ interface TitleProps {
 const Title: FC<TitleProps> = (props) => {
   const { children, margin = "0", fontSize = "36px", bold = "bolder" } = props;
   return (
-    <FontTitle margin={margin} fontSize={fontSize} bold={bold}>
+    <S.FontTitle margin={margin} fontSize={fontSize} bold={bold}>
       {children}
-    </FontTitle>
+    </S.FontTitle>
   );
 };
 

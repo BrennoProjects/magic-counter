@@ -6,7 +6,7 @@ interface WrapperTitle {
   bold: string;
 }
 
-const FontTitle = styled.h1<WrapperTitle>`
+export const FontTitle = styled.h1<WrapperTitle>`
   margin: ${({ margin }) => margin};
   font-family:${({theme})=> theme.font};
   font-size: ${({ fontSize }) => fontSize};
@@ -14,4 +14,3 @@ const FontTitle = styled.h1<WrapperTitle>`
   color: ${({ theme }) => theme.title};
   background-color: transparent;
 `
-export default FontTitle

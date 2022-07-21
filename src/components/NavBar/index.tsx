@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import * as S from "./style";
 
 interface NavBarProps {
