@@ -11,7 +11,7 @@ interface LifeProviderProps {
 }
 
 const defaultInitialLife = {
-  initialLife: 40,
+  initialLife: 0,
   setInitialLife: () => undefined,
 };
 export const LifeContext = createContext<LifeDataStructure>(defaultInitialLife);
