@@ -1,4 +1,4 @@
-import {  FC, ReactNode } from "react";
+import type {  FC, ReactNode } from "react";
 import  { useState, createContext } from "react";
 
 interface LifeDataStructure {
@@ -20,7 +20,11 @@ export const LifeContext = createContext<LifeDataStructure>(defaultInitialLife);
 const LifeProvider: FC<LifeProviderProps> = (props) => {
   const { children } = props;
   const [initialLife, setInitialLife] = useState<number>(defaultInitialLife.initialLife);
-  return <LifeContext.Provider value={{initialLife, setInitialLife}}>{children}</LifeContext.Provider>;
+  return(
+    <LifeContext.Provider value={{initialLife, setInitialLife}}>
+      {children}
+    </LifeContext.Provider>
+  );
 };
 
 export default LifeProvider
