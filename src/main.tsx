@@ -4,17 +4,19 @@ import { ThemeProvider } from "styled-components";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { dark } from "./style/theme"
+import { dark } from "./style/theme";
 import GlobalStyles from "./style/GlobalStyles";
-
+import LifeProvider from "./context/LifeProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router>
-      <ThemeProvider theme={dark}>
-        <GlobalStyles />
-        <App />
-      </ThemeProvider>
+      <LifeProvider>
+        <ThemeProvider theme={dark}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
+      </LifeProvider>
     </Router>
   </React.StrictMode>
 );
