@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FC } from "react";
+import type{ FC } from "react";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
