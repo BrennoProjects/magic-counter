@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { ThemeDark } from "../../style/theme";
-
 
 export const WrapperHome = styled.div`
   width: 100vw;
@@ -12,38 +10,21 @@ export const WrapperHome = styled.div`
   align-items: center;
 `;
 
-export const Title = styled.h1`
-  margin: 40px 0 20px 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: bolder;
-  color: ${({theme})=> theme.text};
-  background-color: transparent;
-`;
-
-export const TextButton = styled.p`
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: bolder;
-  color: ${({theme})=> theme.borderButton};
-  background-color: transparent;
-`;
-
 export const AboutUs = styled.p`
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family:${({theme})=> theme.font};
   font-size: 24px;
   font-weight: bolder;
-  color: ${({theme})=> theme.title};
+  color: ${({ theme }) => theme.title};
   background-color: transparent;
 `;
 
-export const BoxTextButton = styled.div`
+export const WrapperTextButton = styled.div`
   width: 250px;
+  margin: 10vh 0 20vh;
 `;
 
-export const BoxAboutUs = styled.div`
+export const WrapperAboutUs = styled.div`
   width: auto;
   position: absolute;
   bottom: 30px;

@@ -66,4 +66,4 @@ const Logo = () => {
   );
 };
 
-export default HomePageLogo
+export default Logo
