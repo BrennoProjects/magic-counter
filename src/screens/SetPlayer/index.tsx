@@ -48,10 +48,10 @@ const SetPlayer: FC = () => {
         </Button>
       </S.WrapperButtons>
       <S.WrapperButtons>
-        <Button onClick={() => console.log("player", 3)} width="9.375rem">
+        <Button onClick={() => SetAndNavigate(3, "/set-position")} width="9.375rem">
           <Text>3</Text>
         </Button>
-        <Button onClick={() => console.log("player", 4)} width="9.375rem">
+        <Button onClick={() => SetAndNavigate(4, "/set-position")} width="9.375rem">
           <Text>4</Text>
         </Button>
       </S.WrapperButtons>
