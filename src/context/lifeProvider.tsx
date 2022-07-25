@@ -14,8 +14,8 @@ const defaultInitialLife = {
   initialLife: 0,
   setInitialLife: () => undefined,
 };
-export const LifeContext = createContext<LifeDataStructure>(defaultInitialLife);
 
+export const LifeContext = createContext<LifeDataStructure>(defaultInitialLife);
 
 const LifeProvider: FC<LifeProviderProps> = (props) => {
   const { children } = props;
