@@ -11,9 +11,10 @@ import NavBar from "../../components/NavBar";
 import { PlayersNumberContext } from "../../context/PlayersNumberProvider";
 
 const SetPlayer: FC = () => {
-  const playerNumber = useContext(PlayersNumberContext);
-  let { setPlayersNumber } = playerNumber;
+  
   const navigate = useNavigate();
+  const playerNumber = useContext(PlayersNumberContext);
+  const { setPlayersNumber } = playerNumber;
   
   const SetAndNavigate = (value: number, path: string) => {
     setPlayersNumber(value);

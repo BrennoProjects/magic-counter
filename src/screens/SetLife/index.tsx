@@ -1,5 +1,6 @@
+import type{ FC } from "react";
 import { useNavigate } from "react-router-dom";
-import{ FC, useContext } from "react";
+import { useContext } from "react";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
@@ -10,13 +11,16 @@ import NavBar from "../../components/NavBar";
 import { LifeContext } from "../../context/LifeProvider";
 
 const SetLifePage:FC = () => {
-  const initialLife = useContext(LifeContext) 
-  let {setInitialLife} = initialLife
+  
   const navigate = useNavigate();
+  const initialLife = useContext(LifeContext) 
+  const {setInitialLife} = initialLife
+
   const SetAndNavigate = (value: number, path: string) => {
     setInitialLife(value);
     navigate(path)
   };
+
   return (
     <S.WrapperSetLifePage>
       <NavBar>
