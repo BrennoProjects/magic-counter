@@ -25,13 +25,13 @@ const SetLifePage:FC = () => {
       <Title>Initial Life</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() =>  navigate("/set-players-number")}
+          onClick={() =>  navigate("/set-players")}
           width="9.375rem"
         >
           <Text>60</Text>
         </Button>
         <Button
-          onClick={() =>  navigate("/set-players-number")}
+          onClick={() =>  navigate("/set-players")}
           width="9.375rem"
         >
           <Text>40</Text>
@@ -39,20 +39,20 @@ const SetLifePage:FC = () => {
       </S.WrapperButtons>
       <S.WrapperButtons>
         <Button
-         onClick={() =>  navigate("/set-players-number")}
+         onClick={() =>  navigate("/set-players")}
           width="9.375rem"
         >
           <Text>30</Text>
         </Button>
         <Button
-          onClick={() =>  navigate("/set-players-number")}
+          onClick={() =>  navigate("/set-players")}
           width="9.375rem"
         >
           <Text>20</Text>
         </Button>
       </S.WrapperButtons>
       <S.WrapperButtons>
-        <Button onClick={() => navigate("/set-players-number")}>
+        <Button onClick={() => navigate("/set-players")}>
           <Text>custom</Text>
         </Button>
       </S.WrapperButtons>
