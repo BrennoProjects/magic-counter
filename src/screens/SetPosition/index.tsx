@@ -21,33 +21,33 @@ const PlayersOption = (props: number) => {
         <S.WrapperButton>
           <Button
             onClick={() => console.log("teste")}
-            width="auto"
-            height="auto"
+            width="100%"
+            height="100%"
           >
-            <div>
+            <S.WrapperIcons>
               <S.WrapperIcon transform="rotate(180deg)">
                 <PlayerIcon />
               </S.WrapperIcon>
               <S.WrapperIcon>
                 <PlayerIcon />
               </S.WrapperIcon>
-            </div>
+            </S.WrapperIcons>
           </Button>
         </S.WrapperButton>
         <S.WrapperButton>
           <Button
             onClick={() => console.log("teste")}
-            width="auto"
-            height="auto"
+            width="100%"
+            height="100%"
           >
-            <div>
+            <S.WrapperIcons>
               <S.WrapperIcon transform="rotate(90deg)">
                 <PlayerIcon />
               </S.WrapperIcon>
               <S.WrapperIcon transform="rotate(-90deg)">
                 <PlayerIcon />
               </S.WrapperIcon>
-            </div>
+            </S.WrapperIcons>
           </Button>
         </S.WrapperButton>
       </S.WrapperButtons>
@@ -59,24 +59,54 @@ const PlayersOption = (props: number) => {
   else if (props === 4) {
     return (
       <S.WrapperButtons>
-        <S.WrapperButton fourPlayers={true}>
-          <Button onClick={() => console.log("teste")} width="100%" height="100%" >
-            <div>
-              <S.WrapperIcon transform="rotate(180deg)" fourPlayers={true}>
+        <S.WrapperButton>
+          <Button
+            onClick={() => console.log("teste")}
+            width="100%"
+            height="100%"
+          >
+            <S.WrapperIcons>
+              <S.WrapperIcon transform="rotate(180deg)">
                 <PlayerIcon />
               </S.WrapperIcon>
-              <S.WrapperFourPlayer>
-                <S.WrapperIcon transform="rotate(180deg)" fourPlayers={true}>
+              <S.RotateIcons>
+                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
                   <PlayerIcon />
                 </S.WrapperIcon>
-                <S.WrapperIcon  fourPlayers={true}>
+                <S.WrapperIcon rotateMiddle={true}>
                   <PlayerIcon />
                 </S.WrapperIcon>
-              </S.WrapperFourPlayer>
-              <S.WrapperIcon fourPlayers={true}>
+              </S.RotateIcons>
+              <S.WrapperIcon>
                 <PlayerIcon />
               </S.WrapperIcon>
-            </div>
+            </S.WrapperIcons>
+          </Button>
+        </S.WrapperButton>
+        <S.WrapperButton>
+          <Button
+            onClick={() => console.log("teste")}
+            width="100%"
+            height="100%"
+          >
+            <S.WrapperIcons>
+            <S.RotateIcons>
+                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+                <S.WrapperIcon rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+              </S.RotateIcons>
+              <S.RotateIcons>
+                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+                <S.WrapperIcon rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+              </S.RotateIcons>
+            </S.WrapperIcons>
           </Button>
         </S.WrapperButton>
       </S.WrapperButtons>
@@ -100,8 +130,8 @@ const SetPosition: FC = () => {
           <BackArrow />
         </Button>
       </NavBar>
-      <Title>Initial Life</Title>
-      {PlayersOption(4)}
+      <Title>Players Position</Title>
+      {PlayersOption(playersNumber)}
     </S.WrapperSetPosition>
   );
 };
