@@ -8,13 +8,12 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { LifeContext } from "../../context/LifeProvider";
+import { LifeContext } from "../../context/lifeProvider";
 
 const SetLifePage:FC = () => {
   
   const navigate = useNavigate();
-  const initialLife = useContext(LifeContext) 
-  const {setInitialLife} = initialLife
+  const {setInitialLife} = useContext(LifeContext)
 
   const SetAndNavigate = (value: number, path: string) => {
     setInitialLife(value);
