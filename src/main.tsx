@@ -6,20 +6,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { dark } from "./style/theme";
 import GlobalStyles from "./style/GlobalStyles";
-import LifeProvider from "./context/LifeProvider";
-import PlayersNumberProvider from "./context/PlayersNumberProvider";
+import GameSetupContext from "./context/GameSetupContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router>
-      <PlayersNumberProvider>
-        <LifeProvider>
+        <GameSetupContext>
           <ThemeProvider theme={dark}>
             <GlobalStyles />
             <App />
           </ThemeProvider>
-        </LifeProvider>
-      </PlayersNumberProvider>
+        </GameSetupContext>
     </Router>
   </React.StrictMode>
 );

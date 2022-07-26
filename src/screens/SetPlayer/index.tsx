@@ -8,12 +8,12 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { PlayersNumberContext } from "../../context/PlayersNumberProvider";
+import { GameSetupContext } from "../../context/GameSetupContext";
 
 const SetPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const { setPlayersNumber } = useContext(PlayersNumberContext);
+  const { setPlayersNumber } = useContext(GameSetupContext);
 
   const handleSetPlayer = useCallback((value: number):void => {
       if(value === 1){

@@ -8,12 +8,12 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { LifeContext } from "../../context/lifeProvider";
+import { GameSetupContext } from "../../context/GameSetupContext";
 
 const SetLifePage:FC = () => {
   
   const navigate = useNavigate();
-  const {setInitialLife} = useContext(LifeContext)
+  const {setInitialLife} = useContext(GameSetupContext)
 
   const handleValueLife = useCallback((value: number):void => {
     setInitialLife(value);
