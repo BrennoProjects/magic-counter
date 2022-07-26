@@ -13,8 +13,7 @@ import { PlayersNumberContext } from "../../context/PlayersNumberProvider";
 const SetPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const playerNumber = useContext(PlayersNumberContext);
-  const { setPlayersNumber } = playerNumber;
+  const { setPlayersNumber } = useContext(PlayersNumberContext);
 
   const handleSetPlayer = useCallback((value: number):void => {
       if(value === 1){
