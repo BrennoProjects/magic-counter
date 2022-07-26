@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -10,12 +10,12 @@ import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import PlayerIcon from "../../assets/PlayerIcon";
 
-const PlayersOption = (props: number) => {
+
+const SetupPosition: FC = () => {
+  let [playersNumber, setPlayersNumber] = useState(4);
   const navigate = useNavigate();
-  if (props === 1) {
-    navigate("/game");
-  }
-  else if (props === 2) {
+
+  const tableForTwo = useCallback((): JSX.Element => {
     return (
       <S.WrapperButtons>
         <S.WrapperButton>
@@ -52,13 +52,37 @@ const PlayersOption = (props: number) => {
         </S.WrapperButton>
       </S.WrapperButtons>
     );
-  }
-  else if (props === 3) {
-    navigate("/game");
-  }
-  else if (props === 4) {
+  }, [])
+
+  const tableForFour = useCallback((): JSX.Element => {
     return (
       <S.WrapperButtons>
+        <S.WrapperButton>
+          <Button
+            onClick={() => console.log("teste")}
+            width="100%"
+            height="100%"
+          >
+            <S.WrapperIcons>
+              <S.RotateIcons>
+                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+                <S.WrapperIcon rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+              </S.RotateIcons>
+              <S.RotateIcons>
+                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+                <S.WrapperIcon rotateMiddle={true}>
+                  <PlayerIcon />
+                </S.WrapperIcon>
+              </S.RotateIcons>
+            </S.WrapperIcons>
+          </Button>
+        </S.WrapperButton>
         <S.WrapperButton>
           <Button
             onClick={() => console.log("teste")}
@@ -83,43 +107,11 @@ const PlayersOption = (props: number) => {
             </S.WrapperIcons>
           </Button>
         </S.WrapperButton>
-        <S.WrapperButton>
-          <Button
-            onClick={() => console.log("teste")}
-            width="100%"
-            height="100%"
-          >
-            <S.WrapperIcons>
-            <S.RotateIcons>
-                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-                <S.WrapperIcon rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-              </S.RotateIcons>
-              <S.RotateIcons>
-                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-                <S.WrapperIcon rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-              </S.RotateIcons>
-            </S.WrapperIcons>
-          </Button>
-        </S.WrapperButton>
       </S.WrapperButtons>
     );
-  }
-};
-
-const SetPosition: FC = () => {
-  let [playersNumber, setPlayersNumber] = useState(4);
-  const navigate = useNavigate();
-
+  }, [])
   return (
-    <S.WrapperSetPosition>
+    <S.WrapperSetupPosition>
       <NavBar>
         <Button
           width={"30px"}
@@ -131,8 +123,8 @@ const SetPosition: FC = () => {
         </Button>
       </NavBar>
       <Title>Players Position</Title>
-      {PlayersOption(playersNumber)}
-    </S.WrapperSetPosition>
+      {playersNumber === 4 ? tableForFour() : tableForTwo()}
+    </S.WrapperSetupPosition>
   );
 };
-export default SetPosition;
+export default SetupPosition;

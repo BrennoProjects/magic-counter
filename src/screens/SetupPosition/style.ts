@@ -10,7 +10,7 @@ interface WrapperButton{
 export const WrapperButtons = styled.div`
   display: flex;
 `
-export const WrapperSetPosition = styled.div`
+export const WrapperSetupPosition = styled.div`
   width: 85vw;
   height: 90vh;
   position: relative;
