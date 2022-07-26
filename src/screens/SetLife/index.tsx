@@ -1,6 +1,6 @@
-import type{ FC } from "react";
+import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
@@ -15,10 +15,10 @@ const SetLifePage:FC = () => {
   const navigate = useNavigate();
   const {setInitialLife} = useContext(LifeContext)
 
-  const SetAndNavigate = (value: number, path: string) => {
+  const handleValueLife = useCallback((value: number):void => {
     setInitialLife(value);
-    navigate(path)
-  };
+    navigate("/set-players")
+  },[])
 
   return (
     <S.WrapperSetLifePage>
@@ -35,13 +35,13 @@ const SetLifePage:FC = () => {
       <Title>Initial Life</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() =>  SetAndNavigate(60, "/set-players")}
+          onClick={() =>  handleValueLife(60)}
           width="9.375rem"
         >
           <Text>60</Text>
         </Button>
         <Button
-          onClick={() =>  SetAndNavigate(40, "/set-players")}
+          onClick={() =>  handleValueLife(40)}
           width="9.375rem"
         >
           <Text>40</Text>
@@ -49,13 +49,13 @@ const SetLifePage:FC = () => {
       </S.WrapperButtons>
       <S.WrapperButtons>
         <Button
-         onClick={() =>  SetAndNavigate(30, "/set-players")}
+         onClick={() =>  handleValueLife(30)}
           width="9.375rem"
         >
           <Text>30</Text>
         </Button>
         <Button
-          onClick={() =>  SetAndNavigate(20, "/set-players")}
+          onClick={() =>  handleValueLife(20)}
           width="9.375rem"
         >
           <Text>20</Text>

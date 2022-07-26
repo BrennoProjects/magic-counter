@@ -1,5 +1,5 @@
-import { FC, useCallback } from "react";
-import { useContext } from "react";
+import type { FC } from "react";
+import { useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
