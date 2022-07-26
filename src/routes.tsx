@@ -1,7 +1,7 @@
 import type { RouteObject } from "react-router-dom";
 import Home from "./screens/Home";
-import SetLifePage from "./screens/SetLife";
-import SetPlayer from "./screens/SetPlayer";
+import SetLifePage from "./screens/SetupLife";
+import SetPlayer from "./screens/SetupPlayer";
 
 const routes: RouteObject[] = [
   {path: '/', element:<Home />,},

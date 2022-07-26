@@ -10,7 +10,7 @@ import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import { GameSetupContext } from "../../context/GameSetupContext";
 
-const SetPlayer: FC = () => {
+const SetupPlayer: FC = () => {
 
   const navigate = useNavigate();
   const { setNumberPlayers } = useContext(GameSetupContext);
@@ -28,7 +28,7 @@ const SetPlayer: FC = () => {
   ,[])
 
   return (
-    <S.WrapperSetPlayer>
+    <S.WrapperSetupPlayer>
       <NavBar>
         <Button
           width={"30px"}
@@ -62,7 +62,7 @@ const SetPlayer: FC = () => {
           <Text>4</Text>
         </Button>
       </S.WrapperButtons>
-    </S.WrapperSetPlayer>
+    </S.WrapperSetupPlayer>
   );
 };
-export default SetPlayer;
+export default SetupPlayer;

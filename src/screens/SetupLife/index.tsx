@@ -10,7 +10,7 @@ import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import { GameSetupContext } from "../../context/GameSetupContext";
 
-const SetLifePage:FC = () => {
+const SetupLifePage:FC = () => {
   
   const navigate = useNavigate();
   const {setInitialLife} = useContext(GameSetupContext)
@@ -21,7 +21,7 @@ const SetLifePage:FC = () => {
   },[])
 
   return (
-    <S.WrapperSetLifePage>
+    <S.WrapperSetupLifePage>
       <NavBar>
         <Button
           width={"30px"}
@@ -66,8 +66,8 @@ const SetLifePage:FC = () => {
           <Text>custom</Text>
         </Button>
       </S.WrapperButtons>
-    </S.WrapperSetLifePage>
+    </S.WrapperSetupLifePage>
   );
 };
 
-export default SetLifePage;
+export default SetupLifePage;
