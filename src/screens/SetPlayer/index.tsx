@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { FC, useCallback } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,15 +11,28 @@ import NavBar from "../../components/NavBar";
 import { PlayersNumberContext } from "../../context/PlayersNumberProvider";
 
 const SetPlayer: FC = () => {
-  
+
   const navigate = useNavigate();
   const playerNumber = useContext(PlayersNumberContext);
   const { setPlayersNumber } = playerNumber;
-  
-  const SetAndNavigate = (value: number, path: string) => {
-    setPlayersNumber(value);
-    navigate(path)
-  };
+
+  const handleSetPlayer = useCallback((value: number):void => {
+      if(value === 1){
+        setPlayersNumber(value)
+        navigate("/game")
+      }
+      else if(value === 2){
+        setPlayersNumber(value)
+        navigate("/set-position")
+      }else if(value === 3){
+        setPlayersNumber(value)
+        navigate("/game")
+      }else if(value === 4){
+        setPlayersNumber(value)
+        navigate("/set-position")
+      }
+    }
+  ,[])
 
   return (
     <S.WrapperSetPlayer>
@@ -36,23 +49,23 @@ const SetPlayer: FC = () => {
       <Title>Number of players</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() => SetAndNavigate(1, "/set-position")}
+          onClick={() => handleSetPlayer(1 )}
           width="9.375rem"
         >
           <Text>1</Text>
         </Button>
         <Button
-          onClick={() => SetAndNavigate(2, "/set-position")}
+          onClick={() => handleSetPlayer(2)}
           width="9.375rem"
         >
           <Text>2</Text>
         </Button>
       </S.WrapperButtons>
       <S.WrapperButtons>
-        <Button onClick={() => SetAndNavigate(3, "/set-position")} width="9.375rem">
+        <Button onClick={() => handleSetPlayer(3)} width="9.375rem">
           <Text>3</Text>
         </Button>
-        <Button onClick={() => SetAndNavigate(4, "/set-position")} width="9.375rem">
+        <Button onClick={() => handleSetPlayer(4)} width="9.375rem">
           <Text>4</Text>
         </Button>
       </S.WrapperButtons>
