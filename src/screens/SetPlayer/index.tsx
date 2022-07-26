@@ -13,15 +13,15 @@ import { GameSetupContext } from "../../context/GameSetupContext";
 const SetPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const { setPlayersNumber } = useContext(GameSetupContext);
+  const { setNumberPlayers } = useContext(GameSetupContext);
 
   const handleSetPlayer = useCallback((value: number):void => {
       if(value === 1 || value === 3){
-        setPlayersNumber(value)
+        setNumberPlayers(value)
         navigate("/game")
       }
       else if(value === 2 || value === 4){
-        setPlayersNumber(value)
+        setNumberPlayers(value)
         navigate("/set-position")
       }
     }

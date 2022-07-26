@@ -3,9 +3,9 @@ import  { useState, createContext } from "react";
 
 interface GameSetupDataStructure {
   initialLife: number;
-  playersNumber: number;
+  numberPlayers: number;
   setInitialLife: (setInitiaçlLife: number) => void;
-  setPlayersNumber: (setPlayersNumber: number) => void;
+  setNumberPlayers: (setNumberPlayers: number) => void;
 }
 
 interface GameSetupProps {
@@ -14,9 +14,9 @@ interface GameSetupProps {
 
 const initialGameSetup = {
   initialLife: 0,
-  playersNumber: 0,
+  numberPlayers: 0,
   setInitialLife: () => undefined,
-  setPlayersNumber: () => undefined,
+  setNumberPlayers: () => undefined,
 };
 
 export const GameSetupContext = createContext<GameSetupDataStructure>(initialGameSetup);
@@ -24,9 +24,9 @@ export const GameSetupContext = createContext<GameSetupDataStructure>(initialGam
 const GameSetup: FC<GameSetupProps> = (props) => {
   const { children } = props;
   const [initialLife, setInitialLife] = useState<number>(initialGameSetup.initialLife);
-  const [playersNumber, setPlayersNumber] = useState<number>(initialGameSetup.playersNumber);
+  const [numberPlayers, setNumberPlayers] = useState<number>(initialGameSetup.numberPlayers);
   return(
-    <GameSetupContext.Provider value={{initialLife, setInitialLife, playersNumber, setPlayersNumber}}>
+    <GameSetupContext.Provider value={{initialLife, setInitialLife, numberPlayers, setNumberPlayers}}>
       {children}
     </GameSetupContext.Provider>
   );
