@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-
-export const WrapperSetupLifePage = styled.div`
+export const WrapperSetupPlayer = styled.div`
   width: 85vw;
   height: 90vh;
   position: relative;

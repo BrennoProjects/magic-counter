@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import { useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
@@ -10,17 +10,24 @@ import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import { GameSetupContext } from "../../context/GameSetupContext";
 
-const SetupLifePage:FC = () => {
-  const navigate = useNavigate();
-  const {setInitialLife} = useContext(GameSetupContext)
+const SetupPlayer: FC = () => {
 
-  const handleValueLife = useCallback((value: number):void => {
-    setInitialLife(value);
-    navigate("/setup-players")
-  },[])
+  const navigate = useNavigate();
+  const { setNumberPlayers } = useContext(GameSetupContext);
+
+  const handleSetPlayer = useCallback((value: number):void => {
+    setNumberPlayers(value)
+      if(value === 1 || value === 3){
+        navigate("/game")
+      }
+      else if(value === 2 || value === 4){
+        navigate("/set-position")
+      }
+    }
+  ,[])
 
   return (
-    <S.WrapperSetupLifePage>
+    <S.WrapperSetupPlayer>
       <NavBar>
         <Button
           width={"30px"}
@@ -31,42 +38,30 @@ const SetupLifePage:FC = () => {
           <BackArrow />
         </Button>
       </NavBar>
-      <Title>Initial Life</Title>
+      <Title>Number of players</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() =>  handleValueLife(60)}
+          onClick={() => handleSetPlayer(1 )}
           width="9.375rem"
         >
-          <Text>60</Text>
+          <Text>1</Text>
         </Button>
         <Button
-          onClick={() =>  handleValueLife(40)}
+          onClick={() => handleSetPlayer(2)}
           width="9.375rem"
         >
-          <Text>40</Text>
+          <Text>2</Text>
         </Button>
       </S.WrapperButtons>
       <S.WrapperButtons>
-        <Button
-         onClick={() =>  handleValueLife(30)}
-          width="9.375rem"
-        >
-          <Text>30</Text>
+        <Button onClick={() => handleSetPlayer(3)} width="9.375rem">
+          <Text>3</Text>
         </Button>
-        <Button
-          onClick={() =>  handleValueLife(20)}
-          width="9.375rem"
-        >
-          <Text>20</Text>
+        <Button onClick={() => handleSetPlayer(4)} width="9.375rem">
+          <Text>4</Text>
         </Button>
       </S.WrapperButtons>
-      <S.WrapperButtons>
-        <Button onClick={() => navigate("/set-players")}>
-          <Text>custom</Text>
-        </Button>
-      </S.WrapperButtons>
-    </S.WrapperSetupLifePage>
+    </S.WrapperSetupPlayer>
   );
 };
-
-export default SetupLifePage;
+export default SetupPlayer;
