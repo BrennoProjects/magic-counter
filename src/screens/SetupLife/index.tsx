@@ -11,13 +11,12 @@ import NavBar from "../../components/NavBar";
 import { GameSetupContext } from "../../context/GameSetupContext";
 
 const SetupLifePage:FC = () => {
-  
   const navigate = useNavigate();
   const {setInitialLife} = useContext(GameSetupContext)
 
   const handleValueLife = useCallback((value: number):void => {
     setInitialLife(value);
-    navigate("/set-players")
+    navigate("/setup-players")
   },[])
 
   return (

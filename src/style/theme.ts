@@ -1,6 +1,6 @@
 export const dark = {
-  purple:'#372964',
-  darkPurple:'#7452E2',
+  purple:'#7452E2',
+  darkPurple:'#372964',
   text:'#62E093',
   borderButton:'#62E093',
   background:'#000000',

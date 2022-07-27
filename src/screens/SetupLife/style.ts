@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const WrapperSetupLifePage = styled.div`
   width: 85vw;
   height: 90vh;
