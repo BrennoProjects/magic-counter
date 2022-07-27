@@ -16,12 +16,11 @@ const SetupPlayer: FC = () => {
   const { setNumberPlayers } = useContext(GameSetupContext);
 
   const handleSetPlayer = useCallback((value: number):void => {
+    setNumberPlayers(value)
       if(value === 1 || value === 3){
-        setNumberPlayers(value)
         navigate("/game")
       }
       else if(value === 2 || value === 4){
-        setNumberPlayers(value)
         navigate("/set-position")
       }
     }
