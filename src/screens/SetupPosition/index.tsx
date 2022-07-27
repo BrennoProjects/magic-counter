@@ -9,19 +9,43 @@ import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import PlayerIcon from "../../assets/PlayerIcon";
-import { GameSetupContext } from "../../context/GameSetupContext";
+import { GameSetupContext, valuesPosition } from "../../context/GameSetupContext";
 
 
 const SetupPosition: FC = () => {
-  
+
   const navigate = useNavigate();
-  const {numberPlayers} = useContext(GameSetupContext)
+  const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext)
+  const handleSetPosition = useCallback((value: number): void => {
+    switch (value) {
+      case valuesPosition.twoPlayers:
+        setPositionPlayers(valuesPosition.twoPlayers)
+        navigate("/game")
+        break;
+      case valuesPosition.twoPlayersLateral:
+        setPositionPlayers(valuesPosition.twoPlayersLateral)
+        navigate("/game")
+        break;
+      case valuesPosition.fourPlayers:
+        setPositionPlayers(valuesPosition.fourPlayers)
+        navigate("/game")
+        break;
+      case valuesPosition.fourPlayersLateral:
+        setPositionPlayers(valuesPosition.fourPlayersLateral)
+        navigate("/game")
+        break;
+      default:
+        break;
+    }
+  }
+    , [])
+
 
   const tableForTwo = useCallback((): JSX.Element => (
     <S.WrapperButtons>
       <S.WrapperButton>
         <Button
-          onClick={() => console.log("teste")}
+          onClick={() => handleSetPosition(valuesPosition.twoPlayers)}
           width="100%"
           height="100%"
         >
@@ -37,7 +61,7 @@ const SetupPosition: FC = () => {
       </S.WrapperButton>
       <S.WrapperButton>
         <Button
-          onClick={() => console.log("teste")}
+          onClick={() => handleSetPosition(valuesPosition.twoPlayersLateral)}
           width="100%"
           height="100%"
         >
@@ -55,59 +79,59 @@ const SetupPosition: FC = () => {
   ), [])
 
   const tableForFour = useCallback((): JSX.Element => (
-      <S.WrapperButtons>
-        <S.WrapperButton>
-          <Button
-            onClick={() => console.log("teste")}
-            width="100%"
-            height="100%"
-          >
-            <S.WrapperIcons>
-              <S.RotateIcons>
-                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-                <S.WrapperIcon rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-              </S.RotateIcons>
-              <S.RotateIcons>
-                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-                <S.WrapperIcon rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-              </S.RotateIcons>
-            </S.WrapperIcons>
-          </Button>
-        </S.WrapperButton>
-        <S.WrapperButton>
-          <Button
-            onClick={() => console.log("teste")}
-            width="100%"
-            height="100%"
-          >
-            <S.WrapperIcons>
-              <S.WrapperIcon transform="rotate(180deg)">
+    <S.WrapperButtons>
+      <S.WrapperButton>
+        <Button
+          onClick={() => handleSetPosition(valuesPosition.fourPlayers)}
+          width="100%"
+          height="100%"
+        >
+          <S.WrapperIcons>
+            <S.RotateIcons>
+              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
                 <PlayerIcon />
               </S.WrapperIcon>
-              <S.RotateIcons>
-                <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-                <S.WrapperIcon rotateMiddle={true}>
-                  <PlayerIcon />
-                </S.WrapperIcon>
-              </S.RotateIcons>
-              <S.WrapperIcon>
+              <S.WrapperIcon rotateMiddle={true}>
                 <PlayerIcon />
               </S.WrapperIcon>
-            </S.WrapperIcons>
-          </Button>
-        </S.WrapperButton>
-      </S.WrapperButtons>
-    ), [])
+            </S.RotateIcons>
+            <S.RotateIcons>
+              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                <PlayerIcon />
+              </S.WrapperIcon>
+              <S.WrapperIcon rotateMiddle={true}>
+                <PlayerIcon />
+              </S.WrapperIcon>
+            </S.RotateIcons>
+          </S.WrapperIcons>
+        </Button>
+      </S.WrapperButton>
+      <S.WrapperButton>
+        <Button
+          onClick={() => handleSetPosition(valuesPosition.fourPlayersLateral)}
+          width="100%"
+          height="100%"
+        >
+          <S.WrapperIcons>
+            <S.WrapperIcon transform="rotate(180deg)">
+              <PlayerIcon />
+            </S.WrapperIcon>
+            <S.RotateIcons>
+              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+                <PlayerIcon />
+              </S.WrapperIcon>
+              <S.WrapperIcon rotateMiddle={true}>
+                <PlayerIcon />
+              </S.WrapperIcon>
+            </S.RotateIcons>
+            <S.WrapperIcon>
+              <PlayerIcon />
+            </S.WrapperIcon>
+          </S.WrapperIcons>
+        </Button>
+      </S.WrapperButton>
+    </S.WrapperButtons>
+  ), [])
 
   return (
     <S.WrapperSetupPosition>
@@ -124,7 +148,7 @@ const SetupPosition: FC = () => {
       <Title>Players Position</Title>
 
       {numberPlayers === 4 ? tableForFour() : tableForTwo()}
-    
+
     </S.WrapperSetupPosition>
   );
 };
