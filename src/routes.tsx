@@ -5,7 +5,7 @@ import SetupPlayer from "./screens/SetupPlayer";
 
 const routes: RouteObject[] = [
   {path: '/', element:<Home />,},
-  {path: '/set-life', element:<SetupLifePage />,},
-  {path: '/set-players', element:<SetupPlayer />,}
+  {path: '/setup-life', element:<SetupLifePage />,},
+  {path: '/setup-players', element:<SetupPlayer />,}
 ]
 export default routes

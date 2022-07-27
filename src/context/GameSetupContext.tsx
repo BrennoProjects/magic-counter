@@ -4,8 +4,8 @@ import  { useState, createContext } from "react";
 interface GameSetupDataStructure {
   initialLife: number;
   numberPlayers: number;
-  setInitialLife: (setInitiaçlLife: number) => void;
-  setNumberPlayers: (setNumberPlayers: number) => void;
+  setInitialLife: (value: number) => void;
+  setNumberPlayers: (value: number) => void;
 }
 
 interface GameSetupProps {
