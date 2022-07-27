@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { FC } from "react";
 
@@ -9,11 +9,13 @@ import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import PlayerIcon from "../../assets/PlayerIcon";
+import { GameSetupContext } from "../../context/GameSetupContext";
 
 
 const SetupPosition: FC = () => {
-  const [numberPlayers, setNumberPlayers] = useState<number>(4);
+  
   const navigate = useNavigate();
+  const {numberPlayers} = useContext(GameSetupContext)
 
   const tableForTwo = useCallback((): JSX.Element => (
     <S.WrapperButtons>
@@ -120,7 +122,9 @@ const SetupPosition: FC = () => {
         </Button>
       </NavBar>
       <Title>Players Position</Title>
+
       {numberPlayers === 4 ? tableForFour() : tableForTwo()}
+    
     </S.WrapperSetupPosition>
   );
 };
