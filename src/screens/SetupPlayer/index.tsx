@@ -21,7 +21,7 @@ const SetupPlayer: FC = () => {
         navigate("/game")
       }
       else if(value === 2 || value === 4){
-        navigate("/set-position")
+        navigate("/setup-position")
       }
     }
   ,[])
