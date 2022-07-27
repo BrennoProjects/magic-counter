@@ -12,7 +12,7 @@ import PlayerIcon from "../../assets/PlayerIcon";
 
 
 const SetupPosition: FC = () => {
-  let [numberPlayers, setNumberPlayers] = useState<number>(4);
+  const [numberPlayers, setNumberPlayers] = useState<number>(4);
   const navigate = useNavigate();
 
   const tableForTwo = useCallback((): JSX.Element => (
