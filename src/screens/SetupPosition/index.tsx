@@ -1,6 +1,6 @@
-import { FC, useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import type { FC } from "react";
 
 import * as S from "./style";
 import BackArrow from "../../assets/BackArrow";
@@ -12,50 +12,47 @@ import PlayerIcon from "../../assets/PlayerIcon";
 
 
 const SetupPosition: FC = () => {
-  let [playersNumber, setPlayersNumber] = useState(4);
+  let [numberPlayers, setNumberPlayers] = useState<number>(4);
   const navigate = useNavigate();
 
-  const tableForTwo = useCallback((): JSX.Element => {
-    return (
-      <S.WrapperButtons>
-        <S.WrapperButton>
-          <Button
-            onClick={() => console.log("teste")}
-            width="100%"
-            height="100%"
-          >
-            <S.WrapperIcons>
-              <S.WrapperIcon transform="rotate(180deg)">
-                <PlayerIcon />
-              </S.WrapperIcon>
-              <S.WrapperIcon>
-                <PlayerIcon />
-              </S.WrapperIcon>
-            </S.WrapperIcons>
-          </Button>
-        </S.WrapperButton>
-        <S.WrapperButton>
-          <Button
-            onClick={() => console.log("teste")}
-            width="100%"
-            height="100%"
-          >
-            <S.WrapperIcons>
-              <S.WrapperIcon transform="rotate(90deg)">
-                <PlayerIcon />
-              </S.WrapperIcon>
-              <S.WrapperIcon transform="rotate(-90deg)">
-                <PlayerIcon />
-              </S.WrapperIcon>
-            </S.WrapperIcons>
-          </Button>
-        </S.WrapperButton>
-      </S.WrapperButtons>
-    );
-  }, [])
+  const tableForTwo = useCallback((): JSX.Element => (
+    <S.WrapperButtons>
+      <S.WrapperButton>
+        <Button
+          onClick={() => console.log("teste")}
+          width="100%"
+          height="100%"
+        >
+          <S.WrapperIcons>
+            <S.WrapperIcon transform="rotate(180deg)">
+              <PlayerIcon />
+            </S.WrapperIcon>
+            <S.WrapperIcon>
+              <PlayerIcon />
+            </S.WrapperIcon>
+          </S.WrapperIcons>
+        </Button>
+      </S.WrapperButton>
+      <S.WrapperButton>
+        <Button
+          onClick={() => console.log("teste")}
+          width="100%"
+          height="100%"
+        >
+          <S.WrapperIcons>
+            <S.WrapperIcon transform="rotate(90deg)">
+              <PlayerIcon />
+            </S.WrapperIcon>
+            <S.WrapperIcon transform="rotate(-90deg)">
+              <PlayerIcon />
+            </S.WrapperIcon>
+          </S.WrapperIcons>
+        </Button>
+      </S.WrapperButton>
+    </S.WrapperButtons>
+  ), [])
 
-  const tableForFour = useCallback((): JSX.Element => {
-    return (
+  const tableForFour = useCallback((): JSX.Element => (
       <S.WrapperButtons>
         <S.WrapperButton>
           <Button
@@ -108,8 +105,8 @@ const SetupPosition: FC = () => {
           </Button>
         </S.WrapperButton>
       </S.WrapperButtons>
-    );
-  }, [])
+    ), [])
+
   return (
     <S.WrapperSetupPosition>
       <NavBar>
@@ -123,7 +120,7 @@ const SetupPosition: FC = () => {
         </Button>
       </NavBar>
       <Title>Players Position</Title>
-      {playersNumber === 4 ? tableForFour() : tableForTwo()}
+      {numberPlayers === 4 ? tableForFour() : tableForTwo()}
     </S.WrapperSetupPosition>
   );
 };
