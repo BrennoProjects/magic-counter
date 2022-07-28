@@ -1,16 +1,17 @@
 import type { FC } from "react"
 import React from "react"
 
-interface MinusIconProps{
+interface MinusIconProps {
   width: number,
-  height: number 
+  height: number
 }
-const MinusIcon:FC<MinusIconProps> = (props: React.SVGProps<SVGSVGElement>) => {
+const MinusIcon: FC<MinusIconProps> = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.83334 18.75L32.1667 18.75V22.0834L8.83334 22.0834V18.75Z" fill="white"/>
+    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.83334 14.0833L27.1667 14.0833V17.4166L3.83334 17.4166V14.0833Z" fill="white" />
     </svg>
-    
+
+
   )
 }
 
