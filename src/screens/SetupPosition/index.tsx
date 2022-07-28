@@ -9,29 +9,29 @@ import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
 import PlayerIcon from "../../assets/PlayerIcon";
-import { GameSetupContext, valuesPosition } from "../../context/GameSetupContext";
+import { GameSetupContext, ValuesPosition } from "../../context/GameSetupContext";
 
 
 const SetupPosition: FC = () => {
 
   const navigate = useNavigate();
-  const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext)
+  const { numberPlayers, setPositionPlayers  } = useContext(GameSetupContext)
   const handleSetPosition = useCallback((value: number): void => {
     switch (value) {
-      case valuesPosition.twoPlayers:
-        setPositionPlayers(valuesPosition.twoPlayers)
+      case ValuesPosition.twoPlayers:
+        setPositionPlayers(ValuesPosition.twoPlayers)
         navigate("/game")
         break;
-      case valuesPosition.twoPlayersLateral:
-        setPositionPlayers(valuesPosition.twoPlayersLateral)
+      case ValuesPosition.twoPlayersLateral:
+        setPositionPlayers(ValuesPosition.twoPlayersLateral)
         navigate("/game")
         break;
-      case valuesPosition.fourPlayers:
-        setPositionPlayers(valuesPosition.fourPlayers)
+      case ValuesPosition.fourPlayers:
+        setPositionPlayers(ValuesPosition.fourPlayers)
         navigate("/game")
         break;
-      case valuesPosition.fourPlayersLateral:
-        setPositionPlayers(valuesPosition.fourPlayersLateral)
+      case ValuesPosition.fourPlayersLateral:
+        setPositionPlayers(ValuesPosition.fourPlayersLateral)
         navigate("/game")
         break;
       default:
@@ -45,7 +45,7 @@ const SetupPosition: FC = () => {
     <S.WrapperButtons>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(valuesPosition.twoPlayers)}
+          onClick={() => handleSetPosition(ValuesPosition.twoPlayers)}
           width="100%"
           height="100%"
         >
@@ -61,7 +61,7 @@ const SetupPosition: FC = () => {
       </S.WrapperButton>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(valuesPosition.twoPlayersLateral)}
+          onClick={() => handleSetPosition(ValuesPosition.twoPlayersLateral)}
           width="100%"
           height="100%"
         >
@@ -82,7 +82,7 @@ const SetupPosition: FC = () => {
     <S.WrapperButtons>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(valuesPosition.fourPlayers)}
+          onClick={() => handleSetPosition(ValuesPosition.fourPlayers)}
           width="100%"
           height="100%"
         >
@@ -108,7 +108,7 @@ const SetupPosition: FC = () => {
       </S.WrapperButton>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(valuesPosition.fourPlayersLateral)}
+          onClick={() => handleSetPosition(ValuesPosition.fourPlayersLateral)}
           width="100%"
           height="100%"
         >
