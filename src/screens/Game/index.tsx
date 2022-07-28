@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 import type { FC } from "react"
 
 import * as S from "./style"
@@ -12,7 +12,7 @@ interface GameProps {
 const Game: FC<GameProps> = () => {
   const tableForTwo = useCallback(() => (
     <>
-        <PlayerCounter></PlayerCounter>
+        <PlayerCounter rotate="rotate(180deg)"></PlayerCounter>
         <PlayerCounter></PlayerCounter>
     </>
 

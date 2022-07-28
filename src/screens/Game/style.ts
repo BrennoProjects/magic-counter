@@ -7,7 +7,7 @@ interface RotatePlayers{
 
 export const Game = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 98vh;
   position: relative;
   background-color: transparent;
   display: flex;
