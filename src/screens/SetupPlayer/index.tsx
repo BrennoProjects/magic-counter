@@ -8,7 +8,7 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { GameSetupContext, valuesPosition } from "../../context/GameSetupContext";
+import { GameSetupContext, ValuesPosition } from "../../context/GameSetupContext";
 
 const SetupPlayer: FC = () => {
 
@@ -19,14 +19,14 @@ const SetupPlayer: FC = () => {
     setNumberPlayers(value)
     switch (value) {
       case 1:
-        setPositionPlayers(valuesPosition.default)
+        setPositionPlayers(ValuesPosition.default)
         navigate("/game")
         break;
       case 2:
         navigate("/setup-position")
         break;
       case 3:
-        setPositionPlayers(valuesPosition.default)
+        setPositionPlayers(ValuesPosition.default)
         navigate("/game")
         break;
       case 4:
