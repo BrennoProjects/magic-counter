@@ -8,12 +8,13 @@ import PlusIcon from "../../assets/PlusIcon"
 
 
 interface PlayerCounterProps {
-
+rotate?: string,
 }
 
-const PlayerCounter: FC<PlayerCounterProps> = () => {
+const PlayerCounter: FC<PlayerCounterProps> = (props) => {
+  const {rotate='unset'} = props
   return (
-    <S.WrapperPlayer>
+    <S.WrapperPlayer rotate={rotate} >
       <S.WrapperText>
         <PlusIcon width={40} height={40} />
         <>
@@ -21,6 +22,9 @@ const PlayerCounter: FC<PlayerCounterProps> = () => {
         <HeartIcon width={30} height={30} />
         </>
         <MinusIcon width={40} height={40} />
+        <S.Drawer>
+          <S.Hr/>
+        </S.Drawer>
       </S.WrapperText>
     </S.WrapperPlayer>
   )
