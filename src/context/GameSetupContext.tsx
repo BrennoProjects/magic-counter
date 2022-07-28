@@ -44,7 +44,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(initialGameSetup.positionPlayers);
 
   return (
-    <GameSetupContext.Provider value={{ initialLife, setInitialLife, numberPlayers, setNumberPlayers, positionPlayers, setPositionPlayers }} enumPosition={ValuesPosition}>
+    <GameSetupContext.Provider value={{ initialLife, setInitialLife, numberPlayers, setNumberPlayers, positionPlayers, setPositionPlayers }} >
       {children}
     </GameSetupContext.Provider>
   );
