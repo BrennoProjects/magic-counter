@@ -18,33 +18,44 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const WrapperPlayerRef = useRef() as React.MutableRefObject<HTMLDivElement>
   let playerHeightDiv: number = 0
   let partialValueDrawer: number = 0
+  let pixelsMove: number =0
   let percent: number = 10
   let arr: [number, number] = [0, 0]
   const [percentOpenDrawer, setPercentOpenDrawer] = useState<number>(10)
+  const [handleOpenDrawer, sethandleOpenDrawer] = useState<boolean>(false)
   //const [initialAxisY, setInitialAxisY] = useState<number>(325)
 
 
 
   const handleInitialAxisY = useCallback((y: number) => {
     arr[0] = y
+    if(percent===100){
+      partialValueDrawer=0
+    }
   }, [])
 
-
   const handleDrawer = useCallback((y: number): void => {
+    
     arr[1] = y
-    partialValueDrawer = (arr[0] - arr[1])
-    percent = ((partialValueDrawer * 100) / playerHeightDiv) + 5
-    if (percent === 100) { }
-    if (percent < 101 && percent > 10) {
-      setPercentOpenDrawer(percent)
+    if (arr[1] < arr[0]) {
+      partialValueDrawer = (arr[1] - arr[0])
+      percent = (partialValueDrawer * 100) / playerHeightDiv
+      //console.log('first arr[1]',arr[1], 'arr[0]',arr[0])
+    } else if(arr[0] > arr[1]){
+      partialValueDrawer = (arr[0] - arr[1])
+      //console.log('second arr[0]',arr[0], 'arr[1]',arr[1])
     }
+    percent = (partialValueDrawer * 100) / playerHeightDiv
+    
+    setPercentOpenDrawer(percent*-1)
+
   }, [])
 
 
   useEffect(() => {
     playerHeightDiv = WrapperPlayerRef.current.clientHeight
     console.log(percentOpenDrawer)
-  }, [percentOpenDrawer])
+  }, [/* percentOpenDrawer */])
 
 
   return (
@@ -56,7 +67,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
           <HeartIcon width={30} height={30} />
         </>
         <MinusIcon width={40} height={40} />
-        <S.Drawer height={String(percentOpenDrawer + '%')} onTouchMove={(e) => handleDrawer(e.touches[0].clientY)} onTouchStart={(e) => handleInitialAxisY(e.touches[0].clientY)}>
+        <S.Drawer height={Math.round(percentOpenDrawer)} onTouchStart={(e) => handleInitialAxisY(e.touches[0].clientY)} onTouchMove={(e) => handleDrawer(e.touches[0].pageY)} >
           <S.Hr />
         </S.Drawer>
       </S.WrapperText>
