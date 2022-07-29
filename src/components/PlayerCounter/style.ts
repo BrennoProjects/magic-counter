@@ -7,7 +7,7 @@ interface WrapperPlayer {
   rotate: string;
 }
 interface Drawer {
-  height: string;
+  height: number;
 }
 export const WrapperPlayer = styled.div<WrapperPlayer>`
   width: 95%;
@@ -46,7 +46,9 @@ export const TextHud = styled.span<TextHud>`
 
 export const Drawer = styled.div<Drawer>`
   width: 100%;
-  height: ${({ height }) =>  height };
+  height: ${({ height }) => String(height + '%') };
+  max-height: 100%;
+  min-height: 10%;
   background-color: ${({ theme }) => theme.darkPurple};
   position: absolute;
   border-top-left-radius: 0px;
