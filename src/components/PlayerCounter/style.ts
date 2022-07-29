@@ -6,6 +6,9 @@ interface TextHud {
 interface WrapperPlayer {
   rotate: string;
 }
+interface Drawer {
+  height: string;
+}
 export const WrapperPlayer = styled.div<WrapperPlayer>`
   width: 95%;
   height: 49%;
@@ -41,9 +44,9 @@ export const TextHud = styled.span<TextHud>`
   font-weight: 600;
 `;
 
-export const Drawer = styled.div`
+export const Drawer = styled.div<Drawer>`
   width: 100%;
-  height: 10%;
+  height: ${({ height }) =>  height };
   background-color: ${({ theme }) => theme.darkPurple};
   position: absolute;
   border-top-left-radius: 0px;
@@ -57,7 +60,6 @@ export const Hr = styled.hr`
   width: 50%;
   height: 6px;
   background-color: ${({ theme }) => theme.title};
-  margin-top: 12px;
   border-radius: 50px;
   border: none;
 `;
