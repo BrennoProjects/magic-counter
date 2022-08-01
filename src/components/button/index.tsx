@@ -8,7 +8,7 @@ interface ButtonProps {
   border?: boolean;
   background?: string;
   rounded?: boolean;
-  onClick: ()=> void;
+  onClick: (value:number)=> void;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -21,6 +21,9 @@ const Button: FC<ButtonProps> = (props) => {
     rounded = false,
     onClick
   } = props;
+  
+  const randomNumber = ()=> Math.random()
+
   return (
     <S.WrapperButton
       width={width}
@@ -28,7 +31,7 @@ const Button: FC<ButtonProps> = (props) => {
       border={border}
       background={background}
       rounded={rounded}
-      onClick={onClick}
+      onClick={()=>onClick(randomNumber())}
     >
       {children}
     </S.WrapperButton>

@@ -18,36 +18,34 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const WrapperPlayerRef = useRef() as React.MutableRefObject<HTMLDivElement>
   let playerHeightDiv: number = 0
   let partialValueDrawer: number = 0
-  let pixelsMove: number =0
   let percent: number = 10
-  let arr: [number, number] = [0, 0]
+  let initialPosition:number = 0
+  let currentPosition:number = 0
   const [percentOpenDrawer, setPercentOpenDrawer] = useState<number>(10)
-  const [handleOpenDrawer, sethandleOpenDrawer] = useState<boolean>(false)
   //const [initialAxisY, setInitialAxisY] = useState<number>(325)
 
 
 
   const handleInitialAxisY = useCallback((y: number) => {
-    arr[0] = y
-    if(percent===100){
-      partialValueDrawer=0
-    }
+    initialPosition = y
   }, [])
 
   const handleDrawer = useCallback((y: number): void => {
     
-    arr[1] = y
-    if (arr[1] < arr[0]) {
-      partialValueDrawer = (arr[1] - arr[0])
-      percent = (partialValueDrawer * 100) / playerHeightDiv
-      //console.log('first arr[1]',arr[1], 'arr[0]',arr[0])
-    } else if(arr[0] > arr[1]){
-      partialValueDrawer = (arr[0] - arr[1])
-      //console.log('second arr[0]',arr[0], 'arr[1]',arr[1])
-    }
+    currentPosition = y
+    if (initialPosition < currentPosition ) {
+      partialValueDrawer = (currentPosition - initialPosition)
+      console.log('first currentPosition',currentPosition, 'initialPosition',initialPosition)
+    } else if(initialPosition > currentPosition){
+      partialValueDrawer = (initialPosition - currentPosition)
+      console.log('second initialPosition',initialPosition, 'currentPosition',currentPosition)
+    } 
     percent = (partialValueDrawer * 100) / playerHeightDiv
-    
-    setPercentOpenDrawer(percent*-1)
+    if(percent>10){
+      setPercentOpenDrawer(percent)
+    }else{
+      setPercentOpenDrawer(10)
+    } 
 
   }, [])
 
@@ -55,7 +53,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   useEffect(() => {
     playerHeightDiv = WrapperPlayerRef.current.clientHeight
     console.log(percentOpenDrawer)
-  }, [/* percentOpenDrawer */])
+  }, [percentOpenDrawer])
 
 
   return (
