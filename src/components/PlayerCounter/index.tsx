@@ -13,51 +13,28 @@ interface PlayerCounterProps {
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
-
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false)
   const { rotate = 'unset' } = props
-  const WrapperPlayerRef = useRef() as React.MutableRefObject<HTMLDivElement>
-  let playerHeightDiv: number = 0
-  let partialValueDrawer: number = 0
-  let percent: number = 10
-  let initialPosition:number = 0
-  let currentPosition:number = 0
-  const [percentOpenDrawer, setPercentOpenDrawer] = useState<number>(10)
-  //const [initialAxisY, setInitialAxisY] = useState<number>(325)
 
-
-
-  const handleInitialAxisY = useCallback((y: number) => {
-    initialPosition = y
-  }, [])
-
-  const handleDrawer = useCallback((y: number): void => {
-    
-    currentPosition = y
-    if (initialPosition < currentPosition ) {
-      partialValueDrawer = (currentPosition - initialPosition)
-      console.log('first currentPosition',currentPosition, 'initialPosition',initialPosition)
-    } else if(initialPosition > currentPosition){
-      partialValueDrawer = (initialPosition - currentPosition)
-      console.log('second initialPosition',initialPosition, 'currentPosition',currentPosition)
-    } 
-    percent = (partialValueDrawer * 100) / playerHeightDiv
-    if(percent>10){
-      setPercentOpenDrawer(percent)
-    }else{
-      setPercentOpenDrawer(10)
-    } 
-
-  }, [])
-
-
-  useEffect(() => {
-    playerHeightDiv = WrapperPlayerRef.current.clientHeight
-    console.log(percentOpenDrawer)
-  }, [percentOpenDrawer])
-
+  const handleDrawer = (value: boolean) => {
+    if (value === false) {
+      setOpenDrawer(true)
+    } else {
+      setOpenDrawer(false)
+    }
+  }
 
   return (
-    <S.WrapperPlayer ref={WrapperPlayerRef} rotate={rotate} >
+    <S.WrapperPlayer rotate={rotate} >
+      <S.Wrapper>
+        <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
+          <></>
+        </Button>
+        <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
+          <></>
+        </Button>
+        <S.minorButton />
+      </S.Wrapper>
       <S.WrapperText>
         <PlusIcon width={40} height={40} />
         <>
@@ -65,8 +42,8 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
           <HeartIcon width={30} height={30} />
         </>
         <MinusIcon width={40} height={40} />
-        <S.Drawer height={Math.round(percentOpenDrawer)} onTouchStart={(e) => handleInitialAxisY(e.touches[0].clientY)} onTouchMove={(e) => handleDrawer(e.touches[0].pageY)} >
-          <S.Hr />
+        <S.Drawer handleDrawer={openDrawer}>
+          <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
         </S.Drawer>
       </S.WrapperText>
     </S.WrapperPlayer>
