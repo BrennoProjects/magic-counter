@@ -20,7 +20,7 @@ const Home: FC = () => {
       </S.WrapperTextButton>
       <S.WrapperAboutUs>
         <Button
-          onClick={() => navigate("/about-us")}
+          onClick={(x) => {navigate("/about-us"); console.log(x)}}
           border={false}
           width={"auto"}
           height={"auto"}
