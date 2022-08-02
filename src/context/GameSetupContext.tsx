@@ -4,7 +4,7 @@ import { useState, createContext } from "react";
 
 
 export const enum ValuesPosition {
-  undefined,
+  unset,
   default,
   twoPlayers,
   twoPlayersLateral,
@@ -15,7 +15,7 @@ export const enum ValuesPosition {
 interface GameSetupDataStructure {
   initialLife: number;
   numberPlayers: number;
-  positionPlayers: undefined|number;
+  positionPlayers: ValuesPosition;
   setInitialLife: (value: number) => void;
   setNumberPlayers: (value: number) => void;
   setPositionPlayers: (value: ValuesPosition) => void;
@@ -28,7 +28,7 @@ interface GameSetupProps {
 const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
-  positionPlayers: undefined,
+  positionPlayers: ValuesPosition.unset,
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
@@ -41,7 +41,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   const { children } = props;
   const [initialLife, setInitialLife] = useState<number>(initialGameSetup.initialLife);
   const [numberPlayers, setNumberPlayers] = useState<number>(initialGameSetup.numberPlayers);
-  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition|undefined>(initialGameSetup.positionPlayers);
+  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(initialGameSetup.positionPlayers);
 
   return (
     <GameSetupContext.Provider value={{ initialLife, setInitialLife, numberPlayers, setNumberPlayers, positionPlayers, setPositionPlayers }} >
