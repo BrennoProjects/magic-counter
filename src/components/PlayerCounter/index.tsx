@@ -9,12 +9,13 @@ import Button from "../button"
 
 
 interface PlayerCounterProps {
-  rotate?: string,
+  rotate?: string |"rotate(90deg)" | "rotate(-90deg)" | "rotate(180deg)" ,
+  isLateral?: boolean,
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
-  const { rotate = 'unset' } = props
+  const { rotate = 'unset', isLateral = false } = props
 
   const handleDrawer = (value: boolean) => {
     if (value === false) {
@@ -25,7 +26,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   }
 
   return (
-    <S.WrapperPlayer rotate={rotate} >
+    <S.WrapperPlayer rotate={rotate} isLateral={isLateral}>
       <S.Wrapper>
         <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
           <></>
@@ -33,7 +34,6 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
           <></>
         </Button>
-        <S.minorButton />
       </S.Wrapper>
       <S.WrapperText>
         <PlusIcon width={40} height={40} />
