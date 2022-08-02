@@ -16,27 +16,9 @@ const SetupPosition: FC = () => {
 
   const navigate = useNavigate();
   const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext)
-  const handleSetPosition = useCallback((value: number): void => {
-    switch (value) {
-      case ValuesPosition.twoPlayers:
-        setPositionPlayers(ValuesPosition.twoPlayers)
-        navigate("/game")
-        break;
-      case ValuesPosition.twoPlayersLateral:
-        setPositionPlayers(ValuesPosition.twoPlayersLateral)
-        navigate("/game")
-        break;
-      case ValuesPosition.fourPlayers:
-        setPositionPlayers(ValuesPosition.fourPlayers)
-        navigate("/game")
-        break;
-      case ValuesPosition.fourPlayersLateral:
-        setPositionPlayers(ValuesPosition.fourPlayersLateral)
-        navigate("/game")
-        break;
-      default:
-        break;
-    }
+  const handleSetPosition = useCallback((value: ValuesPosition): void => {
+    setPositionPlayers(value)
+    navigate("/game")
   }
     , [])
 
