@@ -15,7 +15,7 @@ import { GameSetupContext, ValuesPosition } from "../../context/GameSetupContext
 const SetupPosition: FC = () => {
 
   const navigate = useNavigate();
-  const { numberPlayers, setPositionPlayers  } = useContext(GameSetupContext)
+  const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext)
   const handleSetPosition = useCallback((value: number): void => {
     switch (value) {
       case ValuesPosition.twoPlayers:
@@ -146,9 +146,7 @@ const SetupPosition: FC = () => {
         </Button>
       </NavBar>
       <Title>Players Position</Title>
-
       {numberPlayers === 4 ? tableForFour() : tableForTwo()}
-
     </S.WrapperSetupPosition>
   );
 };
