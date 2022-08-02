@@ -10,45 +10,25 @@ interface GameProps {
 }
 
 const Game: FC<GameProps> = () => {
-  const [players, setPlayers] = useState<number>(4)
-  const tableForOne = useCallback(() => (
-    <>
-      <PlayerCounter></PlayerCounter>
-    </>
+  const [players, setPlayers] = useState<number>(2)
 
-  ), [])
-  const tableForTwo = useCallback(() => (
+  const tableForTwo = useCallback(() => {
     <>
-      <PlayerCounter rotate="rotate(180deg)"></PlayerCounter>
-      <PlayerCounter></PlayerCounter>
+      <PlayerCounter rotate="rotate(180deg)" />
+      <PlayerCounter />
     </>
-
-  ), [])
-  const tableForThree = useCallback(() => (
+  }, [])
+  const tableForTwoLateral = useCallback(() => {
     <>
-      <PlayerCounter rotate="rotate(180deg)"></PlayerCounter>
-      <PlayerCounter></PlayerCounter>
-      <PlayerCounter></PlayerCounter>
+      <PlayerCounter rotate="rotate(-90deg)" />
+      <PlayerCounter rotate="rotate(90deg)" />
     </>
+  }, [])
 
-  ), [])
-  const tableForFour = useCallback(() => (
-    <>
-      <S.RotatePlayers>
-        <PlayerCounter rotate="rotate(180deg)"></PlayerCounter>
-        <PlayerCounter></PlayerCounter>
-      </S.RotatePlayers>
-      <S.RotatePlayers>
-        <PlayerCounter rotate="rotate(180deg)"></PlayerCounter>
-        <PlayerCounter></PlayerCounter>
-      </S.RotatePlayers>
-        
-    </>
-
-  ), [])
   return (
     <S.Game>
-      {tableForFour()}
+      <PlayerCounter rotate="rotate(-90deg)" isLateral={true}/>
+      <PlayerCounter rotate="rotate(90deg)"  isLateral={true}/>
     </S.Game>
   )
 }

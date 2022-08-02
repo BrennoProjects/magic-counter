@@ -5,6 +5,7 @@ interface TextHud {
 }
 interface WrapperPlayer {
   rotate: string;
+  isLateral: boolean;
 }
 interface Drawer {
   handleDrawer: boolean;
@@ -39,8 +40,8 @@ color: transparent;
 bottom: 0;
 `
 export const WrapperPlayer = styled.div<WrapperPlayer>`
-  width: 95%;
-  height: 49%;
+  width: ${({isLateral})=> isLateral ? '49vh': '95%'};
+  height: ${({isLateral})=> isLateral ? '100vw': '49%'};
   display: flex;
 
   flex-direction: column;
