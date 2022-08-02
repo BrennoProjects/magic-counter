@@ -5,11 +5,11 @@ import { useState, createContext } from "react";
 
 export const enum ValuesPosition {
   undefined,
-  default = 0,
-  twoPlayers = 1,
-  twoPlayersLateral = 2,
-  fourPlayers = 3,
-  fourPlayersLateral = 4,
+  default,
+  twoPlayers,
+  twoPlayersLateral,
+  fourPlayers,
+  fourPlayersLateral,
 }
 
 interface GameSetupDataStructure {
