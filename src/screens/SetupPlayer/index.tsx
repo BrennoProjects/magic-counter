@@ -17,13 +17,12 @@ const SetupPlayer: FC = () => {
   
   const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
-    if(value === 1 || value === 2){
-      setNumberPlayers(ValuesPosition.default)
+    if(value === 1 || value === 3){
       navigate("/game")
       return;
     }
-    if(value === 3 || value === 4){
-      navigate("/game")
+    if(value === 2 || value === 4){
+      navigate("/setup-position")
       return;
     }  
   }, [])
