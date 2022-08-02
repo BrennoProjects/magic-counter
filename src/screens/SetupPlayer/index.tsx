@@ -17,30 +17,16 @@ const SetupPlayer: FC = () => {
   
   const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
-    switch (value) {
-      case 1:
-        setPositionPlayers(ValuesPosition.default)
-        navigate("/game")
-        break;
-      case 2:
-        navigate("/setup-position")
-        break;
-      case 3:
-        setPositionPlayers(ValuesPosition.default)
-        navigate("/game")
-        break;
-      case 4:
-        navigate("/setup-position")
-        break;
-    }
-    if (value === 1 || value === 3) {
+    if(value === 1 || value === 2){
+      setNumberPlayers(ValuesPosition.default)
       navigate("/game")
+      return;
     }
-    else if (value === 2 || value === 4) {
-      navigate("/setup-position")
-    }
-  }
-    , [])
+    if(value === 3 || value === 4){
+      navigate("/game")
+      return;
+    }  
+  }, [])
 
   return (
     <S.WrapperSetupPlayer>
