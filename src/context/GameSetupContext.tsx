@@ -28,10 +28,10 @@ interface GameSetupProps {
 const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
-  positionPlayers: ValuesPosition.undefined,
+  positionPlayers: undefined,
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
-  setPositionPlayers: () => ValuesPosition.undefined,
+  setPositionPlayers: () => undefined,
 };
 
 export const GameSetupContext = createContext<GameSetupDataStructure>(initialGameSetup);
@@ -41,7 +41,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   const { children } = props;
   const [initialLife, setInitialLife] = useState<number>(initialGameSetup.initialLife);
   const [numberPlayers, setNumberPlayers] = useState<number>(initialGameSetup.numberPlayers);
-  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(initialGameSetup.positionPlayers);
+  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition|undefined>(initialGameSetup.positionPlayers);
 
   return (
     <GameSetupContext.Provider value={{ initialLife, setInitialLife, numberPlayers, setNumberPlayers, positionPlayers, setPositionPlayers }} >
