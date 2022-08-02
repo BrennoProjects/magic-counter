@@ -1,8 +1,6 @@
 import type { FC, ReactNode } from "react";
 import { useState, createContext } from "react";
 
-
-
 export const enum ValuesPosition {
   unset,
   default,
@@ -34,20 +32,35 @@ const initialGameSetup = {
   setPositionPlayers: () => undefined,
 };
 
-export const GameSetupContext = createContext<GameSetupDataStructure>(initialGameSetup);
+export const GameSetupContext =
+  createContext<GameSetupDataStructure>(initialGameSetup);
 
 const GameSetup: FC<GameSetupProps> = (props) => {
-
   const { children } = props;
-  const [initialLife, setInitialLife] = useState<number>(initialGameSetup.initialLife);
-  const [numberPlayers, setNumberPlayers] = useState<number>(initialGameSetup.numberPlayers);
-  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(initialGameSetup.positionPlayers);
+  const [initialLife, setInitialLife] = useState<number>(
+    initialGameSetup.initialLife
+  );
+  const [numberPlayers, setNumberPlayers] = useState<number>(
+    initialGameSetup.numberPlayers
+  );
+  const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(
+    initialGameSetup.positionPlayers
+  );
 
   return (
-    <GameSetupContext.Provider value={{ initialLife, setInitialLife, numberPlayers, setNumberPlayers, positionPlayers, setPositionPlayers }} >
+    <GameSetupContext.Provider
+      value={{
+        initialLife,
+        setInitialLife,
+        numberPlayers,
+        setNumberPlayers,
+        positionPlayers,
+        setPositionPlayers,
+      }}
+    >
       {children}
     </GameSetupContext.Provider>
   );
 };
 
-export default GameSetup
+export default GameSetup;
