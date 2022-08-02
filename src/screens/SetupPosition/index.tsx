@@ -19,15 +19,14 @@ const SetupPosition: FC = () => {
   const handleSetPosition = useCallback((value: ValuesPosition): void => {
     setPositionPlayers(value)
     navigate("/game")
-  }
-    , [])
+  }, [])
 
 
   const tableForTwo = useCallback((): JSX.Element => (
     <S.WrapperButtons>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(ValuesPosition.twoPlayers)}
+          onClick={() => handleSetPosition(ValuesPosition.TwoPlayers)}
           width="100%"
           height="100%"
         >
@@ -43,7 +42,7 @@ const SetupPosition: FC = () => {
       </S.WrapperButton>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(ValuesPosition.twoPlayersLateral)}
+          onClick={() => handleSetPosition(ValuesPosition.TwoPlayersLateral)}
           width="100%"
           height="100%"
         >
@@ -64,7 +63,7 @@ const SetupPosition: FC = () => {
     <S.WrapperButtons>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(ValuesPosition.fourPlayers)}
+          onClick={() => handleSetPosition(ValuesPosition.FourPlayers)}
           width="100%"
           height="100%"
         >
@@ -90,7 +89,7 @@ const SetupPosition: FC = () => {
       </S.WrapperButton>
       <S.WrapperButton>
         <Button
-          onClick={() => handleSetPosition(ValuesPosition.fourPlayersLateral)}
+          onClick={() => handleSetPosition(ValuesPosition.FourPlayersLateral)}
           width="100%"
           height="100%"
         >
