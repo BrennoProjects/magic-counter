@@ -1,4 +1,4 @@
-import { useContext, useCallback } from "react";
+import { useContext, useCallback} from "react";
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,15 +8,16 @@ import Button from "../../components/button";
 import Text from "../../components/Text";
 import Title from "../../components/Title";
 import NavBar from "../../components/NavBar";
-import { GameSetupContext, handleSetPlayers } from "../../context/GameSetupContext";
+import { GameSetupContext } from "../../context/GameSetupContext";
 
 const SetupPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const { setNumberPlayers,   initialLife } = useContext(GameSetupContext);
+  const { setNumberPlayers,   initialLife, handleSetPlayers, players } = useContext(GameSetupContext);
   const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
     handleSetPlayers(value, initialLife)
+    
     if (value === 1 || value === 3) {
       navigate("/game")
       return;

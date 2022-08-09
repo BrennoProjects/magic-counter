@@ -9,7 +9,7 @@ export const enum ValuesPosition {
   FourPlayersLateral,
 }
 
-interface StartPlayer {
+type StartPlayer = {
   id: string;
   life: number;
 }
@@ -18,11 +18,12 @@ interface GameSetupDataStructure {
   initialLife: number;
   numberPlayers: number;
   positionPlayers: ValuesPosition;
-  players: StartPlayer;
+  players: StartPlayer[];
   setInitialLife: (value: number) => void;
   setNumberPlayers: (value: number) => void;
   setPositionPlayers: (value: ValuesPosition) => void;
-  setPlayers: (value: StartPlayer) => void;
+  setPlayers?: (value: StartPlayer[]) => void;
+  handleSetPlayers: (numberPlayers:number, initialLife:number)=>void
 }
 
 
@@ -31,7 +32,7 @@ interface GameSetupProps {
   children: ReactNode;
 }
 
-const startPlayers: Array<StartPlayer> = [
+const startPlayers:StartPlayer[] = [
   {
     id: '',
     life: 0,
@@ -43,24 +44,18 @@ const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
   positionPlayers: ValuesPosition.unset,
-  players: startPlayers[0],
+  players: startPlayers,
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
-  setPlayers: () => undefined
+  setPlayers: () => undefined,
+  handleSetPlayers: ()=>undefined 
 };
 
 export const GameSetupContext =
   createContext<GameSetupDataStructure>(initialGameSetup);
 
-export const handleSetPlayers = (numberPlayers: number, initialLife: number) => {
-  let interer = 0
-  let arrPlayersConstruct = []
-  while (interer < numberPlayers) {
-    arrPlayersConstruct.push({ id: `ID_PLAYER_${interer + 1}`, life: initialLife })
-    interer++
-  }
-}
+
 
 const GameSetup: FC<GameSetupProps> = (props) => {
   const { children } = props;
@@ -73,11 +68,19 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   const [positionPlayers, setPositionPlayers] = useState<ValuesPosition>(
     initialGameSetup.positionPlayers
   );
-  const [players, setPlayers] = useState<StartPlayer>(
-    startPlayers[0]
+  const [players, setPlayers] = useState<StartPlayer[]>(
+    startPlayers
   );
 
-
+  const handleSetPlayers = (numberPlayers: number, initialLife: number) => {
+    let interer = 0
+    let arrPlayersConstruct = []
+    while (interer < numberPlayers) {
+      arrPlayersConstruct.push({ id: `ID_PLAYER_${interer + 1}`, life: initialLife })
+      interer++
+    }
+    setPlayers(arrPlayersConstruct)
+  }
 
 
 
@@ -91,7 +94,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         positionPlayers,
         setPositionPlayers,
         players,
-        setPlayers
+        handleSetPlayers
       }}
     >
       {children}
