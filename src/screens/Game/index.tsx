@@ -12,24 +12,35 @@ interface GameProps {
 const Game: FC<GameProps> = () => {
   const [players, setPlayers] = useState<number>(2)
 
-  const tableForTwo = useCallback(() => {
+  const tableForTwo = useCallback(() => (
     <>
       <PlayerCounter rotate="rotate(180deg)" />
       <PlayerCounter />
     </>
-  }, [])
-  const tableForTwoLateral = useCallback(() => {
+  ), [])
+  const tableForTwoLateral = useCallback(() => (
     <>
-      <PlayerCounter rotate="rotate(-90deg)" />
-      <PlayerCounter rotate="rotate(90deg)" />
+      <PlayerCounter rotate="rotate(-90deg)" isLateral={true} />
+      <PlayerCounter rotate="rotate(90deg)" isLateral={true} />
     </>
-  }, [])
+  ), [])
+  const tableForFour = useCallback(() => (
+    <S.Game>
+      <S.Rotate>
+        <PlayerCounter rotate="rotate(180deg)" />
+        <PlayerCounter  />
+      </S.Rotate>
+      <S.Rotate>
+        <PlayerCounter rotate="rotate(180deg)" />
+        <PlayerCounter  />
+      </S.Rotate>
+    </S.Game>
+  ), [])
 
   return (
-    <S.Game>
-      <PlayerCounter rotate="rotate(-90deg)" isLateral={true}/>
-      <PlayerCounter rotate="rotate(90deg)"  isLateral={true}/>
-    </S.Game>
+    <>
+      {tableForFour()}
+    </>
   )
 }
 
