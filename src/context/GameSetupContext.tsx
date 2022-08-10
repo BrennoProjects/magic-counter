@@ -71,17 +71,15 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   const [players, setPlayers] = useState<StartPlayer[]>(
     startPlayers
   );
-
+  
   const handleSetPlayers = (numberPlayers: number, initialLife: number) => {
-    let interer = 0
     let arrPlayersConstruct = []
-    while (interer < numberPlayers) {
-      arrPlayersConstruct.push({ id: `ID_PLAYER_${interer + 1}`, life: initialLife })
-      interer++
-    }
+    arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
+      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife })
+    )
     setPlayers(arrPlayersConstruct)
   }
-
+  
 
 
   return (

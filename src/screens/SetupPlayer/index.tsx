@@ -13,11 +13,10 @@ import { GameSetupContext } from "../../context/GameSetupContext";
 const SetupPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const { setNumberPlayers,   initialLife, handleSetPlayers, players } = useContext(GameSetupContext);
+  const { setNumberPlayers,   initialLife, handleSetPlayers } = useContext(GameSetupContext);
   const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
     handleSetPlayers(value, initialLife)
-    
     if (value === 1 || value === 3) {
       navigate("/game")
       return;
