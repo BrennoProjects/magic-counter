@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import { FC, ReactNode, useCallback } from "react";
 import { useState, createContext } from "react";
 
 export const enum ValuesPosition {
@@ -23,7 +23,8 @@ interface GameSetupDataStructure {
   setNumberPlayers: (value: number) => void;
   setPositionPlayers: (value: ValuesPosition) => void;
   setPlayers?: (value: StartPlayer[]) => void;
-  handleSetPlayers: (numberPlayers:number, initialLife:number)=>void
+  handleSetPlayers: (numberPlayers:number, initialLife:number)=>void,
+  handleLifePlayer: (idPlayer: 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4', isSum: boolean)=>void
 }
 
 
@@ -43,7 +44,8 @@ const initialGameSetup = {
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
-  handleSetPlayers: ()=>undefined 
+  handleSetPlayers: ()=>undefined,
+  handleLifePlayer: ()=>undefined
 };
 
 export const GameSetupContext =
@@ -73,6 +75,16 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     )
     setPlayers(arrPlayersConstruct)
   }
+  const handleLifePlayer = (idPlayer: 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4', isSum: boolean) =>{
+    players.forEach(
+      (index) => {
+          if(index.id===idPlayer){
+              isSum ? index.life ++ : index.life --
+          }
+          console.log(index)
+      }    
+    )
+  }
 
   return (
     <GameSetupContext.Provider
@@ -84,7 +96,8 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         positionPlayers,
         setPositionPlayers,
         players,
-        handleSetPlayers
+        handleSetPlayers,
+        handleLifePlayer
       }}
     >
       {children}
