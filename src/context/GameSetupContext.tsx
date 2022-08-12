@@ -32,23 +32,17 @@ interface GameSetupProps {
   children: ReactNode;
 }
 
-const startPlayers:StartPlayer[] = [
-  {
-    id: '',
-    life: 0,
-  }
-]
+
 
 
 const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
   positionPlayers: ValuesPosition.unset,
-  players: startPlayers,
+  players: [{id:'', life: 0}],
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
-  setPlayers: () => undefined,
   handleSetPlayers: ()=>undefined 
 };
 
@@ -58,6 +52,7 @@ export const GameSetupContext =
 
 
 const GameSetup: FC<GameSetupProps> = (props) => {
+
   const { children } = props;
   const [initialLife, setInitialLife] = useState<number>(
     initialGameSetup.initialLife
@@ -69,18 +64,15 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     initialGameSetup.positionPlayers
   );
   const [players, setPlayers] = useState<StartPlayer[]>(
-    startPlayers
+    initialGameSetup.players
   );
   
   const handleSetPlayers = (numberPlayers: number, initialLife: number) => {
-    let arrPlayersConstruct = []
-    arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
+    let arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
       (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife })
     )
     setPlayers(arrPlayersConstruct)
   }
-  
-
 
   return (
     <GameSetupContext.Provider
