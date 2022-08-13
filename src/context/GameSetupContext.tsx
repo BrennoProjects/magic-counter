@@ -14,6 +14,8 @@ type StartPlayer = {
   life: number;
 }
 
+type PlayerID = 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4' 
+
 interface GameSetupDataStructure {
   initialLife: number;
   numberPlayers: number;
@@ -24,7 +26,7 @@ interface GameSetupDataStructure {
   setPositionPlayers: (value: ValuesPosition) => void;
   setPlayers?: (value: StartPlayer[]) => void;
   handleSetPlayers: (numberPlayers:number, initialLife:number)=>void,
-  handleLifePlayer: (idPlayer: 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4', isSum: boolean)=>void
+  handleLifePlayer: (idPlayer: PlayerID, isSum: boolean)=>void
 }
 
 
@@ -75,11 +77,11 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     )
     setPlayers(arrPlayersConstruct)
   }
-  const handleLifePlayer = (idPlayer: 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4', isSum: boolean) =>{
+  const handleLifePlayer = (idPlayer: PlayerID, isSum: boolean) =>{
     players.forEach(
       (index) => {
           if(index.id===idPlayer){
-              isSum ? index.life ++ : index.life --
+              index.life +=  isSum ? 1 : -1
           }
           console.log(index)
       }    
