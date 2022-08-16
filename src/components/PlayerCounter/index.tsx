@@ -1,5 +1,7 @@
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from "react"
+import { useContext, useState } from "react"
 import type { FC } from "react"
+import type { PlayerID } from "../../context/GameSetupContext"
+import { GameSetupContext } from "../../context/GameSetupContext"
 
 import * as S from "./style"
 import HeartIcon from "../../assets/HeartIcon"
@@ -11,12 +13,15 @@ import Button from "../button"
 interface PlayerCounterProps {
   rotate?: string |"rotate(90deg)" | "rotate(-90deg)" | "rotate(180deg)" ,
   isLateral?: boolean,
+  life: number,
+  id: PlayerID,
+
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
-  const { rotate = 'unset', isLateral = false } = props
-
+  const {handleLifePlayer} = useContext(GameSetupContext)
+  let { rotate = 'unset', isLateral = false, life, id } = props 
   const handleDrawer = (value: boolean) => {
     if (value === false) {
       setOpenDrawer(true)
@@ -24,21 +29,21 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       setOpenDrawer(false)
     }
   }
-
+  
   return (
     <S.WrapperPlayer rotate={rotate} isLateral={isLateral}>
       <S.Wrapper>
-        <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
+        <Button onClick={()=>handleLifePlayer(id, true)} height="45%" width="100%" border={false} background="transparent">
           <></>
         </Button>
-        <Button onClick={()=>console.log('teste')} height="45%" width="100%" border={false} background="transparent">
+        <Button onClick={()=>handleLifePlayer(id, false)} height="45%" width="100%" border={false} background="transparent">
           <></>
         </Button>
       </S.Wrapper>
       <S.WrapperText>
         <PlusIcon width={40} height={40} />
         <>
-          <S.TextHud fontSize="80px">40</S.TextHud>
+          <S.TextHud fontSize="80px">{life}</S.TextHud>
           <HeartIcon width={30} height={30} />
         </>
         <MinusIcon width={40} height={40} />
