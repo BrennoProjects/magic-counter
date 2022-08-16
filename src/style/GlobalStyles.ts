@@ -8,6 +8,7 @@ export default createGlobalStyle`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 body, html {
   margin: 0px;
