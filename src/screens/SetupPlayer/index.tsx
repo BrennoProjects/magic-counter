@@ -1,5 +1,5 @@
+import { useContext, useCallback} from "react";
 import type { FC } from "react";
-import { useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
@@ -13,20 +13,20 @@ import { GameSetupContext } from "../../context/GameSetupContext";
 const SetupPlayer: FC = () => {
 
   const navigate = useNavigate();
-  const { setNumberPlayers } = useContext(GameSetupContext);
 
-  const handleSetPlayer = useCallback((value: number):void => {
-    console.log(value)
+  const { setNumberPlayers,   initialLife, handleSetPlayers } = useContext(GameSetupContext);
+  const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
-      if(value === 1 || value === 3){
-        navigate("/game")
-      }
-      else if(value === 2 || value === 4){
-        navigate("/setup-position")
-      }
+    handleSetPlayers(value, initialLife)
+    if (value === 1 || value === 3) {
+      navigate("/game")
+      return;
     }
-  ,[])
-
+    if (value === 2 || value === 4) {
+      navigate("/setup-position")
+      return;
+    }
+  }, [])
   return (
     <S.WrapperSetupPlayer>
       <NavBar>
@@ -42,7 +42,7 @@ const SetupPlayer: FC = () => {
       <Title>Number of players</Title>
       <S.WrapperButtons>
         <Button
-          onClick={() => handleSetPlayer(1 )}
+          onClick={() => handleSetPlayer(1)}
           width="9.375rem"
         >
           <Text>1</Text>
