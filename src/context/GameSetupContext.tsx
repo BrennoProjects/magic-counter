@@ -14,7 +14,7 @@ type StartPlayer = {
   life: number;
 }
 
-type PlayerID = 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4' 
+export type PlayerID = 'ID_PLAYER_1'|'ID_PLAYER_2'|'ID_PLAYER_3'|'ID_PLAYER_4' 
 
 interface GameSetupDataStructure {
   initialLife: number;
@@ -78,14 +78,16 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     setPlayers(arrPlayersConstruct)
   }
   const handleLifePlayer = (idPlayer: PlayerID, isSum: boolean) =>{
-    players.forEach(
-      (index) => {
+    let newArr = [...players]
+    newArr.forEach(
+      (index, key) => {
           if(index.id===idPlayer){
-              index.life +=  isSum ? 1 : -1
+            index.life +=  isSum ? 1 : -1
           }
           console.log(index)
       }    
     )
+    setPlayers(newArr)
   }
 
   return (
