@@ -32,7 +32,7 @@ const Game: FC<GameProps> = () => {
   ), [])
   const tableForThree = useCallback(() => (
     <>
-        <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} />
+      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} />
       <S.Rotate>
         <PlayerCounter rotate="rotate(180deg)" life={players[1].life} id={'ID_PLAYER_2'}/>
         <PlayerCounter  life={players[2].life} id={'ID_PLAYER_3'}/>
@@ -41,11 +41,11 @@ const Game: FC<GameProps> = () => {
   ), [])
   const tableForFour = useCallback(() => (
     <>
-      <S.Rotate>
+      <S.Rotate top={'-2.5vh'}>
         <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'}/>
         <PlayerCounter  life={players[1].life} id={'ID_PLAYER_2'}/>
       </S.Rotate>
-      <S.Rotate>
+      <S.Rotate bottom={'-2.5vh'}>
         <PlayerCounter rotate="rotate(180deg)" life={players[2].life} id={'ID_PLAYER_3'}/>
         <PlayerCounter  life={players[3].life} id={'ID_PLAYER_4'}/>
       </S.Rotate>
@@ -53,14 +53,12 @@ const Game: FC<GameProps> = () => {
   ), [])
   const tableForFourLateral = useCallback(() => (
     <>
-      <S.Rotate>
         <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'}/>
-        <PlayerCounter  life={players[1].life} id={'ID_PLAYER_2'}/>
-      </S.Rotate>
       <S.Rotate>
-        <PlayerCounter rotate="rotate(180deg)" life={players[2].life} id={'ID_PLAYER_3'}/>
-        <PlayerCounter  life={players[3].life} id={'ID_PLAYER_4'}/>
+        <PlayerCounter rotate="rotate(180deg)" life={players[1].life} id={'ID_PLAYER_2'}/>
+        <PlayerCounter  life={players[2].life} id={'ID_PLAYER_3'}/>
       </S.Rotate>
+        <PlayerCounter  life={players[3].life} id={'ID_PLAYER_4'}/>
     </>
   ), [])
 
@@ -71,7 +69,7 @@ const Game: FC<GameProps> = () => {
     if(number===2 && position===ValuesPosition.TwoPlayers) return tableForTwo()
     if(number===2 && position===ValuesPosition.TwoPlayersLateral) return tableForTwoLateral()
     if(number===4 && position===ValuesPosition.FourPlayers) return tableForFour()
-    if(number===4 && position===ValuesPosition.TwoPlayersLateral) return tableForFourLateral() 
+    if(number===4 && position===ValuesPosition.FourPlayersLateral) return tableForFourLateral() 
    }
   }
   return (
