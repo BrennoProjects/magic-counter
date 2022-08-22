@@ -98,7 +98,7 @@ export const Hr = styled.hr<Hr>`
   background-color: ${({ theme }) => theme.title};
   border-radius: 50px;
   border: none;
-  position: ${(handleDrawer)=>handleDrawer? 'absolute':'unset'};
-  top: ${(handleDrawer)=>handleDrawer? '5px': 'unset'};
+  position: absolute;
+  top: 0;
 `;
 
