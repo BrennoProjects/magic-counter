@@ -1,8 +1,9 @@
+import type { ValuesPosition } from "../../context/GameSetupContext";
 import styled from "styled-components";
 
-interface RotateProps{
-  top ?: string;
-  bottom ?: string;
+interface RotateProps {
+  top?: string;
+  MarginBottom?: string;
 }
 
 export const Game = styled.div`
@@ -14,15 +15,14 @@ export const Game = styled.div`
   height: 100%;
   overflow-x: hidden;
 `;
+
 export const Rotate = styled.div<RotateProps>`
   transform: rotate(90deg);
   height: 98vw;
-  width: 52vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  position: fixed;
-  top: ${({top}) => top};
-  bottom: ${({bottom}) => bottom}
+  margin-bottom: ${({MarginBottom})=>MarginBottom};
 `;
+
