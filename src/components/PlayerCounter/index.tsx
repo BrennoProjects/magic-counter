@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import type { FC } from "react"
-import type { PlayerID } from "../../context/GameSetupContext"
+import { PlayerID } from "../../context/GameSetupContext"
 import { GameSetupContext } from "../../context/GameSetupContext"
 
 import * as S from "./style"
@@ -12,16 +12,18 @@ import Button from "../button"
 
 interface PlayerCounterProps {
   rotate?: string |"rotate(90deg)" | "rotate(-90deg)" | "rotate(180deg)" ,
-  isLateral?: boolean,
+  width: string,
+  height: string,
   life: number,
   id: PlayerID,
-
+  marginBottom ?: string,
+  position?: 'relative'|'fixed'|'absolute'
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
   const {handleLifePlayer} = useContext(GameSetupContext)
-  let { rotate = 'unset', isLateral = false, life, id } = props 
+  let { rotate = 'unset', width, height, life, id, marginBottom='unset', position='relative' } = props 
   const handleDrawer = (value: boolean) => {
     if (value === false) {
       setOpenDrawer(true)
@@ -31,7 +33,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   }
   
   return (
-    <S.WrapperPlayer rotate={rotate} isLateral={isLateral}>
+    <S.WrapperPlayer rotate={rotate} width={width} height={height} marginBottom={marginBottom} position={position}>
       <S.Wrapper>
         <Button onClick={()=>handleLifePlayer(id, true)} height="45%" width="100%" border={false} background="transparent">
           <></>
@@ -43,8 +45,8 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       <S.WrapperText>
         <PlusIcon width={40} height={40} />
         <>
-          <S.TextHud fontSize="80px">{life}</S.TextHud>
-          <HeartIcon width={30} height={30} />
+          <S.TextHud fontSize="3.5em">{life}</S.TextHud>
+          <HeartIcon width={25} height={25} />
         </>
         <MinusIcon width={40} height={40} />
         <S.Drawer handleDrawer={openDrawer}>
