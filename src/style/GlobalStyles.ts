@@ -9,6 +9,7 @@ export default createGlobalStyle`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 }
 body, html {
   margin: 0px;
