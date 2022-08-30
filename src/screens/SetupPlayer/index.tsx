@@ -14,7 +14,7 @@ const SetupPlayer: FC = () => {
 
   const navigate = useNavigate();
 
-  const { setNumberPlayers,   initialLife, handleSetPlayers } = useContext(GameSetupContext);
+  const { setNumberPlayers,   initialLife, handleSetPlayers, setPositionPlayers } = useContext(GameSetupContext);
   const handleSetPlayer = useCallback((value: number): void => {
     setNumberPlayers(value)
     handleSetPlayers(value, initialLife)
