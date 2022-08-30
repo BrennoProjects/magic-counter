@@ -5,7 +5,10 @@ interface TextHud {
 }
 interface WrapperPlayer {
   rotate: string;
-  isLateral: boolean;
+  width: string;
+  height: string;
+  marginBottom: string;
+  position: string;
 }
 interface Drawer {
   handleDrawer: boolean;
@@ -13,6 +16,9 @@ interface Drawer {
 interface Hr{
   handleDrawer: boolean;
 }
+
+
+
 export const Wrapper = styled.div`
   height: 90%;
   width: 100%;
@@ -40,14 +46,15 @@ color: transparent;
 bottom: 0;
 `
 export const WrapperPlayer = styled.div<WrapperPlayer>`
-  width: ${({isLateral})=> isLateral ? '49vh': '95%'};
-  height: ${({isLateral})=> isLateral ? '100vw': '49%'};
+  width: ${({width})=> width};
+  height: ${({height})=> height};
   display: flex;
 
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  position: relative;
+  position: ${({position})=>position};
+  margin-bottom: ${({marginBottom})=>marginBottom};
 
   background-color: ${({ theme }) => theme.purple};
   border-top-left-radius: 10px;
@@ -56,6 +63,7 @@ export const WrapperPlayer = styled.div<WrapperPlayer>`
   border-bottom-right-radius: 10px;
   transform: ${({ rotate }) => rotate || "unset"};
 `;
+
 export const WrapperText = styled.div`
   height: 100%;
   width: 50%;
@@ -75,9 +83,9 @@ export const TextHud = styled.span<TextHud>`
 
 export const Drawer = styled.div<Drawer>`
   width: 100%;
-  height: ${({ handleDrawer }) => (handleDrawer ? "100%" : "10%")};
+  height: ${({ handleDrawer }) => (handleDrawer ? "100%" : "25px")};
   max-height: 100%;
-  min-height: 10%;
+  min-height: 25px;
   position: absolute;
   transition: 1s;
 
@@ -94,11 +102,11 @@ export const Drawer = styled.div<Drawer>`
 
 export const Hr = styled.hr<Hr>`
   width: 50%;
-  height: 6px;
+  height: 8px;
   background-color: ${({ theme }) => theme.title};
   border-radius: 50px;
   border: none;
   position: absolute;
-  top: 0;
+  top: 2px;
 `;
 
