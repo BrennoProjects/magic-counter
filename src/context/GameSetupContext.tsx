@@ -1,4 +1,5 @@
-import { FC, ReactNode, useCallback } from "react";
+import { ReactNode  } from "react";
+import type { FC } from "react"
 import { useState, createContext } from "react";
 
 export const enum ValuesPosition {
