@@ -21,6 +21,7 @@ const Button: FC<ButtonProps> = (props) => {
     rounded = false,
     onClick
   } = props;
+
   return (
     <S.WrapperButton
       width={width}
