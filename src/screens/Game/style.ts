@@ -1,9 +1,8 @@
-import type { ValuesPosition } from "../../context/GameSetupContext";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface RotateProps {
-  top?: string;
-  MarginBottom?: string;
+  top?: string
+  MarginBottom?: string
 }
 
 export const Game = styled.div`
@@ -23,6 +22,5 @@ export const Rotate = styled.div<RotateProps>`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: ${({MarginBottom})=>MarginBottom};
+  margin-bottom: ${({ MarginBottom }) => MarginBottom};
 `;
-

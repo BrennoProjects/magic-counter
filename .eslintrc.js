@@ -19,6 +19,11 @@ module.exports = {
   plugins: [
     'react'
   ],
+  settings: {
+    react: {
+      version: '18.0.0'
+    }
+  },
   rules: {
     semi: [2, 'always'],
     '@typescript-eslint/semi': [2, 'always']
