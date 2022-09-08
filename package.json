@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .js,.ts,.tsx",
+    "lint": "tsc && eslint \"src/**/*.{js,ts,tsx}\" --quiet --fix",
     "lint:fix": "eslint . --fix --ext .js,.ts,.tsx",
     "prepare": "husky install"
   },
