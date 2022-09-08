@@ -23,7 +23,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const { handleLifePlayer } = useContext(GameSetupContext);
   const { rotate = 'unset', width, height, life, id, marginBottom = 'unset', position = 'relative' } = props;
   const handleDrawer = (value: boolean): void => {
-    if (value) {
+    if (!value) {
       setOpenDrawer(true);
     } else {
       setOpenDrawer(false);
