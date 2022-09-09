@@ -16,6 +16,9 @@ interface DrawerProps {
 interface HrProps {
   handleDrawer: boolean
 }
+interface WrapperCountersProps{
+  handleDrawer: boolean
+}
 
 export const Wrapper = styled.div`
   height: 90%;
@@ -99,6 +102,7 @@ export const Drawer = styled.div<DrawerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const Hr = styled.hr<HrProps>`
@@ -109,4 +113,15 @@ export const Hr = styled.hr<HrProps>`
   border: none;
   position: absolute;
   top: 2px;
+`;
+
+export const WrapperCounters = styled.div<WrapperCountersProps>`
+  width: 100%;
+  height: ${({ handleDrawer }) => !handleDrawer ? '100%' : '0%'};
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  bottom: ${({ handleDrawer }) => !handleDrawer ? '-200px' : '50%'};
+  transition: 1s;
 `;

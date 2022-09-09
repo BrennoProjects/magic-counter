@@ -7,6 +7,10 @@ import HeartIcon from '../../assets/HeartIcon';
 import MinusIcon from '../../assets/MinusIcon';
 import PlusIcon from '../../assets/PlusIcon';
 import Button from '../button';
+import CommanderDamage from '../../assets/CommanderDamage';
+import Infect from '../../assets/infect';
+import Poison from '../../assets/poison';
+import Monarch from '../../assets/monarch';
 
 interface PlayerCounterProps {
   rotate?: string | 'rotate(90deg)' | 'rotate(-90deg)' | 'rotate(180deg)'
@@ -49,6 +53,12 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         <MinusIcon width={40} height={40} />
         <S.Drawer handleDrawer={openDrawer}>
           <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
+          <S.WrapperCounters handleDrawer={openDrawer}>
+            <CommanderDamage/>
+            <Infect/>
+            <Poison/>
+            <Monarch/>
+          </S.WrapperCounters>
         </S.Drawer>
       </S.WrapperText>
     </S.WrapperPlayer>
