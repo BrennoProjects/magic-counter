@@ -24,7 +24,7 @@ interface PlayerCounterProps {
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const { handleLifePlayer } = useContext(GameSetupContext);
+  const { handleLifePlayer, handleSetCounter } = useContext(GameSetupContext);
   const { rotate = 'unset', width, height, life, id, marginBottom = 'unset', position = 'relative' } = props;
   const handleDrawer = (value: boolean): void => {
     if (!value) {
@@ -54,16 +54,16 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         <S.Drawer handleDrawer={openDrawer}>
           <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
           <S.WrapperCounters handleDrawer={openDrawer}>
-            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+            <Button onClick={() => handleSetCounter(id, 'commanderDamage')} border={false} background="transparent" height="100px">
               <CommanderDamage />
             </Button>
-            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+            <Button onClick={() => handleSetCounter(id, 'infect')} border={false} background="transparent" height="100px">
               <Infect />
             </Button>
-            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+            <Button onClick={() => handleSetCounter(id, 'poison')} border={false} background="transparent" height="100px">
               <Poison />
             </Button>
-            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+            <Button onClick={() => handleSetCounter(id, 'monarch')} border={false} background="transparent" height="100px">
               <Monarch />
             </Button>
           </S.WrapperCounters>
