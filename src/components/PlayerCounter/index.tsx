@@ -54,10 +54,18 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         <S.Drawer handleDrawer={openDrawer}>
           <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
           <S.WrapperCounters handleDrawer={openDrawer}>
-            <CommanderDamage/>
-            <Infect/>
-            <Poison/>
-            <Monarch/>
+            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+              <CommanderDamage />
+            </Button>
+            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+              <Infect />
+            </Button>
+            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+              <Poison />
+            </Button>
+            <Button onClick={() => console.log('test')} border={false} background="transparent" height="100px">
+              <Monarch />
+            </Button>
           </S.WrapperCounters>
         </S.Drawer>
       </S.WrapperText>
