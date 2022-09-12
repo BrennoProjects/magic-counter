@@ -1,16 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
 import { PlayerID, GameSetupContext } from '../../context/GameSetupContext';
 
 import * as S from './style';
 import HeartIcon from '../../assets/HeartIcon';
-import MinusIcon from '../../assets/MinusIcon';
-import PlusIcon from '../../assets/PlusIcon';
 import Button from '../button';
 import CommanderDamage from '../../assets/CommanderDamage';
-import Infect from '../../assets/infect';
+import Infect from '../../assets/Infect';
 import Poison from '../../assets/poison';
-import Monarch from '../../assets/monarch';
+import Monarch from '../../assets/Monarch';
 
 interface PlayerCounterProps {
   rotate?: string | 'rotate(90deg)' | 'rotate(-90deg)' | 'rotate(180deg)'
@@ -24,8 +22,10 @@ interface PlayerCounterProps {
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const { handleLifePlayer, handleSetCounter } = useContext(GameSetupContext);
+  const { handleLifePlayer, handleSetCounter, players } = useContext(GameSetupContext);
   const { rotate = 'unset', width, height, life, id, marginBottom = 'unset', position = 'relative' } = props;
+  const counters = useRef(players.find(x => x.id === id)?.counters);
+  const lengthCounters = useRef(Object.keys(counters).length);
   const handleDrawer = (value: boolean): void => {
     if (!value) {
       setOpenDrawer(true);
@@ -33,24 +33,23 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       setOpenDrawer(false);
     }
   };
-
+  useEffect(() => console.log(lengthCounters), [life]);
   return (
     <S.WrapperPlayer rotate={rotate} width={width} height={height} marginBottom={marginBottom} position={position}>
-      <S.Wrapper>
-        <Button onClick={() => handleLifePlayer(id, true)} height="45%" width="100%" border={false} background="transparent">
-          <></>
-        </Button>
-        <Button onClick={() => handleLifePlayer(id, false)} height="45%" width="100%" border={false} background="transparent">
-          <></>
-        </Button>
-      </S.Wrapper>
-      <S.WrapperText>
-        <PlusIcon width={40} height={40} />
+      <S.WrapperLife>
+        <S.WrapperCount>
+          <Button onClick={() => handleLifePlayer(id, true)} height="49%" width="100%" border={false} background="transparent">
+            <></>
+          </Button>
+          <Button onClick={() => handleLifePlayer(id, false)} height="49%" width="100%" border={false} background="transparent">
+            <></>
+          </Button>
+        </S.WrapperCount>
         <>
-          <S.TextHud fontSize="3.5em">{life}</S.TextHud>
-          <HeartIcon width={25} height={25} />
+          <S.TextHud fontSize="4em">{life}</S.TextHud>
+          <HeartIcon width={30} height={30} />
         </>
-        <MinusIcon width={40} height={40} />
+      </S.WrapperLife>
         <S.Drawer handleDrawer={openDrawer}>
           <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
           <S.WrapperCounters handleDrawer={openDrawer}>
@@ -68,7 +67,6 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
             </Button>
           </S.WrapperCounters>
         </S.Drawer>
-      </S.WrapperText>
     </S.WrapperPlayer>
   );
 };

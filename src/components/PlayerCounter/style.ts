@@ -20,8 +20,8 @@ interface WrapperCountersProps{
   handleDrawer: boolean
 }
 
-export const Wrapper = styled.div`
-  height: 90%;
+export const WrapperCount = styled.div`
+  height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
@@ -68,7 +68,7 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   transform: ${({ rotate }) => rotate};
 `;
 
-export const WrapperText = styled.div`
+export const WrapperLife = styled.div`
   height: 100%;
   width: 50%;
   display: flex;
