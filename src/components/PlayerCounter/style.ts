@@ -54,7 +54,6 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   height: ${({ height }) => height};
   display: flex;
 
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   position: ${({ position }) => position};
@@ -75,6 +74,7 @@ export const WrapperLife = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 `;
 
 export const TextHud = styled.span<TextHudProps>`
