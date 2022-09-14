@@ -9,6 +9,7 @@ interface WrapperPlayerProps {
   height: string
   marginBottom: string
   position: string
+  lenghtCounters: number
 }
 interface DrawerProps {
   handleDrawer: boolean
@@ -16,37 +17,43 @@ interface DrawerProps {
 interface HrProps {
   handleDrawer: boolean
 }
-interface WrapperCountersProps{
+interface WrapperCountersProps {
   handleDrawer: boolean
 }
+interface WrapperLifeProps {
+  lenghtCounters: number
+}
+interface WrapperCountProps {
+  lenghtCounters: number
+}
 
-export const WrapperCount = styled.div`
+export const WrapperCount = styled.div<WrapperCountProps>`
   height: 100%;
-  width: 100%;
+  width: ${({ lenghtCounters }) => lenghtCounters > 0 ? '50%' : '100%'};
   position: absolute;
   top: 0;
 `;
 
 export const addButton = styled.button`
-position: absolute;
-z-index: 99999;
-height: 50%;
-width: 100%;
-background-color: transparent;
-border: transparent;
-color: transparent;
-top: 0;
+  position: absolute;
+  z-index: 99999;
+  height: 50%;
+  width: 100%;
+  background-color: transparent;
+  border: transparent;
+  color: transparent;
+  top: 0;
 `;
 
 export const minorButton = styled.button`
-position: absolute;
-z-index: 99999;
-height: 50%;
-width: 100%;
-background-color: transparent;
-border: transparent;
-color: transparent;
-bottom: 0;
+  position: absolute;
+  z-index: 99999;
+  height: 50%;
+  width: 100%;
+  background-color: transparent;
+  border: transparent;
+  color: transparent;
+  bottom: 0;
 `;
 
 export const WrapperPlayer = styled.div<WrapperPlayerProps>`
@@ -54,7 +61,7 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   height: ${({ height }) => height};
   display: flex;
 
-  justify-content: space-around;
+  justify-content: ${({ lenghtCounters }) => lenghtCounters === 0 ? 'space-around' : 'space-between'};
   align-items: center;
   position: ${({ position }) => position};
   margin-bottom: ${({ marginBottom }) => marginBottom};
@@ -65,16 +72,19 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   transform: ${({ rotate }) => rotate};
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
 `;
 
-export const WrapperLife = styled.div`
+export const WrapperLife = styled.div<WrapperLifeProps>`
   height: 100%;
-  width: 50%;
+  width: ${({ lenghtCounters }) => lenghtCounters === 0 ? '50%' : '100%'};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  scroll-snap-align: start;
+  flex: 0 0 50%
 `;
 
 export const TextHud = styled.span<TextHudProps>`
@@ -87,7 +97,7 @@ export const TextHud = styled.span<TextHudProps>`
 
 export const Drawer = styled.div<DrawerProps>`
   width: 100%;
-  height: ${({ handleDrawer }) => (handleDrawer ? '100%' : '25px')};
+  height: ${({ handleDrawer }) => handleDrawer ? '100%' : '25px'};
   max-height: 100%;
   min-height: 25px;
   position: absolute;
@@ -117,11 +127,11 @@ export const Hr = styled.hr<HrProps>`
 
 export const WrapperCounters = styled.div<WrapperCountersProps>`
   width: 100%;
-  height: ${({ handleDrawer }) => !handleDrawer ? '100%' : '0%'};
+  height: ${({ handleDrawer }) => (!handleDrawer ? '100%' : '0%')};
   display: flex;
   align-items: center;
   justify-content: space-around;
   position: absolute;
-  bottom: ${({ handleDrawer }) => !handleDrawer ? '-200px' : '50%'};
+  bottom: ${({ handleDrawer }) => (!handleDrawer ? '-200px' : '50%')};
   transition: 1s;
 `;

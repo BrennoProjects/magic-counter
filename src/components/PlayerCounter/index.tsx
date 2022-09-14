@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import type { FC } from 'react';
 import { PlayerID, GameSetupContext } from '../../context/GameSetupContext';
 
@@ -22,14 +22,25 @@ interface PlayerCounterProps {
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const { handleLifePlayer, handleSetCounter, players } = useContext(GameSetupContext);
+  const { handleLifePlayer, handleSetCounter, handleChangeCounters, players } = useContext(GameSetupContext);
   const { rotate = 'unset', width, height, life, id, marginBottom = 'unset', position = 'relative' } = props;
   const [counters, setCounters] = useState(players.find(x => x.id === id)?.counters);
   const handleSetCounters = useCallback(() => setCounters(players.find(x => x.id === id)?.counters), []);
-  // const lengthCounters = useRef(Object.keys(counters).length);
+  const [lengthCounters, setLengthCounters] = useState<number>(0);
+  const handleSetLengtCounters = useCallback(() => {
+    if (Object.keys(counters).length !== undefined) {
+      setLengthCounters(Object.keys(counters).length);
+    } else {
+      setLengthCounters(0);
+    }
+  }, []);
+
   useEffect(() => {
     handleSetCounters();
+    handleSetLengtCounters();
+    console.log(lengthCounters);
   });
+
   const handleDrawer = (value: boolean): void => {
     if (!value) {
       setOpenDrawer(true);
@@ -37,15 +48,15 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       setOpenDrawer(false);
     }
   };
-  const handleShowCounters = (counterValue: number | undefined, svg: JSX.Element): JSX.Element | undefined => {
+  const handleShowCounters = (counter: 'infect' | 'poison' | 'commanderDamage', counterValue: number | undefined, svg: JSX.Element): JSX.Element | undefined => {
     if (counterValue !== undefined) {
       return (
-        <S.WrapperLife>
-          <S.WrapperCount>
-            <Button onClick={() => handleLifePlayer(id, true)} height="49%" width="50%" border={false} background="transparent">
+        <S.WrapperLife lenghtCounters={lengthCounters}>
+          <S.WrapperCount lenghtCounters={lengthCounters}>
+            <Button onClick={() => handleChangeCounters(id, true, counter)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
-            <Button onClick={() => handleLifePlayer(id, false)} height="49%" width="50%" border={false} background="transparent">
+            <Button onClick={() => handleChangeCounters(id, false, counter)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
           </S.WrapperCount>
@@ -55,19 +66,17 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
           </>
         </S.WrapperLife>
       );
-    } else {
-      return (<></>);
     }
   };
 
   return (
-    <S.WrapperPlayer rotate={rotate} width={width} height={height} marginBottom={marginBottom} position={position}>
-      <S.WrapperLife>
-        <S.WrapperCount>
-          <Button onClick={() => handleLifePlayer(id, true)} height="49%" width="100%" border={false} background="transparent">
+    <S.WrapperPlayer rotate={rotate} width={width} height={height} marginBottom={marginBottom} position={position} lenghtCounters={lengthCounters}>
+      <S.WrapperLife lenghtCounters={lengthCounters}>
+        <S.WrapperCount lenghtCounters={lengthCounters}>
+          <Button onClick={() => handleLifePlayer(id, true)} height="48%" width="100%" border={false} background="transparent">
             <></>
           </Button>
-          <Button onClick={() => handleLifePlayer(id, false)} height="49%" width="100%" border={false} background="transparent">
+          <Button onClick={() => handleLifePlayer(id, false)} height="48%" width="100%" border={false} background="transparent">
             <></>
           </Button>
         </S.WrapperCount>
@@ -76,9 +85,9 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
           <HeartIcon width={30} height={30} />
         </>
       </S.WrapperLife>
-      {handleShowCounters(counters?.commanderDamage, CommanderDamage())}
-      {handleShowCounters(counters?.infect, Infect())}
-      {handleShowCounters(counters?.poison, Poison())}
+      {handleShowCounters('commanderDamage', counters?.commanderDamage, CommanderDamage())}
+      {handleShowCounters('infect', counters?.infect, Infect())}
+      {handleShowCounters('poison', counters?.poison, Poison())}
       <S.Drawer handleDrawer={openDrawer}>
         <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
         <S.WrapperCounters handleDrawer={openDrawer}>
