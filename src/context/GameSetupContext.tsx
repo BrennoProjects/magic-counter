@@ -34,6 +34,7 @@ interface GameSetupDataStructure {
   handleSetPlayers: (numberPlayers: number, initialLife: number) => void
   handleLifePlayer: (idPlayer: PlayerID, isSum: boolean) => void
   handleSetCounter: (idPlayer: PlayerID, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
+  handleChangeCounters: (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
 }
 
 interface GameSetupProps {
@@ -50,7 +51,8 @@ const initialGameSetup = {
   setPositionPlayers: () => undefined,
   handleSetPlayers: () => undefined,
   handleLifePlayer: () => undefined,
-  handleSetCounter: () => undefined
+  handleSetCounter: () => undefined,
+  handleChangeCounters: () => undefined
 };
 
 export const GameSetupContext =
@@ -115,6 +117,44 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     setPlayers(newArr);
   };
 
+  const handleChangeCounters = (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch'): void => {
+    const newArr = [...players];
+    newArr.forEach(
+      (index, key) => {
+        if (index.id === idPlayer) {
+          switch (counter) {
+            case 'infect':
+              if (index.counters.infect !== undefined) {
+                index.counters.infect += isSum ? 1 : -1;
+                if (index.counters.infect < 0) delete index.counters.infect;
+              }
+              break;
+            case 'poison':
+              if (index.counters.poison !== undefined) {
+                index.counters.poison += isSum ? 1 : -1;
+                if (index.counters.poison < 0) delete index.counters.poison;
+              }
+              break;
+            case 'commanderDamage':
+              if (index.counters.commanderDamage !== undefined) {
+                index.counters.commanderDamage += isSum ? 1 : -1;
+                if (index.counters.commanderDamage < 0) delete index.counters.commanderDamage;
+              }
+              break;
+            case 'monarch':
+              if (index.counters.infect !== undefined) {
+                index.counters.monarch = true;
+                if (index.counters.infect < 0) delete index.counters.infect;
+              }
+              break;
+          }
+        }
+        console.log(index);
+      }
+    );
+    setPlayers(newArr);
+  };
+
   return (
     <GameSetupContext.Provider
       value={{
@@ -127,7 +167,8 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         players,
         handleSetPlayers,
         handleLifePlayer,
-        handleSetCounter
+        handleSetCounter,
+        handleChangeCounters
       }}
     >
       {children}
