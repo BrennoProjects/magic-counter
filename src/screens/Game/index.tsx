@@ -9,14 +9,14 @@ const Game: FC = () => {
   const { numberPlayers, positionPlayers, players } = useContext(GameSetupContext);
   const tableForOne = useCallback(() => (
     <>
-      <PlayerCounter life={players[0].life} id={'ID_PLAYER_1'} width={'98%'} height={'98%'} />
+      <PlayerCounter life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'98vh'} />
     </>
   ), []);
 
   const tableForTwo = useCallback(() => (
     <>
-      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98%'} height={'49.5%'} />
-      <PlayerCounter life={players[1].life} id={'ID_PLAYER_2'} width={'98%'} height={'49.5%'} />
+      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'49.5vh'} />
+      <PlayerCounter life={players[1].life} id={'ID_PLAYER_2'} width={'98vw'} height={'49.5vh'} />
     </>
   ), []);
   const tableForTwoLateral = useCallback(() => (
@@ -27,8 +27,8 @@ const Game: FC = () => {
   ), []);
   const tableForThree = useCallback(() => (
     <>
-      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'39.5vh'} marginBottom={'5vh'} />
-      <S.Rotate MarginBottom="6.5vh">
+      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'38.5vh'} marginTop="-2vh"/>
+      <S.Rotate marginBottom="4vh">
         <PlayerCounter rotate="rotate(180deg)" life={players[1].life} id={'ID_PLAYER_2'} width={'58.5vh'} height={'48vw'} />
         <PlayerCounter life={players[2].life} id={'ID_PLAYER_3'} width={'58.5vh'} height={'48vw'} />
       </S.Rotate>
@@ -37,23 +37,23 @@ const Game: FC = () => {
   const tableForFour = useCallback(() => (
     <>
       <S.Rotate>
-        <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'49.5vh'} height={'48vw'}/>
-        <PlayerCounter life={players[1].life} id={'ID_PLAYER_2'} width={'49.5vh'} height={'48vw'}/>
+        <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'49.5vh'} height={'48vw'} />
+        <PlayerCounter life={players[1].life} id={'ID_PLAYER_2'} width={'49.5vh'} height={'48vw'} />
       </S.Rotate>
       <S.Rotate>
-        <PlayerCounter rotate="rotate(180deg)" life={players[2].life} id={'ID_PLAYER_3'} width={'49.5vh'} height={'48vw'}/>
-        <PlayerCounter life={players[3].life} id={'ID_PLAYER_4'} width={'49.5vh'} height={'48vw'}/>
+        <PlayerCounter rotate="rotate(180deg)" life={players[2].life} id={'ID_PLAYER_3'} width={'49.5vh'} height={'48vw'} />
+        <PlayerCounter life={players[3].life} id={'ID_PLAYER_4'} width={'49.5vh'} height={'48vw'} />
       </S.Rotate>
     </>
   ), []);
   const tableForFourLateral = useCallback(() => (
     <>
-      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'28.7vh'} marginBottom={'69.5vh'} position={'fixed'}/>
-      <S.Rotate>
-        <PlayerCounter rotate="rotate(180deg)" life={players[1].life} id={'ID_PLAYER_2'} width={'40vh'} height={'48vw'}/>
-        <PlayerCounter life={players[2].life} id={'ID_PLAYER_3'} width={'40vh'} height={'48vw'}/>
+      <PlayerCounter rotate="rotate(180deg)" life={players[0].life} id={'ID_PLAYER_1'} width={'98vw'} height={'28.7vh'} position={'fixed'} />
+      <S.Rotate isFourLateral>
+        <PlayerCounter rotate="rotate(180deg)" life={players[1].life} id={'ID_PLAYER_2'} width={'40vh'} height={'48vw'} />
+        <PlayerCounter life={players[2].life} id={'ID_PLAYER_3'} width={'40vh'} height={'48vw'} />
       </S.Rotate>
-      <PlayerCounter life={players[3].life} id={'ID_PLAYER_4'} width={'98vw'} height={'28.7vh'} marginBottom={'-69.5vh'} position={'fixed'}/>
+      <PlayerCounter life={players[3].life} id={'ID_PLAYER_4'} width={'98vw'} height={'28.7vh'} position={'fixed'} />
     </>
   ), []);
 
