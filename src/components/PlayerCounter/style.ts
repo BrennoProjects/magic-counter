@@ -4,15 +4,16 @@ interface TextHudProps {
   fontSize: string
 }
 interface WrapperPlayerProps {
-  rotate: string
   width: string
   height: string
   marginBottom: string
   position: string
   lenghtCounters: number
+  handleDrawer: boolean
 }
 interface DrawerProps {
   handleDrawer: boolean
+  totalHeight: string
 }
 interface HrProps {
   handleDrawer: boolean
@@ -26,10 +27,28 @@ interface WrapperLifeProps {
 interface WrapperCountProps {
   lenghtCounters: number
 }
+interface WrapperProps {
+  width: string
+  height: string
+  marginBottom: string
+  rotate: string
+  marginTop: string
+}
 
+export const Wrapper = styled.div<WrapperProps>`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  
+  margin-top: ${({ marginTop }) => marginTop};
+  margin-bottom: ${({ marginBottom }) => marginBottom};
+  position: relative;
+  display: flex;
+  align-items: center;
+  transform: ${({ rotate }) => rotate};
+`;
 export const WrapperCount = styled.div<WrapperCountProps>`
   height: 100%;
-  width: ${({ lenghtCounters }) => lenghtCounters > 0 ? '50%' : '100%'};
+  width: ${({ lenghtCounters }) => (lenghtCounters > 0 ? '50%' : '100%')};
   position: absolute;
   top: 0;
 `;
@@ -61,30 +80,28 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   height: ${({ height }) => height};
   display: flex;
 
-  justify-content: ${({ lenghtCounters }) => lenghtCounters === 0 ? 'space-around' : 'space-between'};
+  justify-content: ${({ lenghtCounters }) =>
+    lenghtCounters === 0 ? 'space-around' : 'space-between'};
   align-items: center;
   position: ${({ position }) => position};
-  margin-bottom: ${({ marginBottom }) => marginBottom};
-
   background-color: ${({ theme }) => theme.purple};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  transform: ${({ rotate }) => rotate};
-  overflow-x: scroll;
+  overflow-x: ${({ handleDrawer }) => (handleDrawer ? 'hidden' : 'scroll')};
   scroll-snap-type: x mandatory;
 `;
 
 export const WrapperLife = styled.div<WrapperLifeProps>`
   height: 100%;
-  width: ${({ lenghtCounters }) => lenghtCounters === 0 ? '50%' : '100%'};
+  width: ${({ lenghtCounters }) => (lenghtCounters === 0 ? '50%' : '100%')};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   scroll-snap-align: start;
-  flex: 0 0 50%
+  flex: 0 0 50%;
 `;
 
 export const TextHud = styled.span<TextHudProps>`
@@ -97,22 +114,24 @@ export const TextHud = styled.span<TextHudProps>`
 
 export const Drawer = styled.div<DrawerProps>`
   width: 100%;
-  height: ${({ handleDrawer }) => handleDrawer ? '100%' : '25px'};
+  height: ${({ handleDrawer, totalHeight }) =>
+    handleDrawer ? totalHeight : '25px'};
   max-height: 100%;
   min-height: 25px;
   position: absolute;
-  transition: 1s;
-
+  transition: 0.5s;
   background-color: ${({ theme }) => theme.darkPurple};
-  border-top-left-radius: ${({ handleDrawer }) => handleDrawer ? '8px' : '0px'};
-  border-top-right-radius: ${({ handleDrawer }) => handleDrawer ? '8px' : '0px'};
+  border-top-left-radius: ${({ handleDrawer }) =>
+    handleDrawer ? '8px' : '0px'};
+  border-top-right-radius: ${({ handleDrawer }) =>
+    handleDrawer ? '8px' : '0px'};
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
-  bottom: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  bottom: 0px;
 `;
 
 export const Hr = styled.hr<HrProps>`
