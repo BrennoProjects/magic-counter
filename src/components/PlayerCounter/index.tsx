@@ -25,7 +25,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const { handleLifePlayer, handleSetCounter, handleChangeCounters, players } = useContext(GameSetupContext);
   const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = 'unset', marginTop = 'unset', position = 'relative' } = props;
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const [counters, setCounters] = useState(players.find(x => x.id === id)?.counters);
+  const [counters, setCounters] = useState<any>(players.find(x => x.id === id)?.counters);
   const [lengthCounters, setLengthCounters] = useState<number>(0);
   const handleSetCounters = useCallback(() => setCounters(players.find(x => x.id === id)?.counters), []);
   const handleSetLengthCounters = useCallback(() => {
