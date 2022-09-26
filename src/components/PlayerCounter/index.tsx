@@ -25,9 +25,11 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const { handleLifePlayer, handleSetCounter, handleChangeCounters, players } = useContext(GameSetupContext);
   const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = 'unset', marginTop = 'unset', position = 'relative' } = props;
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const [monarch, setMonarch] = useState<boolean | any>(players.find(x => x.id === id)?.monarch);
   const [counters, setCounters] = useState<any>(players.find(x => x.id === id)?.counters);
   const [lengthCounters, setLengthCounters] = useState<number>(0);
   const handleSetCounters = useCallback(() => setCounters(players.find(x => x.id === id)?.counters), []);
+  const handleSetMonarch = useCallback(() => setMonarch(players.find(x => x.id === id)?.monarch), []);
   const handleSetLengthCounters = useCallback(() => {
     if (Object.keys(counters).length !== undefined) {
       setLengthCounters(Object.keys(counters).length);
@@ -39,6 +41,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   useEffect(() => {
     handleSetCounters();
     handleSetLengthCounters();
+    handleSetMonarch();
     console.log(lengthCounters);
   });
 
@@ -49,6 +52,16 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       setOpenDrawer(false);
     }
   };
+  const handleMonarch = (isMonarch: boolean): any => {
+    if (isMonarch) {
+      return (
+        <S.WrapperMonarch>
+          <Monarch />
+        </S.WrapperMonarch>
+      );
+    }
+  };
+
   const handleShowCounters = (counter: 'infect' | 'poison' | 'commanderDamage', counterValue: number | undefined, svg: JSX.Element): JSX.Element | undefined => {
     if (counterValue !== undefined) {
       return (
@@ -86,6 +99,7 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         lenghtCounters={lengthCounters}
         handleDrawer={openDrawer}
       >
+        {handleMonarch(monarch)}
         <S.WrapperLife lenghtCounters={lengthCounters}>
           <S.WrapperCount lenghtCounters={lengthCounters}>
             <Button onClick={() => handleLifePlayer(id, true)} height="48%" width="100%" border={false} background="transparent">
