@@ -35,6 +35,28 @@ interface WrapperProps {
   marginTop: string
 }
 
+export const WrapperMonarch = styled.div`
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: auto;
+  background-color: ${({ theme }) => theme.darkPurple};
+  padding: 7px;
+  border-radius: 50px;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  svg{
+    width: 100%;
+    height: 100%;
+    top: 10px;
+  }
+`;
+
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -132,6 +154,7 @@ export const Drawer = styled.div<DrawerProps>`
   align-items: center;
   overflow: hidden;
   bottom: 0px;
+  z-index: 2;
 `;
 
 export const Hr = styled.hr<HrProps>`

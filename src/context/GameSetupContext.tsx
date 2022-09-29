@@ -12,11 +12,11 @@ export const enum ValuesPosition {
 interface StartPlayer {
   id: string
   life: number
+  monarch?: boolean
   counters: {
     infect?: number
     poison?: number
     commanderDamage?: number
-    monarch?: boolean
   }
 }
 
@@ -34,7 +34,7 @@ interface GameSetupDataStructure {
   handleSetPlayers: (numberPlayers: number, initialLife: number) => void
   handleLifePlayer: (idPlayer: PlayerID, isSum: boolean) => void
   handleSetCounter: (idPlayer: PlayerID, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
-  handleChangeCounters: (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
+  handleChangeCounters: (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage') => void
 }
 
 interface GameSetupProps {
@@ -45,7 +45,7 @@ const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
   positionPlayers: ValuesPosition.unset,
-  players: [{ id: '', life: 0, counters: {} }],
+  players: [{ id: '', life: 0, monarch: false, counters: {} }],
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
@@ -75,7 +75,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
 
   const handleSetPlayers = (numberPlayers: number, initialLife: number): void => {
     const arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
-      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife, counters: {} })
+      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife, monarch: false, counters: {} })
     );
     setPlayers(arrPlayersConstruct);
   };
@@ -95,7 +95,9 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     const newArr = [...players];
     newArr.forEach(
       (index, key) => {
-        if (index.id === idPlayer) {
+        if (index.id !== idPlayer && counter === 'monarch') {
+          index.monarch = false;
+        } else if (index.id === idPlayer) {
           switch (counter) {
             case 'infect':
               index.counters.infect = 0;
@@ -107,7 +109,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
               index.counters.commanderDamage = 0;
               break;
             case 'monarch':
-              index.counters.monarch = true;
+              index.monarch = true;
               break;
           }
         }
@@ -117,7 +119,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     setPlayers(newArr);
   };
 
-  const handleChangeCounters = (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch'): void => {
+  const handleChangeCounters = (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage'): void => {
     const newArr = [...players];
     newArr.forEach(
       (index, key) => {
@@ -139,12 +141,6 @@ const GameSetup: FC<GameSetupProps> = (props) => {
               if (index.counters.commanderDamage !== undefined) {
                 index.counters.commanderDamage += isSum ? 1 : -1;
                 if (index.counters.commanderDamage < 0) delete index.counters.commanderDamage;
-              }
-              break;
-            case 'monarch':
-              if (index.counters.infect !== undefined) {
-                index.counters.monarch = true;
-                if (index.counters.infect < 0) delete index.counters.infect;
               }
               break;
           }
