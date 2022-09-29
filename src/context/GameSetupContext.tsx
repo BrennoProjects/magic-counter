@@ -12,6 +12,12 @@ export const enum ValuesPosition {
 interface StartPlayer {
   id: string
   life: number
+  counters: {
+    infect?: number
+    poison?: number
+    commanderDamage?: number
+    monarch?: boolean
+  }
 }
 
 export type PlayerID = 'ID_PLAYER_1' | 'ID_PLAYER_2' | 'ID_PLAYER_3' | 'ID_PLAYER_4';
@@ -27,6 +33,8 @@ interface GameSetupDataStructure {
   setPlayers?: (value: StartPlayer[]) => void
   handleSetPlayers: (numberPlayers: number, initialLife: number) => void
   handleLifePlayer: (idPlayer: PlayerID, isSum: boolean) => void
+  handleSetCounter: (idPlayer: PlayerID, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
+  handleChangeCounters: (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
 }
 
 interface GameSetupProps {
@@ -37,12 +45,14 @@ const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
   positionPlayers: ValuesPosition.unset,
-  players: [{ id: '', life: 0 }],
+  players: [{ id: '', life: 0, counters: {} }],
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
   handleSetPlayers: () => undefined,
-  handleLifePlayer: () => undefined
+  handleLifePlayer: () => undefined,
+  handleSetCounter: () => undefined,
+  handleChangeCounters: () => undefined
 };
 
 export const GameSetupContext =
@@ -65,7 +75,7 @@ const GameSetup: FC<GameSetupProps> = (props) => {
 
   const handleSetPlayers = (numberPlayers: number, initialLife: number): void => {
     const arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
-      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife })
+      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife, counters: {} })
     );
     setPlayers(arrPlayersConstruct);
   };
@@ -75,6 +85,69 @@ const GameSetup: FC<GameSetupProps> = (props) => {
       (index, key) => {
         if (index.id === idPlayer) {
           index.life += isSum ? 1 : -1;
+        }
+        console.log(index);
+      }
+    );
+    setPlayers(newArr);
+  };
+  const handleSetCounter = (idPlayer: PlayerID, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch'): void => {
+    const newArr = [...players];
+    newArr.forEach(
+      (index, key) => {
+        if (index.id === idPlayer) {
+          switch (counter) {
+            case 'infect':
+              index.counters.infect = 0;
+              break;
+            case 'poison':
+              index.counters.poison = 0;
+              break;
+            case 'commanderDamage':
+              index.counters.commanderDamage = 0;
+              break;
+            case 'monarch':
+              index.counters.monarch = true;
+              break;
+          }
+        }
+        console.log(index);
+      }
+    );
+    setPlayers(newArr);
+  };
+
+  const handleChangeCounters = (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch'): void => {
+    const newArr = [...players];
+    newArr.forEach(
+      (index, key) => {
+        if (index.id === idPlayer) {
+          switch (counter) {
+            case 'infect':
+              if (index.counters.infect !== undefined) {
+                index.counters.infect += isSum ? 1 : -1;
+                if (index.counters.infect < 0) delete index.counters.infect;
+              }
+              break;
+            case 'poison':
+              if (index.counters.poison !== undefined) {
+                index.counters.poison += isSum ? 1 : -1;
+                if (index.counters.poison < 0) delete index.counters.poison;
+              }
+              break;
+            case 'commanderDamage':
+              if (index.counters.commanderDamage !== undefined) {
+                index.counters.commanderDamage += isSum ? 1 : -1;
+                if (index.counters.commanderDamage < 0) delete index.counters.commanderDamage;
+              }
+              break;
+            case 'monarch':
+              if (index.counters.infect !== undefined) {
+                index.counters.monarch = true;
+                if (index.counters.infect < 0) delete index.counters.infect;
+              }
+              break;
+          }
         }
         console.log(index);
       }
@@ -93,7 +166,9 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         setPositionPlayers,
         players,
         handleSetPlayers,
-        handleLifePlayer
+        handleLifePlayer,
+        handleSetCounter,
+        handleChangeCounters
       }}
     >
       {children}
