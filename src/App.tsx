@@ -1,11 +1,11 @@
-import { useRoutes } from "react-router-dom";
-import routes from "./routes";
+import { useRoutes } from 'react-router-dom';
+import routes from './routes';
 
-function App() {
+function App (): JSX.Element {
   const Screens = useRoutes(routes);
- 
+
   return (
-    <div className="App">
+    <div className='App'>
       {Screens}
     </div>
   );

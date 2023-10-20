@@ -1,4 +1,4 @@
-const Logo = () => {
+const Logo = (): JSX.Element => {
   return (
     <svg
       width="201"
@@ -66,4 +66,4 @@ const Logo = () => {
   );
 };
 
-export default Logo
+export default Logo;

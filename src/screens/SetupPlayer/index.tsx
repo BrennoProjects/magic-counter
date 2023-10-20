@@ -1,37 +1,37 @@
-import { useContext, useCallback} from "react";
-import type { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useCallback } from 'react';
+import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import * as S from "./style";
-import BackArrow from "../../assets/BackArrow";
-import Button from "../../components/button";
-import Text from "../../components/Text";
-import Title from "../../components/Title";
-import NavBar from "../../components/NavBar";
-import { GameSetupContext } from "../../context/GameSetupContext";
+import * as S from './style';
+import BackArrow from '../../assets/BackArrow';
+import Button from '../../components/button';
+import Text from '../../components/Text';
+import Title from '../../components/Title';
+import NavBar from '../../components/NavBar';
+import { GameSetupContext } from '../../context/GameSetupContext';
 
 const SetupPlayer: FC = () => {
-
   const navigate = useNavigate();
-  const { setNumberPlayers,   initialLife, handleSetPlayers } = useContext(GameSetupContext);
+  const { setNumberPlayers, initialLife, handleSetPlayers } = useContext(GameSetupContext);
+
   const handleSetPlayer = useCallback((value: number): void => {
-    setNumberPlayers(value)
-    handleSetPlayers(value, initialLife)
+    setNumberPlayers(value);
+    handleSetPlayers(value, initialLife);
     if (value === 1 || value === 3) {
-      navigate("/game")
+      navigate('/game');
       return;
     }
     if (value === 2 || value === 4) {
-      navigate("/setup-position")
-      return;
+      navigate('/setup-position');
     }
-  }, [])
+  }, []);
+
   return (
     <S.WrapperSetupPlayer>
       <NavBar>
         <Button
-          width={"30px"}
-          height={"30px"}
+          width="30px"
+          height="30px"
           border={false}
           onClick={() => navigate(-1)}
         >
