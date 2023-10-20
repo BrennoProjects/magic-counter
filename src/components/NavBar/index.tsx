@@ -1,8 +1,8 @@
-import type { FC } from "react";
-import * as S from "./style";
+import type { FC } from 'react';
+import * as S from './style';
 
 interface NavBarProps {
-  children: JSX.Element;
+  children: JSX.Element
 }
 
 const NavBar: FC<NavBarProps> = (props) => {

@@ -1,26 +1,22 @@
-import { useCallback, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import type { FC } from "react";
+import { useCallback, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { FC } from 'react';
 
-import * as S from "./style";
-import BackArrow from "../../assets/BackArrow";
-import Button from "../../components/button";
-import Text from "../../components/Text";
-import Title from "../../components/Title";
-import NavBar from "../../components/NavBar";
-import PlayerIcon from "../../assets/PlayerIcon";
-import { GameSetupContext, ValuesPosition } from "../../context/GameSetupContext";
-
+import * as S from './style';
+import BackArrow from '../../assets/BackArrow';
+import Button from '../../components/button';
+import Title from '../../components/Title';
+import NavBar from '../../components/NavBar';
+import PlayerIcon from '../../assets/PlayerIcon';
+import { GameSetupContext, ValuesPosition } from '../../context/GameSetupContext';
 
 const SetupPosition: FC = () => {
-
   const navigate = useNavigate();
-  const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext)
+  const { numberPlayers, setPositionPlayers } = useContext(GameSetupContext);
   const handleSetPosition = useCallback((value: ValuesPosition): void => {
-    setPositionPlayers(value)
-    navigate("/game")
-  }, [])
-
+    setPositionPlayers(value);
+    navigate('/game');
+  }, []);
 
   const tableForTwo = useCallback((): JSX.Element => (
     <S.WrapperButtons>
@@ -57,7 +53,7 @@ const SetupPosition: FC = () => {
         </Button>
       </S.WrapperButton>
     </S.WrapperButtons>
-  ), [])
+  ), []);
 
   const tableForFour = useCallback((): JSX.Element => (
     <S.WrapperButtons>
@@ -69,18 +65,18 @@ const SetupPosition: FC = () => {
         >
           <S.WrapperIcons>
             <S.RotateIcons>
-              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+              <S.WrapperIcon transform="rotate(180deg)" >
                 <PlayerIcon />
               </S.WrapperIcon>
-              <S.WrapperIcon rotateMiddle={true}>
+              <S.WrapperIcon >
                 <PlayerIcon />
               </S.WrapperIcon>
             </S.RotateIcons>
             <S.RotateIcons>
-              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+              <S.WrapperIcon transform="rotate(180deg)" >
                 <PlayerIcon />
               </S.WrapperIcon>
-              <S.WrapperIcon rotateMiddle={true}>
+              <S.WrapperIcon >
                 <PlayerIcon />
               </S.WrapperIcon>
             </S.RotateIcons>
@@ -98,10 +94,10 @@ const SetupPosition: FC = () => {
               <PlayerIcon />
             </S.WrapperIcon>
             <S.RotateIcons>
-              <S.WrapperIcon transform="rotate(180deg)" rotateMiddle={true}>
+              <S.WrapperIcon transform="rotate(180deg)" >
                 <PlayerIcon />
               </S.WrapperIcon>
-              <S.WrapperIcon rotateMiddle={true}>
+              <S.WrapperIcon >
                 <PlayerIcon />
               </S.WrapperIcon>
             </S.RotateIcons>
@@ -112,14 +108,14 @@ const SetupPosition: FC = () => {
         </Button>
       </S.WrapperButton>
     </S.WrapperButtons>
-  ), [])
+  ), []);
 
   return (
     <S.WrapperSetupPosition>
       <NavBar>
         <Button
-          width={"30px"}
-          height={"30px"}
+          width="30px"
+          height="30px"
           border={false}
           onClick={() => navigate(-1)}
         >

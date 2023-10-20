@@ -1,4 +1,4 @@
-const PlayerIcon = () => {
+const PlayerIcon = (): JSX.Element => {
   return (
     <svg
       width="35"
@@ -15,4 +15,4 @@ const PlayerIcon = () => {
   );
 };
 
-export default PlayerIcon
+export default PlayerIcon;
