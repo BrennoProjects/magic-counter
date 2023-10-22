@@ -6,6 +6,7 @@ interface WrapperButtonProps {
   border: boolean
   background: string
   rounded: boolean
+  margin: string
 }
 
 export const WrapperButton = styled.button<WrapperButtonProps>`
@@ -16,4 +17,5 @@ export const WrapperButton = styled.button<WrapperButtonProps>`
   background-color: ${({ background }) => background};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
+  margin: ${({ margin }) => margin};
 `;

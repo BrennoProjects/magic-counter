@@ -6,6 +6,8 @@ interface TextHudProps {
 interface WrapperPlayerProps {
   width: string
   height: string
+  maxWidth: string
+  maxHeight: string
   marginBottom: string
   position: string
   lenghtCounters: number
@@ -30,6 +32,8 @@ interface WrapperCountProps {
 interface WrapperProps {
   width: string
   height: string
+  maxWidth: string
+  maxHeight: string
   marginBottom: string
   rotate: string
   marginTop: string
@@ -59,8 +63,10 @@ export const WrapperMonarch = styled.div`
 
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width};
+  overflow-y: hidden;
   height: ${({ height }) => height};
-  
+  max-width: ${({ maxWidth }) => maxWidth};
+  max-height: ${({ maxHeight }) => maxHeight};
   margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: ${({ marginBottom }) => marginBottom};
   position: relative;
@@ -100,6 +106,8 @@ export const minorButton = styled.button`
 export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  max-width: ${({ maxWidth }) => maxWidth};
+  max-height: ${({ maxHeight }) => maxHeight};
   display: flex;
 
   justify-content: ${({ lenghtCounters }) =>
@@ -111,7 +119,7 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  overflow-x: ${({ handleDrawer }) => (handleDrawer ? 'hidden' : 'scroll')};
+  overflow-x: ${({ handleDrawer }) => (handleDrawer ? 'hidden' : 'auto')};
   scroll-snap-type: x mandatory;
 `;
 
@@ -119,6 +127,8 @@ export const WrapperLife = styled.div<WrapperLifeProps>`
   height: 100%;
   width: ${({ lenghtCounters }) => (lenghtCounters === 0 ? '50%' : '100%')};
   display: flex;
+  max-width: 400px;
+  max-height: 398px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

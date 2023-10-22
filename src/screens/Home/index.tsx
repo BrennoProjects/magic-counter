@@ -17,7 +17,7 @@ const Home: FC = () => {
           <Text>Start</Text>
         </Button>
       </S.WrapperTextButton>
-      <S.WrapperAboutUs>
+      {/* <S.WrapperAboutUs>
         <Button
           onClick={() => navigate('/about-us')}
           border={false}
@@ -26,7 +26,7 @@ const Home: FC = () => {
         >
           <S.AboutUs>About us</S.AboutUs>
         </Button>
-      </S.WrapperAboutUs>
+      </S.WrapperAboutUs> */}
     </S.WrapperHome>
   );
 };

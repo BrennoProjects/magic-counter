@@ -11,18 +11,24 @@ export const Game = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
-  height: 100%;
+  max-width: 400px;
+  max-height:800px;
+  width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
+  position: relative;
 `;
 
 export const Rotate = styled.div<RotateProps>`
   transform: rotate(90deg);
-  height: 98vw;
+  height: 100vw;
+  width: 50vh;
+  max-width: 400px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: ${({ isFourLateral }) =>
     isFourLateral !== undefined ? '-3vh' : 'unset'};
   margin-bottom: ${({ isFourLateral, marginBottom }) =>

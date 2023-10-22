@@ -13,5 +13,6 @@ export default createGlobalStyle`
 }
 body, html {
   margin: 0px;
+  background-color: ${({ theme }) => theme.background};
 }
 `;

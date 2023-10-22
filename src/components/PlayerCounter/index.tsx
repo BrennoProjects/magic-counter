@@ -14,16 +14,20 @@ interface PlayerCounterProps {
   rotate?: string | 'rotate(90deg)' | 'rotate(-90deg)' | 'rotate(180deg)'
   width: string
   height: string
+  maxHeight?: string
+  maxWidth?: string
   life: number
   id: PlayerID
   marginBottom?: string
   marginTop?: string
   position?: 'relative' | 'fixed' | 'absolute'
+  setShowMenu?: (value: boolean) => void
+
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   const { handleLifePlayer, handleSetCounter, handleChangeCounters, players } = useContext(GameSetupContext);
-  const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = 'unset', marginTop = 'unset', position = 'relative' } = props;
+  const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = 'unset', marginTop = 'unset', position = 'relative', maxHeight = '', maxWidth = '' } = props;
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [monarch, setMonarch] = useState<boolean | any>(players.find(x => x.id === id)?.monarch);
   const [counters, setCounters] = useState<any>(players.find(x => x.id === id)?.counters);
@@ -46,10 +50,14 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   });
 
   const handleDrawer = (value: boolean): void => {
-    if (!value) {
-      setOpenDrawer(true);
-    } else {
-      setOpenDrawer(false);
+    if (props.setShowMenu !== null && props?.setShowMenu !== undefined) {
+      if (!value) {
+        setOpenDrawer(true);
+        props.setShowMenu(false);
+      } else {
+        setOpenDrawer(false);
+        props.setShowMenu(true);
+      }
     }
   };
   const handleMonarch = (isMonarch: boolean): any => {
@@ -87,6 +95,8 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
     <S.Wrapper
       width={width}
       height={height}
+      maxHeight={maxHeight}
+      maxWidth={maxWidth}
       marginBottom={marginBottom}
       marginTop={marginTop}
       rotate={rotate}
@@ -94,6 +104,8 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       <S.WrapperPlayer
         width={width}
         height={height}
+        maxHeight={maxHeight}
+        maxWidth={maxWidth}
         marginBottom={marginBottom}
         position={position}
         lenghtCounters={lengthCounters}

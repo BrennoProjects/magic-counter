@@ -8,11 +8,17 @@ interface WrapperButtonProps{
 }
 export const WrapperButtons = styled.div`
   display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  max-width: 400px;
+  width: 100%
 `;
 export const WrapperSetupPosition = styled.div`
   width: 85vw;
   height: 90vh;
   position: relative;
+  max-width: 400px;
+  max-height: 800px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -29,9 +35,9 @@ export const RotateIcons = styled.div`
   justify-content: space-around;
 `;
 export const WrapperButton = styled.div<WrapperButtonProps>`
-  margin: 5vw;
   width: 120px;
   height: 233px;
+  max-width: 300px;
 `;
 export const WrapperIcons = styled.div`
   display: flex;

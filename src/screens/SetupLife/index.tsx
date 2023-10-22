@@ -35,13 +35,16 @@ const SetupLifePage: FC = () => {
       <S.WrapperButtons>
         <Button
           onClick={() => handleValueLife(60)}
-          width="9.375rem"
+          width="100%"
+          margin='0px 10px 0px 0px'
         >
           <Text>60</Text>
         </Button>
         <Button
           onClick={() => handleValueLife(40)}
-          width="9.375rem"
+          width="100%"
+          margin='0px 0px 0px 10px'
+
         >
           <Text>40</Text>
         </Button>
@@ -49,22 +52,24 @@ const SetupLifePage: FC = () => {
       <S.WrapperButtons>
         <Button
          onClick={() => handleValueLife(30)}
-          width="9.375rem"
+          width="100%"
+          margin='0px 10px 0px 0px'
         >
           <Text>30</Text>
         </Button>
         <Button
           onClick={() => handleValueLife(20)}
-          width="9.375rem"
+          width="100%"
+          margin='0px 0px 0px 10px'
         >
           <Text>20</Text>
         </Button>
       </S.WrapperButtons>
-      <S.WrapperButtons>
+      {/* <S.WrapperButtons>
         <Button onClick={() => navigate('/set-players')}>
           <Text>custom</Text>
         </Button>
-      </S.WrapperButtons>
+      </S.WrapperButtons> */}
     </S.WrapperSetupLifePage>
   );
 };
