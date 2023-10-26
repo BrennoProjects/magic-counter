@@ -15,10 +15,8 @@ const TableForTwoLateral = (): JSX.Element => {
         rotate="rotate(-90deg)"
         life={players[0].life}
         id="ID_PLAYER_1"
-        width="49.5vh"
+        width="47vh"
         height="98vw"
-        maxHeight="390px"
-        maxWidth="390px"
         setShowMenu={(value: boolean) => setShowMenu(value)}
       />
       <br />
@@ -26,10 +24,8 @@ const TableForTwoLateral = (): JSX.Element => {
         rotate="rotate(90deg)"
         life={players[1].life}
         id="ID_PLAYER_2"
-        width="49.5vh"
+        width="47vh"
         height="98vw"
-        maxHeight="390px"
-        maxWidth="390px"
         setShowMenu={(value: boolean) => setShowMenu(value)}
       />
     </>

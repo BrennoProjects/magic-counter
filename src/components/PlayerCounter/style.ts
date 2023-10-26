@@ -6,8 +6,6 @@ interface TextHudProps {
 interface WrapperPlayerProps {
   width: string
   height: string
-  maxWidth: string
-  maxHeight: string
   marginBottom: string
   position: string
   lenghtCounters: number
@@ -32,11 +30,10 @@ interface WrapperCountProps {
 interface WrapperProps {
   width: string
   height: string
-  maxWidth: string
-  maxHeight: string
   marginBottom: string
   rotate: string
   marginTop: string
+  margin: string
 }
 
 export const WrapperMonarch = styled.div`
@@ -63,10 +60,8 @@ export const WrapperMonarch = styled.div`
 
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width};
-  overflow-y: hidden;
   height: ${({ height }) => height};
-  max-width: ${({ maxWidth }) => maxWidth};
-  max-height: ${({ maxHeight }) => maxHeight};
+  margin: ${({ margin }) => margin};
   margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: ${({ marginBottom }) => marginBottom};
   position: relative;
@@ -106,8 +101,6 @@ export const minorButton = styled.button`
 export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  max-width: ${({ maxWidth }) => maxWidth};
-  max-height: ${({ maxHeight }) => maxHeight};
   display: flex;
 
   justify-content: ${({ lenghtCounters }) =>
@@ -127,8 +120,6 @@ export const WrapperLife = styled.div<WrapperLifeProps>`
   height: 100%;
   width: ${({ lenghtCounters }) => (lenghtCounters === 0 ? '50%' : '100%')};
   display: flex;
-  max-width: 400px;
-  max-height: 398px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -140,7 +131,7 @@ export const TextHud = styled.span<TextHudProps>`
   margin: 0;
   font-family: ${({ theme }) => theme.font};
   font-size: ${({ fontSize }) => fontSize};
-  color: ${({ theme }) => theme.title};
+  color: ${({ theme }) => theme.white};
   font-weight: 600;
 `;
 
@@ -170,7 +161,7 @@ export const Drawer = styled.div<DrawerProps>`
 export const Hr = styled.hr<HrProps>`
   width: 50%;
   height: 8px;
-  background-color: ${({ theme }) => theme.title};
+  background-color: ${({ theme }) => theme.white};
   border-radius: 50px;
   border: none;
   position: absolute;

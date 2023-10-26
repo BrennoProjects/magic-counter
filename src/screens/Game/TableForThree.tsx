@@ -17,8 +17,6 @@ const TableForThree = (): JSX.Element => {
         id="ID_PLAYER_1"
         width="100vw"
         height="47vh"
-        maxHeight="480px"
-        maxWidth="400px"
         marginBottom='10px'
         setShowMenu={(value: boolean) => setShowMenu(value)}
       />
@@ -29,8 +27,6 @@ const TableForThree = (): JSX.Element => {
           id="ID_PLAYER_2"
           width="100%"
           height="48vw"
-          maxWidth="450px"
-          maxHeight="195px"
           setShowMenu={(value: boolean) => setShowMenu(value)}
         />
         <PlayerCounter
@@ -38,8 +34,6 @@ const TableForThree = (): JSX.Element => {
           id="ID_PLAYER_3"
           width="100%"
           height="48vw"
-          maxWidth="450px"
-          maxHeight="195px"
           setShowMenu={(value: boolean) => setShowMenu(value)}
         />
       </S.Rotate>

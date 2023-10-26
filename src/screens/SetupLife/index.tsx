@@ -12,9 +12,9 @@ import { GameSetupContext } from '../../context/GameSetupContext';
 
 const SetupLifePage: FC = () => {
   const navigate = useNavigate();
-  const { setInitialLife } = useContext(GameSetupContext);
-
-  const handleValueLife = useCallback((value: number): void => {
+  const { setInitialLife, handleInitialGameState } = useContext(GameSetupContext);
+  const handleValueLife = useCallback((value: 20 | 30 | 40 | 60 | number): void => {
+    handleInitialGameState();
     setInitialLife(value);
     navigate('/setup-players');
   }, []);

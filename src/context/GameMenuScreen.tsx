@@ -2,11 +2,16 @@ import { FC, ReactNode, createContext, useState } from 'react';
 
 interface GameMenuDataStructure {
   showMenuScreen: boolean
+  isFirstRender: boolean
   setShowMenuScreen: (value: boolean) => void
+  setIsFirstRender: (value: boolean) => void
+
 }
 const initialGameMenuScreen: GameMenuDataStructure = {
   showMenuScreen: false,
-  setShowMenuScreen: () => undefined
+  isFirstRender: true,
+  setShowMenuScreen: () => undefined,
+  setIsFirstRender: () => undefined
 };
 interface GameMenuScreenProps {
   children: ReactNode
@@ -17,11 +22,14 @@ export const GameMenuContext =
 
 const GameMenu: FC<GameMenuScreenProps> = (props) => {
   const { children } = props;
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
   const valuesProvider: GameMenuDataStructure = {
     showMenuScreen: showMenu,
-    setShowMenuScreen: (value: boolean) => setShowMenu(value)
+    isFirstRender: isFirstRender,
+    setShowMenuScreen: (value: boolean) => setShowMenu(value),
+    setIsFirstRender: (value: boolean) => setIsFirstRender(value)
   };
 
   return (

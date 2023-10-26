@@ -22,9 +22,12 @@ function App (): JSX.Element {
   useEffect(() => {
     accessIsAuthorized();
   }, []);
+
   return (
     <div className='App'>
-      <div style={{ maxWidth: '400px', maxHeight: '800px', overflow: 'hidden' }}>
+      <div style={{
+        overflow: 'hidden'
+      }}>
       {Screens}
       </div>
     </div>

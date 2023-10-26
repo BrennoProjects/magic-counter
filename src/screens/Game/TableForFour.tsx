@@ -11,82 +11,48 @@ const TableForFour = (): JSX.Element => {
   return (
     <>
     <Menu show={showMenu} buttonPosition='middle'/>
-      <div
-        style={{
-          width: '100vw',
-          maxWidth: '400px',
-          height: '48vh',
-          maxHeight: '800px',
-          display: 'flex',
-          justifyContent: 'start',
-          flexDirection: 'column',
-          alignContent: 'center'
-        }}
-      >
-        <S.Rotate>
+        <S.Rotate isFourTop={true} >
           <PlayerCounter
             rotate="rotate(180deg)"
             life={players[0].life}
             id="ID_PLAYER_1"
-            width="47vh"
+            width="48vh"
             height="49vw"
-            maxWidth="395px"
-            maxHeight="185px"
-            marginTop="10px"
+            margin='0.5vw'
             setShowMenu={(value: boolean) => setShowMenu(value)}
 
           />
           <PlayerCounter
             life={players[1].life}
             id="ID_PLAYER_2"
-            width="47vh"
-            height="48vw"
-            maxWidth="395px"
-            maxHeight="190px"
-            marginBottom="10px"
+            width="48vh"
+            height="49vw"
+            margin='0.5vw'
             setShowMenu={(value: boolean) => setShowMenu(value)}
 
           />
         </S.Rotate>
-      </div>
-      <div
-        style={{
-          width: '100vw',
-          maxWidth: '400px',
-          height: '48vh',
-          maxHeight: '800px',
-          display: 'flex',
-          justifyContent: 'end',
-          flexDirection: 'column',
-          alignContent: 'center'
-        }}
-      >
-        <S.Rotate>
+        <S.Rotate isFourBottom={true}>
           <PlayerCounter
             rotate="rotate(180deg)"
             life={players[2].life}
             id="ID_PLAYER_3"
-            width="47vh"
+            width="48vh"
             height="49vw"
-            maxWidth="395px"
-            maxHeight="185px"
-            marginTop="10px"
+            margin='0.5vw'
             setShowMenu={(value: boolean) => setShowMenu(value)}
 
           />
           <PlayerCounter
             life={players[3].life}
             id="ID_PLAYER_4"
-            width="47vh"
-            height="48vw"
-            maxWidth="395px"
-            maxHeight="190px"
-            marginBottom="10px"
+            width="48vh"
+            height="49vw"
+            margin='0.5vw'
             setShowMenu={(value: boolean) => setShowMenu(value)}
 
           />
         </S.Rotate>
-      </div>
     </>
   );
 };

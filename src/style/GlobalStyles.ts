@@ -9,10 +9,14 @@ export default createGlobalStyle`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 body, html {
   margin: 0px;
   background-color: ${({ theme }) => theme.background};
+  overflow: hidden !important;
 }
+*{
+  font-family: ${({ theme }) => theme.font};
+};
 `;

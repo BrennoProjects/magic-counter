@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const WrapperHome = styled.div`
   width: 100vw;
   height: 100vh;
-  max-width: 400px;
-  max-height:800px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -17,12 +15,11 @@ export const AboutUs = styled.p`
   font-family:${({ theme }) => theme.font};
   font-size: 24px;
   font-weight: bolder;
-  color: ${({ theme }) => theme.title};
+  color: ${({ theme }) => theme.white};
   background-color: transparent;
 `;
 
 export const WrapperTextButton = styled.div`
-  width: 250px;
   margin: 10vh 0 20vh;
 `;
 

@@ -15,8 +15,6 @@ const TableForOne = (): JSX.Element => {
         id="ID_PLAYER_1"
         width="100vw"
         height="98vh"
-        maxWidth="400px"
-        maxHeight="800px"
         setShowMenu={(value: boolean) => setShowMenu(value)}
       />
     </>

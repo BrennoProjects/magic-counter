@@ -16,7 +16,6 @@ const TableForTwo = (): JSX.Element => {
         id='ID_PLAYER_1'
         width='100vw'
         height='46vh'
-        maxWidth='400px'
         setShowMenu={(value: boolean) => setShowMenu(value)}
 
       />
@@ -26,7 +25,6 @@ const TableForTwo = (): JSX.Element => {
         width='100vw'
         height='46vh'
         marginTop='15px'
-        maxWidth='400px'
         setShowMenu={(value: boolean) => setShowMenu(value)}
 
       />

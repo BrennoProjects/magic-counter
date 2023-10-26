@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const WrapperSetupLifePage = styled.div`
   width: 85vw;
   height: 90vh;
-  max-width: 400px;
-  max-height:800px;
 
   position: relative;
   background-color: transparent;

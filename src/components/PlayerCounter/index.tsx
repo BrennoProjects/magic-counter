@@ -14,25 +14,33 @@ interface PlayerCounterProps {
   rotate?: string | 'rotate(90deg)' | 'rotate(-90deg)' | 'rotate(180deg)'
   width: string
   height: string
-  maxHeight?: string
-  maxWidth?: string
   life: number
   id: PlayerID
   marginBottom?: string
   marginTop?: string
+  margin?: string
   position?: 'relative' | 'fixed' | 'absolute'
-  setShowMenu?: (value: boolean) => void
+  setShowMenu: (value: boolean) => void
 
 }
 
 const PlayerCounter: FC<PlayerCounterProps> = (props) => {
-  const { handleLifePlayer, handleSetCounter, handleChangeCounters, players } = useContext(GameSetupContext);
-  const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = 'unset', marginTop = 'unset', position = 'relative', maxHeight = '', maxWidth = '' } = props;
-  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const { handleLifePlayer, handleSetCounter, handleChangeCounters, players, handleMenuPlayerController, getPlayer } = useContext(GameSetupContext);
+  const { rotate = 'rotate(0deg)', width, height, life, id, marginBottom = '', margin = '', marginTop = '', position = 'relative' } = props;
+  // const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [monarch, setMonarch] = useState<boolean | any>(players.find(x => x.id === id)?.monarch);
   const [counters, setCounters] = useState<any>(players.find(x => x.id === id)?.counters);
   const [lengthCounters, setLengthCounters] = useState<number>(0);
   const handleSetCounters = useCallback(() => setCounters(players.find(x => x.id === id)?.counters), []);
+
+  const drawerState = (): boolean => {
+    const player = getPlayer(id);
+    if (player !== undefined) {
+      return player.isMenuPlayerOpen;
+    }
+    return false;
+  };
+
   const handleSetMonarch = useCallback(() => setMonarch(players.find(x => x.id === id)?.monarch), []);
   const handleSetLengthCounters = useCallback(() => {
     if (Object.keys(counters).length !== undefined) {
@@ -50,16 +58,17 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
   });
 
   const handleDrawer = (value: boolean): void => {
-    if (props.setShowMenu !== null && props?.setShowMenu !== undefined) {
-      if (!value) {
-        setOpenDrawer(true);
-        props.setShowMenu(false);
-      } else {
-        setOpenDrawer(false);
-        props.setShowMenu(true);
-      }
+    if (!value) {
+      // setOpenDrawer(true);
+      handleMenuPlayerController(id, true);
+      props.setShowMenu(false);
+    } else {
+      // setOpenDrawer(false);
+      handleMenuPlayerController(id, false);
+      props.setShowMenu(true);
     }
   };
+
   const handleMonarch = (isMonarch: boolean): any => {
     if (isMonarch) {
       return (
@@ -75,10 +84,10 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       return (
         <S.WrapperLife lenghtCounters={lengthCounters}>
           <S.WrapperCount lenghtCounters={lengthCounters}>
-            <Button onClick={() => handleChangeCounters(id, true, counter)} height="48%" width="100%" border={false} background="transparent">
+            <Button rounded={'none'} onClick={() => handleChangeCounters(id, true, counter)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
-            <Button onClick={() => handleChangeCounters(id, false, counter)} height="48%" width="100%" border={false} background="transparent">
+            <Button rounded={'none'} onClick={() => handleChangeCounters(id, false, counter)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
           </S.WrapperCount>
@@ -93,10 +102,9 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
 
   return (
     <S.Wrapper
+      margin={margin}
       width={width}
       height={height}
-      maxHeight={maxHeight}
-      maxWidth={maxWidth}
       marginBottom={marginBottom}
       marginTop={marginTop}
       rotate={rotate}
@@ -104,20 +112,18 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
       <S.WrapperPlayer
         width={width}
         height={height}
-        maxHeight={maxHeight}
-        maxWidth={maxWidth}
         marginBottom={marginBottom}
         position={position}
         lenghtCounters={lengthCounters}
-        handleDrawer={openDrawer}
+        handleDrawer={drawerState()}
       >
         {handleMonarch(monarch)}
         <S.WrapperLife lenghtCounters={lengthCounters}>
           <S.WrapperCount lenghtCounters={lengthCounters}>
-            <Button onClick={() => handleLifePlayer(id, true)} height="48%" width="100%" border={false} background="transparent">
+            <Button rounded={'none'} onClick={() => handleLifePlayer(id, true)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
-            <Button onClick={() => handleLifePlayer(id, false)} height="48%" width="100%" border={false} background="transparent">
+            <Button rounded={'none'} onClick={() => handleLifePlayer(id, false)} height="48%" width="100%" border={false} background="transparent">
               <></>
             </Button>
           </S.WrapperCount>
@@ -130,9 +136,9 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
         {handleShowCounters('infect', counters?.infect, Infect())}
         {handleShowCounters('poison', counters?.poison, Poison())}
       </S.WrapperPlayer>
-      <S.Drawer handleDrawer={openDrawer} totalHeight={height}>
-        <S.Hr onClick={() => handleDrawer(openDrawer)} handleDrawer={openDrawer} />
-        <S.WrapperCounters handleDrawer={openDrawer}>
+      <S.Drawer handleDrawer={drawerState()} totalHeight={height}>
+        <S.Hr onClick={() => handleDrawer(drawerState())} handleDrawer={drawerState()} />
+        <S.WrapperCounters handleDrawer={drawerState()}>
           <Button onClick={() => handleSetCounter(id, 'commanderDamage')} border={false} background="transparent" height="100px">
             <CommanderDamage />
           </Button>

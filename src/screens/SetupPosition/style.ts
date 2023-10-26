@@ -10,15 +10,12 @@ export const WrapperButtons = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
-  max-width: 400px;
   width: 100%
 `;
 export const WrapperSetupPosition = styled.div`
   width: 85vw;
   height: 90vh;
   position: relative;
-  max-width: 400px;
-  max-height: 800px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
