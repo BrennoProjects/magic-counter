@@ -54,7 +54,6 @@ const PlayerCounter: FC<PlayerCounterProps> = (props) => {
     handleSetCounters();
     handleSetLengthCounters();
     handleSetMonarch();
-    console.log(lengthCounters);
   });
 
   const handleDrawer = (value: boolean): void => {
