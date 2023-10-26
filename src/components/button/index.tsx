@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import * as S from './style';
 
 interface ButtonProps {
@@ -7,7 +7,8 @@ interface ButtonProps {
   height?: string
   border?: boolean
   background?: string
-  rounded?: boolean
+  rounded?: boolean | string
+  margin?: string
   onClick: () => void
 }
 
@@ -17,11 +18,22 @@ const Button: FC<ButtonProps> = (props) => {
     width = '100%',
     height = '4.375rem',
     border = true,
-    background = '#000000',
+    background = 'transparent',
     rounded = false,
-    onClick
+    onClick,
+    margin = ''
   } = props;
+  const [animation, setAnimation] = useState< boolean | 'firsRender'>('firsRender');
 
+  const handleClick = (): void => {
+    setAnimation(true);
+    setTimeout(() => {
+      setAnimation(false);
+    }, 50
+    );
+    onClick();
+  };
+  console.log(animation);
   return (
     <S.WrapperButton
       width={width}
@@ -29,7 +41,9 @@ const Button: FC<ButtonProps> = (props) => {
       border={border}
       background={background}
       rounded={rounded}
-      onClick={onClick}
+      onClick={handleClick}
+      margin={margin}
+      animation={animation}
     >
       {children}
     </S.WrapperButton>

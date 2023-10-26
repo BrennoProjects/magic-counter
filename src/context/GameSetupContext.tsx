@@ -13,6 +13,7 @@ interface StartPlayer {
   id: string
   life: number
   monarch?: boolean
+  isMenuPlayerOpen: boolean
   counters: {
     infect?: number
     poison?: number
@@ -27,6 +28,7 @@ interface GameSetupDataStructure {
   numberPlayers: number
   positionPlayers: ValuesPosition
   players: StartPlayer[]
+  getPlayer: (id: PlayerID) => StartPlayer | undefined
   setInitialLife: (value: number) => void
   setNumberPlayers: (value: number) => void
   setPositionPlayers: (value: ValuesPosition) => void
@@ -35,24 +37,39 @@ interface GameSetupDataStructure {
   handleLifePlayer: (idPlayer: PlayerID, isSum: boolean) => void
   handleSetCounter: (idPlayer: PlayerID, counter: 'infect' | 'poison' | 'commanderDamage' | 'monarch') => void
   handleChangeCounters: (idPlayer: PlayerID, isSum: boolean, counter: 'infect' | 'poison' | 'commanderDamage') => void
+  handleResetGameState: () => void
+  handleInitialGameState: () => void
+  handleMenuPlayerController: (idPlayer: PlayerID, menuState: boolean) => void
 }
 
 interface GameSetupProps {
   children: ReactNode
 }
 
+const playersInitialState: StartPlayer = {
+  id: '',
+  life: 0,
+  monarch: false,
+  isMenuPlayerOpen: false,
+  counters: {}
+};
+// { id: '', life: 0, monarch: false, counters: {} }
 const initialGameSetup = {
   initialLife: 0,
   numberPlayers: 0,
   positionPlayers: ValuesPosition.unset,
-  players: [{ id: '', life: 0, monarch: false, counters: {} }],
+  players: [playersInitialState],
+  getPlayer: () => undefined,
   setInitialLife: () => undefined,
   setNumberPlayers: () => undefined,
   setPositionPlayers: () => undefined,
   handleSetPlayers: () => undefined,
   handleLifePlayer: () => undefined,
   handleSetCounter: () => undefined,
-  handleChangeCounters: () => undefined
+  handleChangeCounters: () => undefined,
+  handleResetGameState: () => undefined,
+  handleInitialGameState: () => undefined,
+  handleMenuPlayerController: () => undefined
 };
 
 export const GameSetupContext =
@@ -74,11 +91,31 @@ const GameSetup: FC<GameSetupProps> = (props) => {
   );
 
   const handleSetPlayers = (numberPlayers: number, initialLife: number): void => {
-    const arrPlayersConstruct = [...Array(numberPlayers).keys()].map(
-      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife, monarch: false, counters: {} })
+    const arrPlayersConstruct = [...Array(numberPlayers).keys()].map<StartPlayer>(
+      (_value, index) => ({ id: `ID_PLAYER_${index + 1}`, life: initialLife, monarch: false, counters: {}, isMenuPlayerOpen: false })
     );
     setPlayers(arrPlayersConstruct);
   };
+
+  const getPlayer = (id: PlayerID): StartPlayer | undefined => {
+    return players.find(player => player.id === id);
+  };
+
+  const handleMenuPlayerController = (idPlayer: PlayerID, menuState: boolean): void => {
+    const newArr = [...players];
+    newArr.forEach(
+      (player) => {
+        if (player.id === idPlayer) {
+          if (menuState) {
+            player.isMenuPlayerOpen = true;
+            return;
+          };
+          player.isMenuPlayerOpen = false;
+        }
+      }
+    );
+  };
+
   const handleLifePlayer = (idPlayer: PlayerID, isSum: boolean): void => {
     const newArr = [...players];
     newArr.forEach(
@@ -151,6 +188,25 @@ const GameSetup: FC<GameSetupProps> = (props) => {
     setPlayers(newArr);
   };
 
+  const handleResetGameState = (): void => {
+    const newArr = [...players];
+    newArr.forEach(
+      (player) => {
+        player.life = initialLife;
+        player.counters = {};
+        player.monarch = false;
+      }
+    );
+    setPlayers(newArr);
+  };
+
+  const handleInitialGameState = (): void => {
+    setPlayers([playersInitialState]);
+    setInitialLife(0);
+    setNumberPlayers(0);
+    setPositionPlayers(ValuesPosition.unset);
+  };
+
   return (
     <GameSetupContext.Provider
       value={{
@@ -164,7 +220,11 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         handleSetPlayers,
         handleLifePlayer,
         handleSetCounter,
-        handleChangeCounters
+        handleChangeCounters,
+        handleResetGameState,
+        handleInitialGameState,
+        handleMenuPlayerController,
+        getPlayer
       }}
     >
       {children}

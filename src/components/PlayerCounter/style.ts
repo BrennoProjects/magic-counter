@@ -33,6 +33,7 @@ interface WrapperProps {
   marginBottom: string
   rotate: string
   marginTop: string
+  margin: string
 }
 
 export const WrapperMonarch = styled.div`
@@ -60,7 +61,7 @@ export const WrapperMonarch = styled.div`
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  
+  margin: ${({ margin }) => margin};
   margin-top: ${({ marginTop }) => marginTop};
   margin-bottom: ${({ marginBottom }) => marginBottom};
   position: relative;
@@ -111,7 +112,7 @@ export const WrapperPlayer = styled.div<WrapperPlayerProps>`
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  overflow-x: ${({ handleDrawer }) => (handleDrawer ? 'hidden' : 'scroll')};
+  overflow-x: ${({ handleDrawer }) => (handleDrawer ? 'hidden' : 'auto')};
   scroll-snap-type: x mandatory;
 `;
 
@@ -130,7 +131,7 @@ export const TextHud = styled.span<TextHudProps>`
   margin: 0;
   font-family: ${({ theme }) => theme.font};
   font-size: ${({ fontSize }) => fontSize};
-  color: ${({ theme }) => theme.title};
+  color: ${({ theme }) => theme.white};
   font-weight: 600;
 `;
 
@@ -160,7 +161,7 @@ export const Drawer = styled.div<DrawerProps>`
 export const Hr = styled.hr<HrProps>`
   width: 50%;
   height: 8px;
-  background-color: ${({ theme }) => theme.title};
+  background-color: ${({ theme }) => theme.white};
   border-radius: 50px;
   border: none;
   position: absolute;

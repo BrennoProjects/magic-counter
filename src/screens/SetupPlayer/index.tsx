@@ -42,22 +42,22 @@ const SetupPlayer: FC = () => {
       <S.WrapperButtons>
         <Button
           onClick={() => handleSetPlayer(1)}
-          width="9.375rem"
+          width="100%" margin="0px 10px 0px 0px"
         >
           <Text>1</Text>
         </Button>
         <Button
           onClick={() => handleSetPlayer(2)}
-          width="9.375rem"
+          width="100%" margin="0px 0px 0px 10px"
         >
           <Text>2</Text>
         </Button>
       </S.WrapperButtons>
       <S.WrapperButtons>
-        <Button onClick={() => handleSetPlayer(3)} width="9.375rem">
+        <Button onClick={() => handleSetPlayer(3)} width="100%" margin="0px 10px 0px 0px">
           <Text>3</Text>
         </Button>
-        <Button onClick={() => handleSetPlayer(4)} width="9.375rem">
+        <Button onClick={() => handleSetPlayer(4)} width="100%" margin="0px 0px 0px 10px">
           <Text>4</Text>
         </Button>
       </S.WrapperButtons>
