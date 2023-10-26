@@ -33,7 +33,6 @@ const Button: FC<ButtonProps> = (props) => {
     );
     onClick();
   };
-  console.log(animation);
   return (
     <S.WrapperButton
       width={width}

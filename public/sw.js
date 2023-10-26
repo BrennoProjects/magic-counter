@@ -1,6 +1,4 @@
 
-console.log('cahce my pwa');
-
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open('my-cache-name').then(function (cache) {
