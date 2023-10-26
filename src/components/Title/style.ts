@@ -11,6 +11,6 @@ export const FontTitle = styled.h1<WrapperTitle>`
   font-family:${({ theme }) => theme.font};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ bold }) => bold ? '700' : 'normal'};
-  color: ${({ theme }) => theme.title};
+  color: ${({ theme }) => theme.white};
   background-color: transparent;
 `;
