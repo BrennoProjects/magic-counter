@@ -14,7 +14,6 @@
     <meta property="og:url" content="https://magiccounter-d22b7.web.app">
     <meta property="og:type" content="website">
 
-
     <title>Magic Counters</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -25,9 +24,8 @@
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').then(function (registration) {
-          console.log('Service Worker registrado com sucesso:', registration.scope);
+          console.log(registration.scope);
         }).catch(function (error) {
-          console.log('Falha ao registrar o Service Worker:');
           console.log(error);
         });
       };

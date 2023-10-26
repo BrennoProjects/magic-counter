@@ -123,7 +123,6 @@ const GameSetup: FC<GameSetupProps> = (props) => {
         if (index.id === idPlayer) {
           index.life += isSum ? 1 : -1;
         }
-        console.log(index);
       }
     );
     setPlayers(newArr);
@@ -150,7 +149,6 @@ const GameSetup: FC<GameSetupProps> = (props) => {
               break;
           }
         }
-        console.log(index);
       }
     );
     setPlayers(newArr);
@@ -182,7 +180,6 @@ const GameSetup: FC<GameSetupProps> = (props) => {
               break;
           }
         }
-        console.log(index);
       }
     );
     setPlayers(newArr);
