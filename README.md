@@ -20,14 +20,14 @@
       width: 150px;
     }
 </style>
-  <div class="containerImg">
-    <img class="styleImg" src="/public/images/image1.png">
-    <img class="styleImg" src="/public/images/image2.png">
-    <img class="styleImg" src="/public/images/image3.png">
-    <img class="styleImg" src="/public/images/image4.png">
-    <img class="styleImg" src="/public/images/image5.png">
-    <img class="styleImg" src="/public/images/image.6png">
-    <img class="styleImg" src="/public/images/image7.png">
+  <div >
+    <img class="styleImg" width="100" height="200" src="/public/images/image1.png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image2.png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image3.png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image4.png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image5.png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image.6png">
+    <img class="styleImg" width="100" height="200" src="/public/images/image7.png">
   </div>
 </section>
 
