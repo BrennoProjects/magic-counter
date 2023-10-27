@@ -15,17 +15,20 @@
     }
     .styleImg{
       margin: 5px 10px;
-      width: 900px;
+      width: 200px;
     }
-  </style>
-
-<img src="/public/images/image1.png">
-<img src="/public/images/image2.png">
-<img src="/public/images/image3.png">
-<img src="/public/images/image4.png">
-<img src="/public/images/image5.png">
-<img src="/public/images/image6.png">
-<img src="/public/images/image7.png">
+</style>
+<div>
+  <div class="containerImg">
+    <img class="styleImg" src="/public/images/image1.png">
+    <img class="styleImg" src="/public/images/image2.png">
+    <img class="styleImg" src="/public/images/image3.png">
+    <img class="styleImg" src="/public/images/image4.png">
+    <img class="styleImg" src="/public/images/image5.png">
+    <img class="styleImg" src="/public/images/image.6png">
+    <img class="styleImg" src="/public/images/image7.png">
+  </div>
+</div>
 
 ## Tools 🔨
 - [Node](https://nodejs.org/en)
@@ -43,4 +46,3 @@
 
 # Dicas 
  - When making a commit or push, Husky will run the pre-commit/push hook to run eslint on the project. If errors are found, commit/push will not be logged until all errors are fixed.
- - 
