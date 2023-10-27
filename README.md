@@ -7,7 +7,7 @@
   Magic Counter is a life counter for any analog game for one to four players that need to track the life points of each player. It was developed with the needs of Magic: The Gathering in mind, a resource management card game. Magic Counter also features other generic counters, in addition to life points, to ensure a game with all the resources that you and your group need to track individually.
 
 
-<div>
+<section>
 <style>
     .containerImg{
       display: flex;
@@ -29,7 +29,7 @@
     <img class="styleImg" src="/public/images/image.6png">
     <img class="styleImg" src="/public/images/image7.png">
   </div>
-</div>
+</section>
 
 ## Tools 🔨
 - [Node](https://nodejs.org/en)
