@@ -8,18 +8,7 @@
 
 
 <section>
-<style>
-    .containerImg{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 100%;
-    }
-    .styleImg{
-      margin: 5px 10px;
-      width: 150px;
-    }
-</style>
+
   <div >
     <img class="styleImg" width="200" height="400" src="/public/images/image1.png">
     <img class="styleImg" width="200" height="400" src="/public/images/image2.png">
