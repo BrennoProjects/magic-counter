@@ -1,6 +1,6 @@
 # Magic counter
 <h1 align="center">
-  <img src="/public/icon/icon_x512.png">
+  <img src="/public/icon/icon_x128.png">
   <p>Magic Counter<p>
 </h1>
 
@@ -47,3 +47,4 @@
 
 # Dicas 
  - When making a commit or push, Husky will run the pre-commit/push hook to run eslint on the project. If errors are found, commit/push will not be logged until all errors are fixed.
+
