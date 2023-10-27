@@ -65,8 +65,8 @@ const Home: FC = () => {
       }}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
          {CustomLink(<Text fontSize='20px'>{'{B}'}</Text>, 'https://brenno.dev')}
-         {CustomLink(<GithubSvg />, 'https://github.com/brennoAmaral/bankrypt')}
-         {CustomLink(<LinkedinSvg />, 'https://www.linkedin.com/in/brenno-a-9822a3120/')}
+         {CustomLink(<GithubSvg />, 'https://github.com/brennoAmaral')}
+         {CustomLink(<LinkedinSvg />, 'https://www.linkedin.com/in/brennoAmaral/')}
          {CustomLink(<EmailSvg />, 'mailto:brenno.dev@outlook.com')}
         </div>
         <a
