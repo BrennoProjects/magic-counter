@@ -1,4 +1,3 @@
-# Magic counter
 <h1 align="center">
   <img src="/public/icon/icon_x128.png">
   <p>Magic Counter<p>
@@ -7,8 +6,7 @@
 ## about 📙
   Magic Counter is a life counter for any analog game for one to four players that need to track the life points of each player. It was developed with the needs of Magic: The Gathering in mind, a resource management card game. Magic Counter also features other generic counters, in addition to life points, to ensure a game with all the resources that you and your group need to track individually.
 
-<div>
-  <style>
+<style>
     .containerImg{
       display: flex;
       justify-content: center;
@@ -20,6 +18,7 @@
       width: 900px;
     }
   </style>
+<div>
   <div class="containerImg">
     <img class="styleImg" src="/public/images/image1.png">
     <img class="styleImg" src="/public/images/image2.png">
@@ -47,4 +46,3 @@
 
 # Dicas 
  - When making a commit or push, Husky will run the pre-commit/push hook to run eslint on the project. If errors are found, commit/push will not be logged until all errors are fixed.
-
