@@ -7,18 +7,15 @@
   Magic Counter is a life counter for any analog game for one to four players that need to track the life points of each player. It was developed with the needs of Magic: The Gathering in mind, a resource management card game. Magic Counter also features other generic counters, in addition to life points, to ensure a game with all the resources that you and your group need to track individually.
 
 
-<section>
-
-  <div >
-    <img class="styleImg" width="200" height="400" src="/public/images/image1.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image2.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image3.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image4.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image5.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image6.png">
-    <img class="styleImg" width="200" height="400" src="/public/images/image7.png">
-  </div>
-</section>
+<div >
+  <img class="styleImg" width="200" height="400" src="/public/images/image1.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image2.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image3.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image4.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image5.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image6.png">
+  <img class="styleImg" width="200" height="400" src="/public/images/image7.png">
+</div>
 
 ## Tools 🔨
 - [Node](https://nodejs.org/en)
