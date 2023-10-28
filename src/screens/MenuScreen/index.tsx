@@ -8,6 +8,7 @@ import ConfigIcon from '../../assets/ConfigIcon';
 import { useTheme } from 'styled-components';
 import { GameSetupContext } from '../../context/GameSetupContext';
 import { useNavigate } from 'react-router-dom';
+import QuitGameSVG from '../../assets/QuitGame';
 
 interface IMenuScreenProps {
   show: boolean
@@ -23,7 +24,7 @@ const MenuScreen: FC<IMenuScreenProps> = (props) => {
   const theme = useTheme();
   const navigate = useNavigate();
   // const [firstRender, setFirstRender] = useState<boolean>(true);
-  const { setShowMenuScreen, isFirstRender } = useContext(GameMenuContext);
+  const { setShowMenuScreen, isFirstRender, setIsFirstRender } = useContext(GameMenuContext);
 
   const OptionMenu = ({ callback, text, svg }: IOptionMenu): JSX.Element => {
     return (
@@ -33,13 +34,14 @@ const MenuScreen: FC<IMenuScreenProps> = (props) => {
         background={theme.green}
         border={false}
         margin="10px"
-        width="100%"
+        // width="100%"
       >
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            padding: '0 0 0 10px',
+            position: 'relative'
           }}
         >
           {svg}
@@ -48,7 +50,7 @@ const MenuScreen: FC<IMenuScreenProps> = (props) => {
               color: theme.background,
               fontSize: '24px',
               fontWeight: 'bold',
-              margin: '0px 0 0 10px'
+              margin: '5px 15px'
             }}
           >
             {text}
@@ -63,9 +65,10 @@ const MenuScreen: FC<IMenuScreenProps> = (props) => {
     setShowMenuScreen(false);
   };
 
-  const handleReconfig = (): void => {
-    navigate('/setup-life');
+  const handleReconfig = (path: string): void => {
+    navigate(path);
     setShowMenuScreen(false);
+    setIsFirstRender(true);
   };
 
   return (
@@ -74,17 +77,22 @@ const MenuScreen: FC<IMenuScreenProps> = (props) => {
           <OptionMenu
             callback={() => setShowMenuScreen(false)}
             svg={<CloseIcon />}
-            text="Fechar menu"
+            text="Quit menu"
           />
           <OptionMenu
             callback={() => handleResetGame()}
             svg={<ResetIcon />}
-            text="Recomeçar"
+            text="Reset game"
           />
           <OptionMenu
-            callback={() => handleReconfig()}
+            callback={() => handleReconfig('/setup-life')}
             svg={<ConfigIcon />}
-            text="Reconfigurar"
+            text="Reconfigure"
+          />
+          <OptionMenu
+            callback={() => handleReconfig('/')}
+            svg={<QuitGameSVG />}
+            text="Quit game"
           />
         </S.WrapperButtons>
       </S.MenuScreen>
